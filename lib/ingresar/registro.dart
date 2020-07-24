@@ -326,12 +326,12 @@ class HomaPageState extends State<Registro>{
                                 child: TextFormField(
                                   validator: (valor) =>
                                   valor.length < 3
-                                      ? 'No puede dejar el cuatrimestre vacío'
+                                      ? 'No puede dejar el grupo vacío'
                                       : null,
                                   controller: _controllerUser,
                                   decoration: InputDecoration(
                                    icon: Icon(Icons.domain, color:Colors.green),
-                                    labelText: 'Cuatrimestre',
+                                    labelText: 'Grupo',
                                     hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20),
