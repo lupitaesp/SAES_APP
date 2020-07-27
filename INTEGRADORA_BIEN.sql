@@ -1,856 +1,857 @@
-DROP DATABASE IF EXISTS INTEGRADORA_APP;
-CREATE DATABASE IF NOT EXISTS INTEGRADORA_APP;
-USE INTEGRADORA_APP;
-SELECT DATABASE();
+drop database if exists integradora_app;
+create database if not exists integradora_app;
+use integradora_app;
+select database();
 
-DROP TABLE IF EXISTS MEDICAMENTOS;
-CREATE TABLE IF NOT EXISTS MEDICAMENTOS(
-CVE_MEDICAMENTO       INT(4)          AUTO_INCREMENT,
-NOMBRE                VARCHAR(70)     NOT NULL,
-DESCRIPCION           VARCHAR(150)    NOT NULL,
-STOCK                 CHAR(3)         NOT NULL,
-ACTIVO                BIT(2)          NOT NULL,  
-PRIMARY KEY (CVE_MEDICAMENTO)
+drop table if exists medicamentos;
+create table if not exists medicamentos(
+cve_medicamento       int(4)          auto_increment,
+nombre                varchar(70)     not null,
+descripcion           varchar(150)    not null,
+stock                 char(3)         not null,
+activo                bit(2)          not null,  
+primary key (cve_medicamento)
 );
 
-DROP TABLE IF EXISTS TRATAMIENTO;
-CREATE TABLE IF NOT EXISTS TRATAMIENTO(
-CVE_TRATAMIENTO       INT(4)           AUTO_INCREMENT,
-DESCRIPCION           VARCHAR(200)     NOT NULL,
-ACTIVO                BIT(2)           NOT NULL,
-CVE_MEDICAMENTO       INT(4),
-PRIMARY KEY (CVE_TRATAMIENTO)
+drop table if exists tratamiento;
+create table if not exists tratamiento(
+cve_tratamiento       int(4)           auto_increment,
+descripcion           varchar(200)     not null,
+activo                bit(2)           not null,
+cve_medicamento       int(4),
+primary key (cve_tratamiento)
 );
 
-DROP TABLE IF EXISTS NOTA_MEDICA;
-CREATE TABLE IF NOT EXISTS NOTA_MEDICA(
-CVE_NOTA_MEDICA      INT(4)           AUTO_INCREMENT,
-DIAGNOSTICO          VARCHAR(150)     NOT NULL,
-CVE_TRATAMIENTO      INT(2),
-CVE_PERSONA          INT(3),
-CVE_SIGNOS           INT(3),
-PRIMARY KEY (CVE_NOTA_MEDICA)
+drop table if exists nota_medica;
+create table if not exists nota_medica(
+cve_nota_medica      int(4)           auto_increment,
+diagnostico          varchar(150)     not null,
+cve_tratamiento      int(2),
+cve_persona          int(3),
+cve_signos           int(3),
+primary key (cve_nota_medica)
 );
 
-/*NOTA MEDICA*/
-DROP TABLE IF EXISTS SIGNOS;
-CREATE TABLE IF NOT EXISTS SIGNOS(
-CVE_SIGNOS                INT(4)        AUTO_INCREMENT,
-ESTATURA                  INT(4)        NOT NULL,
-PESO                      INT(5)        NOT NULL,
-FRECUENCIA_CARDIACA       VARCHAR(8)    NOT NULL,
-TEMPERATURA               VARCHAR(4)    NOT NULL,
-GLUCOSA                   VARCHAR(8)    NOT NULL,
-TENSION_ARTERIAL          VARCHAR(9)    NOT NULL,
-PRIMARY KEY (CVE_SIGNOS)
+/*nota medica*/
+drop table if exists signos;
+create table if not exists signos(
+cve_signos                int(4)        auto_increment,
+estatura                  int(4)        not null,
+peso                      int(5)        not null,
+frecuencia_cardiaca       varchar(8)    not null,
+temperatura               varchar(4)    not null,
+glucosa                   varchar(8)    not null,
+tension_arterial          varchar(9)    not null,
+primary key (cve_signos)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS GINECOBSTETRICOS;
-CREATE TABLE IF NOT EXISTS GINECOBSTETRICOS(
-CVE_GINECOBSTETRICOS          INT(4)         AUTO_INCREMENT,
-EDAD_DE_PRIMER_PERIODO        CHAR(2)        NOT NULL,
-PERIODO_REGULAR               BIT(2)         NOT NULL,
-DIAS_DE_DURACION              FLOAT(2)       NOT NULL,
-CADA_CUANTOS_DIAS             FLOAT(2)       NOT NULL,
-EMBARAZOS                     BIT(2)         NOT NULL,
-CUANTAS_VECES                 FLOAT(2)       NOT NULL,
-PARTO                         BIT(2)         NOT NULL,
-CESAREA                       BIT(2)         NOT NULL,
-ABORTO                        BIT(2)         NOT NULL,
-LEGRADO                       BIT(2)         NOT NULL,
-METODO_DE_PLANIFICACION       BIT(2)         NOT NULL,
-CUAL_METODO                   VARCHAR(25)    NOT NULL,
-PAPANICOLAO                   BIT(2)         NOT NULL,    
-TIEMPO_DE_HACERLO             VARCHAR(25)    NOT NULL,
-PRIMARY KEY (CVE_GINECOBSTETRICOS)     
+/*historia clinica*/
+drop table if exists ginecobstetricos;
+create table if not exists ginecobstetricos(
+cve_ginecobstetricos          int(4)         auto_increment,
+edad_de_primer_periodo        char(2)        not null,
+periodo_regular               bit(2)         not null,
+dias_de_duracion              float(2)       not null,
+cada_cuantos_dias             float(2)       not null,
+embarazos                     bit(2)         not null,
+cuantas_veces                 float(2)       not null,
+parto                         bit(2)         not null,
+cesarea                       bit(2)         not null,
+aborto                        bit(2)         not null,
+legrado                       bit(2)         not null,
+metodo_de_planificacion       bit(2)         not null,
+cual_metodo                   varchar(25)    not null,
+papanicolao                   bit(2)         not null,    
+tiempo_de_hacerlo             varchar(25)    not null,
+primary key (cve_ginecobstetricos)     
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS HEREDOFAMILIARES;
-CREATE TABLE IF NOT EXISTS HEREDOFAMILIARES(
-CVE_HEREDOFAMILIARES        INT(4)         AUTO_INCREMENT,
-CANCER                      BIT(2)         NOT NULL,
-CONVULSIONES                BIT(2)         NOT NULL,
-HIPERTENSION                BIT(2)         NOT NULL,
-E_CARDICAS                  BIT(2)         NOT NULL,
-E_MENTALES                  BIT(2)         NOT NULL,
-DIABETES                    BIT(2)         NOT NULL,
-E_ALERGICAS                 BIT(2)         NOT NULL,
-TUBERCULOSIS                BIT(2)         NOT NULL,
-PRIMARY KEY (CVE_HEREDOFAMILIARES) 
+/*historia clinica*/
+drop table if exists heredofamiliares;
+create table if not exists heredofamiliares(
+cve_heredofamiliares        int(4)         auto_increment,
+cancer                      bit(2)         not null,
+convulsiones                bit(2)         not null,
+hipertension                bit(2)         not null,
+e_cardicas                  bit(2)         not null,
+e_mentales                  bit(2)         not null,
+diabetes                    bit(2)         not null,
+e_alergicas                 bit(2)         not null,
+tuberculosis                bit(2)         not null,
+primary key (cve_heredofamiliares) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS HISTORIA_CLINICA;
-CREATE TABLE IF NOT EXISTS HISTORIA_CLINICA(
-CVE_HISTORIA                    INT(4)       AUTO_INCREMENT,
-FECHA                           DATE,
-CVE_PERSONA                     INT(4),
-CVE_GINECOBSTETRICOS            INT(4),
-CVE_NO_PATOLOGICOS              INT(4),
-CVE_QUIRURGICOS                 INT(4),
-CVE_ALERGICOS                   INT(4),
-CVE_TRAUMATICOS                 INT(4),
-CVE_TRANSFUNCIONALES             INT(4),
-CVE_ENFERMEDADES                INT(4),
-CVE_CONTACTOS                   INT(4),
-CVE_HEREDOFAMILIARES            INT(4),
-CVE_TRATAMIENTO_HISTORIA        INT(4),
-PRIMARY KEY (CVE_HISTORIA)
+/*historia clinica*/
+drop table if exists historia_clinica;
+create table if not exists historia_clinica(
+cve_historia                    int(4)       auto_increment,
+fecha                           date,
+cve_persona                     int(4),
+cve_ginecobstetricos            int(4),
+cve_no_patologicos              int(4),
+cve_quirurgicos                 int(4),
+cve_alergicos                   int(4),
+cve_traumaticos                 int(4),
+cve_transfuncionales             int(4),
+cve_enfermedades                int(4),
+cve_contactos                   int(4),
+cve_heredofamiliares            int(4),
+cve_tratamiento_historia        int(4),
+primary key (cve_historia)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_ALERGICOS;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_ALERGICOS(
-CVE_ALERGICOS          INT(4)        AUTO_INCREMENT,
-ALERGIAS               BIT(2)        NOT NULL,
-MEDICAMENTOS           VARCHAR(30)   NOT NULL,
-PRIMARY KEY (CVE_ALERGICOS) 
+/*historia clinica*/
+drop table if exists antecedentes_alergicos;
+create table if not exists antecedentes_alergicos(
+cve_alergicos          int(4)        auto_increment,
+alergias               bit(2)        not null,
+medicamentos           varchar(30)   not null,
+primary key (cve_alergicos) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_TRAUMATICOS;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_TRAUMATICOS(
-CVE_TRAUMATICOS          INT(4)         AUTO_INCREMENT,
-ACCIDENTE                BIT(2)        NOT NULL,
-SECUELAS_ACCIDENTE       BIT(2)        NOT NULL,
-FRACTURAS                BIT(2)        NOT NULL,
-COMPLICACIONES           BIT(2)        NOT NULL,
-CUAL_COMPLICACION        VARCHAR(20)   NOT NULL,
-PRIMARY KEY (CVE_TRAUMATICOS) 
+/*historia clinica*/
+drop table if exists antecedentes_traumaticos;
+create table if not exists antecedentes_traumaticos(
+cve_traumaticos          int(4)         auto_increment,
+accidente                bit(2)        not null,
+secuelas_accidente       bit(2)        not null,
+fracturas                bit(2)        not null,
+complicaciones           bit(2)        not null,
+cual_complicacion        varchar(20)   not null,
+primary key (cve_traumaticos) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS TRATAMIENTO_HISTORIA;
-CREATE TABLE IF NOT EXISTS TRATAMIENTO_HISTORIA(
-CVE_TRATAMIENTO_HISTORIA       INT(4)           AUTO_INCREMENT,
-DESCRIPCION                    VARCHAR(200)     NOT NULL,
-PRIMARY KEY (CVE_TRATAMIENTO_HISTORIA) 
+/*historia clinica*/
+drop table if exists tratamiento_historia;
+create table if not exists tratamiento_historia(
+cve_tratamiento_historia       int(4)           auto_increment,
+descripcion                    varchar(200)     not null,
+primary key (cve_tratamiento_historia) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS CONTACTOS;
-CREATE TABLE IF NOT EXISTS CONTACTOS(
-CVE_CONTACTOS     INT(4)                AUTO_INCREMENT,
-NOMBRE1            VARCHAR(70)           NOT NULL,
-PARENTESCO1        VARCHAR(20)           NOT NULL,
-DIRECCION1         VARCHAR(50)           NOT NULL,
-TELEFONO1          CHAR(10)              NOT NULL,
-NOMBRE2            VARCHAR(70)           NOT NULL,
-PARENTESCO2        VARCHAR(20)           NOT NULL,
-DIRECCION2         VARCHAR(50)           NOT NULL,
-TELEFONO2          CHAR(10)              NOT NULL,
-PRIMARY KEY (CVE_CONTACTOS)
+/*historia clinica*/
+drop table if exists contactos;
+create table if not exists contactos(
+cve_contactos     int(4)                auto_increment,
+nombre1            varchar(70)           not null,
+parentesco1        varchar(20)           not null,
+direccion1         varchar(50)           not null,
+telefono1          char(10)              not null,
+nombre2            varchar(70)           not null,
+parentesco2        varchar(20)           not null,
+direccion2         varchar(50)           not null,
+telefono2          char(10)              not null,
+primary key (cve_contactos)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ENFERMEDADES;
-CREATE TABLE IF NOT EXISTS ENFERMEDADES (
-CVE_ENFERMEDADES         INT(4)        AUTO_INCREMENT,
-VARICELA                 BIT(2)        NOT NULL,
-TOSFERINA                BIT(2)        NOT NULL,
-SARAMPION                BIT(2)        NOT NULL,
-RUBEOLA                  BIT(2)        NOT NULL,
-SINUSITIS                BIT(2)        NOT NULL,
-PAPERAS                  BIT(2)        NOT NULL,
-HEPATITIS                BIT(2)        NOT NULL,
-TIFOIDEA                 BIT(2)        NOT NULL,
-FIEBRE_REUMATICA         BIT(2)        NOT NULL,
-CONVULCIONES             BIT(2)        NOT NULL,
-PARASITOS                BIT(2)        NOT NULL,
-DIABETIS_MELLITUS        BIT(2)        NOT NULL,
-HIPERTENSION_ARTERIAL    BIT(2)        NOT NULL,
-ANEMIA                   BIT(2)        NOT NULL,
-ENF_CARDIACAS            BIT(2)        NOT NULL,
-ENF_RENALES              BIT(2)        NOT NULL,
-TRATAMIENTO_MEDICO       BIT(2)        NOT NULL,
-TIPO_TRATAMIENTO         BIT(2)        NOT NULL,
-PRIMARY KEY (CVE_ENFERMEDADES)
+/*historia clinica*/
+drop table if exists enfermedades;
+create table if not exists enfermedades (
+cve_enfermedades         int(4)        auto_increment,
+varicela                 bit(2)        not null,
+tosferina                bit(2)        not null,
+sarampion                bit(2)        not null,
+rubeola                  bit(2)        not null,
+sinusitis                bit(2)        not null,
+paperas                  bit(2)        not null,
+hepatitis                bit(2)        not null,
+tifoidea                 bit(2)        not null,
+fiebre_reumatica         bit(2)        not null,
+convulciones             bit(2)        not null,
+parasitos                bit(2)        not null,
+diabetis_mellitus        bit(2)        not null,
+hipertension_arterial    bit(2)        not null,
+anemia                   bit(2)        not null,
+enf_cardiacas            bit(2)        not null,
+enf_renales              bit(2)        not null,
+tratamiento_medico       bit(2)        not null,
+tipo_tratamiento         bit(2)        not null,
+primary key (cve_enfermedades)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_TRANSFUNCIONALES;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_TRANSFUNCIONALES (
-CVE_TRANSFUNCIONALES       INT(4)        AUTO_INCREMENT,
-TRANSFUNCION_SANGUINEA     BIT(2)        NOT NULL,
-FECHA                      DATE          NOT NULL,
-MOTIVO                     VARCHAR(25)   NOT NULL,
-PRIMARY KEY (CVE_TRANSFUNCIONALES)
+/*historia clinica*/
+drop table if exists antecedentes_transfuncionales;
+create table if not exists antecedentes_transfuncionales (
+cve_transfuncionales       int(4)        auto_increment,
+transfuncion_sanguinea     bit(2)        not null,
+fecha                      date          not null,
+motivo                     varchar(25)   not null,
+primary key (cve_transfuncionales)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS PERSONALES_NO_PATOLOGICOS;
-CREATE TABLE IF NOT EXISTS PERSONALES_NO_PATOLOGICOS (
-CVE_NO_PATOLOGICOS        INT(4)         AUTO_INCREMENT,
-VACUNAS_RECIENTES         VARCHAR(20)    NOT NULL,
-PRACTICAS_DEPORTE         BIT(2)         NOT NULL,
-CUAL_DEPORTE              VARCHAR(15)    NOT NULL,
-CUANTAS_VECES             CHAR(2)        NOT NULL,
-FUMAS                     BIT(2)         NOT NULL,
-EDAD_INICIO_F             CHAR(2)        NOT NULL,
-CIGARROS_A_LA_SEMANA      CHAR(2)        NOT NULL,
-BEBIDAS_ALCOHOLICAS       BIT(2)         NOT NULL,
-EDAD_INICIO_A             CHAR(2)        NOT NULL,
-CANTIDAD_POR_SEMANA       CHAR(2)        NOT NULL,
-DROGAS                    BIT(5)         NOT NULL,
-EDAD_INICIO_D             CHAR(2)        NOT NULL,
-CUANTAS_VECES_D           CHAR(2)        NOT NULL, 
-PRIMARY KEY (CVE_NO_PATOLOGICOS)
+/*historia clinica*/
+drop table if exists personales_no_patologicos;
+create table if not exists personales_no_patologicos (
+cve_no_patologicos        int(4)         auto_increment,
+vacunas_recientes         varchar(20)    not null,
+practicas_deporte         bit(2)         not null,
+cual_deporte              varchar(15)    not null,
+cuantas_veces             char(2)        not null,
+fumas                     bit(2)         not null,
+edad_inicio_f             char(2)        not null,
+cigarros_a_la_semana      char(2)        not null,
+bebidas_alcoholicas       bit(2)         not null,
+edad_inicio_a             char(2)        not null,
+cantidad_por_semana       char(2)        not null,
+drogas                    bit(5)         not null,
+edad_inicio_d             char(2)        not null,
+cuantas_veces_d           char(2)        not null, 
+primary key (cve_no_patologicos)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_QUIRURGICOS;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_QUIRURGICOS (
-CVE_QUIRURGICOS           INT(4)         AUTO_INCREMENT,
-OPERACION                 BIT(2)         NOT NULL,
-TIPO_CIRUGIA              VARCHAR(20)    NOT NULL,
-FECHA_CIRUJIA             DATE           NOT NULL,
-INSTITUCION               VARCHAR(20)    NOT NULL,
-PRIMARY KEY (CVE_QUIRURGICOS)
+/*historia clinica*/
+drop table if exists antecedentes_quirurgicos;
+create table if not exists antecedentes_quirurgicos (
+cve_quirurgicos           int(4)         auto_increment,
+operacion                 bit(2)         not null,
+tipo_cirugia              varchar(20)    not null,
+fecha_cirujia             date           not null,
+institucion               varchar(20)    not null,
+primary key (cve_quirurgicos)
 );
 
-/*SI LLEVA INSERSION*/
-DROP TABLE IF EXISTS TIPO_USUARIO;
-CREATE TABLE IF NOT EXISTS TIPO_USUARIO (
-CVE_TIPO_USUARIO          INT(4)          AUTO_INCREMENT,
-DESCRIPCION               VARCHAR(25)     NOT NULL,
-ACTIVO                    BIT(2)          NOT NULL,
-PRIMARY KEY (CVE_TIPO_USUARIO)
-);
-
-
-/*SI LLEVA INSERSION*/
-DROP TABLE IF EXISTS CARRERAS;
-CREATE TABLE IF NOT EXISTS CARRERAS (
-CVE_CARRERA               INT(4)          AUTO_INCREMENT,
-DESCRIPCION               VARCHAR(25)     NOT NULL,
-ACTIVO                    BIT(2)          NOT NULL,
-PRIMARY KEY (CVE_CARRERA)
-);
-
-/*SI LLEVA INSERSION*/
-DROP TABLE IF EXISTS PERIODOS;
-CREATE TABLE IF NOT EXISTS PERIODOS(
-CVE_PERIODO			INT(4)			AUTO_INCREMENT,
-AÑO 				CHAR(5)			NOT NULL,
-MES_INICIO		    VARCHAR(12) 	NOT NULL,
-MES_FIN			    VARCHAR(12)		NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-PRIMARY KEY (CVE_PERIODO)
+/*si lleva insersion*/
+drop table if exists tipo_usuario;
+create table if not exists tipo_usuario (
+cve_tipo_usuario          int(4)          auto_increment,
+descripcion               varchar(25)     not null,
+activo                    bit(2)          not null,
+primary key (cve_tipo_usuario)
 );
 
 
-/*DATOS PARA INGRESAR*/
-DROP TABLE IF EXISTS USUARIO;
-CREATE TABLE IF NOT EXISTS USUARIO(
-CVE_USUARIO			INT(4)			AUTO_INCREMENT,
-EMAIL    			VARCHAR(30)		UNIQUE, /* NO VA AQUI */
-CONTRASEÑA			BLOB		NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-CVE_PERSONA			INT(4)			NULL,
-CVE_TIPO_USUARIO	INT(4)          NULL,
-PRIMARY KEY (CVE_USUARIO) 
+/*si lleva insersion*/
+drop table if exists carreras;
+create table if not exists carreras (
+cve_carrera               int(4)          auto_increment,
+descripcion               varchar(25)     not null,
+activo                    bit(2)          not null,
+primary key (cve_carrera)
 );
 
-DROP TABLE IF EXISTS PERSONA;
-CREATE TABLE IF NOT EXISTS PERSONA(
-CVE_PERSONA         INT(4)          AUTO_INCREMENT,
-MATRICULA			CHAR(10)		NOT NULL,
-NOMBRE        VARCHAR(30)   NOT NULL,
-APE_PAT             VARCHAR(25)     NOT NULL,
-APE_MAT             VARCHAR(25)     NOT NULL,
-FECHA_NACIMIENTO    DATE, 
-EMAIL            VARCHAR(30)    UNIQUE,
-CARRERA			VARCHAR(50) NOT NULL,
-GRUPO           VARCHAR(10)  NOT NULL,
-TELEFONO       CHAR(10)   NOT NULL,
-SEXO            VARCHAR(20)  NOT NULL,
-CONTRASEÑA        BLOB NOT NULL,
-CVE_TIPO_USUARIO	INT(4)          NULL,
-
-PRIMARY KEY (CVE_PERSONA)
+/*si lleva insersion*/
+drop table if exists periodos;
+create table if not exists periodos(
+cve_periodo			int(4)			auto_increment,
+año 				char(5)			not null,
+mes_inicio		    varchar(12) 	not null,
+mes_fin			    varchar(12)		not null,
+activo				bit(2)			not null,
+primary key (cve_periodo)
 );
 
 
-DROP TABLE IF EXISTS GRUPOS;
-CREATE TABLE IF NOT EXISTS GRUPOS(
-CVE_GRUPO			INT(4)			AUTO_INCREMENT,
-CVE_CARRERA			INT(4)			NOT NULL,
-CVE_COORDINADOR		INT(4)			NOT NULL,
-GRUPO				CHAR(4)			NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-CVE_PERIODO			INT(4),
-PRIMARY KEY (CVE_GRUPO)
+/*datos para ingresar*/
+drop table if exists usuario;
+create table if not exists usuario(
+cve_usuario			int(4)			auto_increment,
+email    			varchar(30)		unique, /* no va aqui */
+contraseña			blob		not null,
+activo				bit(2)			not null,
+cve_persona			int(4)			null,
+cve_tipo_usuario	int(4)          null,
+primary key (cve_usuario) 
+);
+
+drop table if exists persona;
+create table if not exists persona(
+cve_persona         int(4)          auto_increment,
+matricula			char(10)		not null,
+nombre        varchar(30)   not null,
+ape_pat             varchar(25)     not null,
+ape_mat             varchar(25)     not null,
+fecha_nacimiento    date, 
+email            varchar(30)    unique,
+carrera			varchar(50) not null,
+grupo           varchar(10)  not null,
+telefono       char(10)   not null,
+sexo            varchar(20)  not null,
+contrasena        varchar(15)  not null,
+cve_tipo_usuario	int(4)          null,
+
+primary key (cve_persona)
 );
 
 
-DROP TABLE IF EXISTS COORDINADOR;
-CREATE TABLE IF NOT EXISTS COORDINADOR(
-CVE_COORDINADOR		INT(4)			AUTO_INCREMENT,
-CVE_PERSONA			INT(4)  NULL,
-CVE_CARRERA			INT(4)  NULL,
-PRIMARY KEY (CVE_COORDINADOR)
+drop table if exists grupos;
+create table if not exists grupos(
+cve_grupo			int(4)			auto_increment,
+cve_carrera			int(4)			not null,
+cve_coordinador		int(4)			not null,
+grupo				char(4)			not null,
+activo				bit(2)			not null,
+cve_periodo			int(4),
+primary key (cve_grupo)
 );
 
-DROP TABLE IF EXISTS ALUMNO;
-CREATE TABLE IF NOT EXISTS ALUMNO(
-CVE_ALUMNO			INT(4)			AUTO_INCREMENT,
-MATRICULA			CHAR(10)		NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-CVE_PERSONA			INT(4),
-CVE_CARRERA			INT(4),
-CVE_USUARIO			INT(4),
-CVE_GRUPO 			INT(4),
-PRIMARY KEY (CVE_ALUMNO)
+
+drop table if exists coordinador;
+create table if not exists coordinador(
+cve_coordinador		int(4)			auto_increment,
+cve_persona			int(4)  null,
+cve_carrera			int(4)  null,
+primary key (cve_coordinador)
+);
+
+drop table if exists alumno;
+create table if not exists alumno(
+cve_alumno			int(4)			auto_increment,
+matricula			char(10)		not null,
+activo				bit(2)			not null,
+cve_persona			int(4),
+cve_carrera			int(4),
+cve_usuario			int(4),
+cve_grupo 			int(4),
+primary key (cve_alumno)
 );		
 
 
-/*DROP TABLE IF EXISTS DATOS_PERSONA;
-CREATE TABLE IF NOT EXISTS DATOS_PERSONA(
-CVE_PERSONA         INT(4)          AUTO_INCREMENT,
-NOMBRE              VARCHAR(25)     NOT NULL,
-APE_PAT             VARCHAR(25)     NOT NULL,
-APE_MAT             VARCHAR(25)     NOT NULL,
-FECHA_NACIMIENTO    DATE,
-GENERO              VARCHAR(18)     NOT NULL,
-ESTADO           	VARCHAR(25)     NOT NULL,
-CVE_CARRERA         INT(4)          NULL,
-CVE_GRUPO           INT(4)          NULL,
-PRIMARY KEY(CVE_PERSONA)
+/*drop table if exists datos_persona;
+create table if not exists datos_persona(
+cve_persona         int(4)          auto_increment,
+nombre              varchar(25)     not null,
+ape_pat             varchar(25)     not null,
+ape_mat             varchar(25)     not null,
+fecha_nacimiento    date,
+genero              varchar(18)     not null,
+estado           	varchar(25)     not null,
+cve_carrera         int(4)          null,
+cve_grupo           int(4)          null,
+primary key(cve_persona)
 ); 
 */
-DROP TABLE IF EXISTS EVENTOS;
-CREATE TABLE IF NOT EXISTS EVENTOS(
-CODIGO				INT(4)          AUTO_INCREMENT,
-FECHA				DATE,
-ARTICULO			VARCHAR(25)		NOT NULL,
-CONTENIDO			VARCHAR(255)	NOT NULL,
-TIPO				VARCHAR(25)		NOT NULL,
-FOTO				lONGBLOB,
-PRIMARY KEY (CODIGO) 
+drop table if exists eventos;
+create table if not exists eventos(
+codigo				int(4)          auto_increment,
+fecha				date,
+articulo			varchar(25)		not null,
+contenido			varchar(255)	not null,
+tipo				varchar(25)		not null,
+foto				longblob,
+primary key (codigo) 
 );
 
-SHOW TABLES;
-INSERT INTO TIPO_USUARIO(CVE_TIPO_USUARIO,DESCRIPCION,ACTIVO) VALUES
-(NULL,'DOCTORA',1),
-(NULL,'ALUMNO',1);
+show tables;
+insert into tipo_usuario(cve_tipo_usuario,descripcion,activo) values
+(null,'doctora',1),
+(null,'alumno',1);
 
-INSERT INTO PERIODOS(CVE_PERIODO,AÑO,MES_INICIO,MES_FIN,ACTIVO) VALUES
-(NULL,'2020','MARZO','AGOSTO',1);
-
-
-
-INSERT INTO CARRERAS(CVE_CARRERA,DESCRIPCION,ACTIVO) VALUES
-(NULL,'TIC',1);
-
-/*INSERT INTO DATOS_PERSONA(CVE_PERSONA,NOMBRE,APE_PAT,APE_MAT,FECHA_NACIMIENTO,GENERO,ESTADO,CVE_CARRERA,CVE_GRUPO)
-VALUES
-(NULL,'GUADALUPE','ESPINOZA','RIVEROS','2000/04/05','MUJER','HIDALGO','1','1'),
-(NULL,'ANDREA SARAI','JUAREZ','MUNGUIA','2000/06/14','MUJER','HIDALGO','1','1'),
-(NULL,'RIGOBERTO','GARCIA','GARCIA','2000/04/05','HOMBRE','HIDALGO','1','1');*/
-
-INSERT INTO COORDINADOR(CVE_COORDINADOR,CVE_PERSONA,CVE_CARRERA) VALUES
-(NULL,'3','1');
+insert into periodos(cve_periodo,año,mes_inicio,mes_fin,activo) values
+(null,'2020','marzo','agosto',1);
 
 
-INSERT INTO GRUPOS(CVE_GRUPO,CVE_CARRERA,CVE_COORDINADOR,GRUPO,ACTIVO,CVE_PERIODO) VALUES
-(NULL,'1','1','31',1,'1');
 
-#ENCRIPTACION DE CONTRASEÑAS 
+insert into carreras(cve_carrera,descripcion,activo) values
+(null,'tic',1);
 
-/*INSERT INTO USUARIO(CVE_USUARIO,CURP,PASS_TEMP,ACTIVO,CVE_PERSONA,CVE_TIPO_USUARIO) VALUES /usuario
-(NULL,'EIRG000405MHGSVDA2','UTEC',1,'1','1'),
-(NULL,'JUMA000614MMCRNNA4','UTEC',1,'2','2'),
-(NULL,'EAND000502HHGSRGA6','UTEC',1,'3','2'); 
+/*insert into datos_persona(cve_persona,nombre,ape_pat,ape_mat,fecha_nacimiento,genero,estado,cve_carrera,cve_grupo)
+values
+(null,'guadalupe','espinoza','riveros','2000/04/05','mujer','hidalgo','1','1'),
+(null,'andrea sarai','juarez','munguia','2000/06/14','mujer','hidalgo','1','1'),
+(null,'rigoberto','garcia','garcia','2000/04/05','hombre','hidalgo','1','1');*/
+
+insert into coordinador(cve_coordinador,cve_persona,cve_carrera) values
+(null,'3','1');
+
+
+insert into grupos(cve_grupo,cve_carrera,cve_coordinador,grupo,activo,cve_periodo) values
+(null,'1','1','31',1,'1');
+
+#encriptacion de contraseñas 
+
+/*insert into usuario(cve_usuario,curp,pass_temp,activo,cve_persona,cve_tipo_usuario) values /usuario
+(null,'eirg000405mhgsvda2','utec',1,'1','1'),
+(null,'juma000614mmcrnna4','utec',1,'2','2'),
+(null,'eand000502hhgsrga6','utec',1,'3','2'); 
 ;*/
 
-select * FROM USUARIO;
+select * from usuario;
 
-# DESINCRIPTACION
+# desincriptacion
 
-/*SELECT cast(uncompress(PASS_TEMP) AS CHAR) FROM USUARIO;*/
+/*select cast(uncompress(pass_temp) as char) from usuario;*/
 
-SELECT * FROM USUARIO;
+select * from usuario;
 
-INSERT INTO ALUMNO(CVE_ALUMNO,MATRICULA,ACTIVO,CVE_PERSONA,CVE_CARRERA,CVE_USUARIO,CVE_GRUPO) VALUES 
-(NULL,'1718110388',1,'1','1','1','1'),
-(NULL,'1718110394',1,'2','1','2','1'),
-(NULL,'1718110384',1,'3','1','3','1');
-
-
+insert into alumno(cve_alumno,matricula,activo,cve_persona,cve_carrera,cve_usuario,cve_grupo) values 
+(null,'1718110388',1,'1','1','1','1'),
+(null,'1718110394',1,'2','1','2','1'),
+(null,'1718110384',1,'3','1','3','1');
 
 
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_GINECOBSTETRICOS) REFERENCES GINECOBSTETRICOS (CVE_GINECOBSTETRICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_NO_PATOLOGICOS) REFERENCES PERSONALES_NO_PATOLOGICOS (CVE_NO_PATOLOGICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_QUIRURGICOS) REFERENCES ANTECEDENTES_QUIRURGICOS (CVE_QUIRURGICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_ALERGICOS) REFERENCES ANTECEDENTES_ALERGICOS (CVE_ALERGICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_TRAUMATICOS) REFERENCES ANTECEDENTES_TRAUMATICOS (CVE_TRAUMATICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_TRANSFUNCIONALES) REFERENCES ANTECEDENTES_TRANSFUNCIONALES (CVE_TRANSFUNCIONALES);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_ENFERMEDADES) REFERENCES ENFERMEDADES (CVE_ENFERMEDADES);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_CONTACTOS) REFERENCES CONTACTOS (CVE_CONTACTOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_HEREDOFAMILIARES) REFERENCES HEREDOFAMILIARES (CVE_HEREDOFAMILIARES);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_TRATAMIENTO_HISTORIA) REFERENCES TRATAMIENTO_HISTORIA (CVE_TRATAMIENTO_HISTORIA);
-ALTER TABLE TRATAMIENTO ADD FOREIGN KEY (CVE_MEDICAMENTO) REFERENCES MEDICAMENTOS (CVE_MEDICAMENTO);
-ALTER TABLE NOTA_MEDICA ADD FOREIGN KEY (CVE_TRATAMIENTO) REFERENCES TRATAMIENTO (CVE_TRATAMIENTO);
-ALTER TABLE NOTA_MEDICA ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE NOTA_MEDICA ADD FOREIGN KEY (CVE_SIGNOS) REFERENCES SIGNOS (CVE_SIGNOS);
-ALTER TABLE PERSONA ADD FOREIGN KEY (CVE_TIPO_USUARIO) REFERENCES TIPO_USUARIO (CVE_TIPO_USUARIO);
-ALTER TABLE USUARIO ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE GRUPOS ADD fOREIGN KEY (CVE_CARRERA) REFERENCES CARRERAS (CVE_CARRERA);
-ALTER TABLE GRUPOS ADD fOREIGN KEY (CVE_COORDINADOR) REFERENCES COORDINADOR (CVE_COORDINADOR);
-ALTER TABLE GRUPOS ADD fOREIGN KEY (CVE_PERIODO) REFERENCES PERIODOS (CVE_PERIODO);
-ALTER TABLE COORDINADOR ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE COORDINADOR ADD FOREIGN KEY (CVE_CARRERA) REFERENCES CARRERAS (CVE_CARRERA);
-ALTER TABLE DATOS_PERSONA ADD fOREIGN KEY (CVE_CARRERA) REFERENCES CARRERAS (CVE_CARRERA);
-ALTER TABLE DATOS_PERSONA ADD fOREIGN KEY (CVE_GRUPO) REFERENCES GRUPOS (CVE_GRUPO);
 
 
-/*#CONSULTA PARA LA BUSQUEDA
-CREATE VIEW ONEE AS SELECT P.CVE_PERSONA, P.NOMBRE, P.APE_PAT, P.APE_MAT, A.MATRICULA 
-FROM  ALUMNO A
-INNER JOIN DATOS_PERSONA P ON P.CVE_PERSONA = A.CVE_ALUMNO
-WHERE A.MATRICULA LIKE '%171811%'
-ORDER BY P.CVE_PERSONA ;
+alter table historia_clinica add foreign key (cve_persona) references persona (cve_persona);
+alter table historia_clinica add foreign key (cve_ginecobstetricos) references ginecobstetricos (cve_ginecobstetricos);
+alter table historia_clinica add foreign key (cve_no_patologicos) references personales_no_patologicos (cve_no_patologicos);
+alter table historia_clinica add foreign key (cve_quirurgicos) references antecedentes_quirurgicos (cve_quirurgicos);
+alter table historia_clinica add foreign key (cve_alergicos) references antecedentes_alergicos (cve_alergicos);
+alter table historia_clinica add foreign key (cve_traumaticos) references antecedentes_traumaticos (cve_traumaticos);
+alter table historia_clinica add foreign key (cve_transfuncionales) references antecedentes_transfuncionales (cve_transfuncionales);
+alter table historia_clinica add foreign key (cve_enfermedades) references enfermedades (cve_enfermedades);
+alter table historia_clinica add foreign key (cve_contactos) references contactos (cve_contactos);
+alter table historia_clinica add foreign key (cve_heredofamiliares) references heredofamiliares (cve_heredofamiliares);
+alter table historia_clinica add foreign key (cve_tratamiento_historia) references tratamiento_historia (cve_tratamiento_historia);
+alter table tratamiento add foreign key (cve_medicamento) references medicamentos (cve_medicamento);
+alter table nota_medica add foreign key (cve_tratamiento) references tratamiento (cve_tratamiento);
+alter table nota_medica add foreign key (cve_persona) references persona (cve_persona);
+alter table nota_medica add foreign key (cve_signos) references signos (cve_signos);
+alter table persona add foreign key (cve_tipo_usuario) references tipo_usuario (cve_tipo_usuario);
+alter table usuario add foreign key (cve_persona) references persona (cve_persona);
+alter table grupos add foreign key (cve_carrera) references carreras (cve_carrera);
+alter table grupos add foreign key (cve_coordinador) references coordinador (cve_coordinador);
+alter table grupos add foreign key (cve_periodo) references periodos (cve_periodo);
+alter table coordinador add foreign key (cve_persona) references persona (cve_persona);
+alter table coordinador add foreign key (cve_carrera) references carreras (cve_carrera);
+alter table datos_persona add foreign key (cve_carrera) references carreras (cve_carrera);
+alter table datos_persona add foreign key (cve_grupo) references grupos (cve_grupo);
 
-CREATE VIEW TWO AS SELECT DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT, DATOS_PERSONA.APE_MAT,DATOS_PERSONA.CVE_PERSONA,CVE_TIPO_USUARIO
-FROM  USUARIO
-INNER JOIN DATOS_PERSONA  ON DATOS_PERSONA.CVE_PERSONA = USUARIO.CVE_PERSONA;
 
-CREATE VIEW TREE AS SELECT CVE_TIPO_USUARIO,CVE_PERSONA FROM USUARIO WHERE CURP='EAND000502HHGSRGA6' AND PASS_TEMP='UTEC';
+/*#consulta para la busqueda
+create view onee as select p.cve_persona, p.nombre, p.ape_pat, p.ape_mat, a.matricula 
+from  alumno a
+inner join datos_persona p on p.cve_persona = a.cve_alumno
+where a.matricula like '%171811%'
+order by p.cve_persona ;
 
-CREATE VIEW FOUR AS SELECT DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT, DATOS_PERSONA.APE_MAT,DATOS_PERSONA.CVE_PERSONA,CVE_TIPO_USUARIO
-FROM  USUARIO
-INNER JOIN DATOS_PERSONA  ON DATOS_PERSONA.CVE_PERSONA = USUARIO.CVE_PERSONA WHERE DATOS_PERSONA.CVE_PERSONA = 1;
+create view two as select datos_persona.nombre, datos_persona.ape_pat, datos_persona.ape_mat,datos_persona.cve_persona,cve_tipo_usuario
+from  usuario
+inner join datos_persona  on datos_persona.cve_persona = usuario.cve_persona;
+
+create view tree as select cve_tipo_usuario,cve_persona from usuario where curp='eand000502hhgsrga6' and pass_temp='utec';
+
+create view four as select datos_persona.nombre, datos_persona.ape_pat, datos_persona.ape_mat,datos_persona.cve_persona,cve_tipo_usuario
+from  usuario
+inner join datos_persona  on datos_persona.cve_persona = usuario.cve_persona where datos_persona.cve_persona = 1;
  
-CREATE VIEW FIVE AS SELECT DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT, DATOS_PERSONA.APE_MAT, DATOS_PERSONA.FECHA_NACIMIENTO, DATOS_PERSONA.ESTADO, CURP
-FROM  USUARIO
-INNER JOIN DATOS_PERSONA  ON DATOS_PERSONA.CVE_PERSONA = USUARIO.CVE_PERSONA  WHERE DATOS_PERSONA.CVE_PERSONA = '1';
+create view five as select datos_persona.nombre, datos_persona.ape_pat, datos_persona.ape_mat, datos_persona.fecha_nacimiento, datos_persona.estado, curp
+from  usuario
+inner join datos_persona  on datos_persona.cve_persona = usuario.cve_persona  where datos_persona.cve_persona = '1';
 
-CREATE VIEW SIX AS SELECT ALUMNO.MATRICULA, USUARIO.CURP,DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT, DATOS_PERSONA.APE_MAT, DATOS_PERSONA.FECHA_NACIMIENTO, DATOS_PERSONA.ESTADO
-FROM DATOS_PERSONA
-INNER JOIN ALUMNO  ON ALUMNO.CVE_PERSONA = DATOS_PERSONA.CVE_PERSONA
-INNER JOIN USUARIO ON USUARIO.CVE_PERSONA = DATOS_PERSONA.CVE_PERSONA;
+create view six as select alumno.matricula, usuario.curp,datos_persona.nombre, datos_persona.ape_pat, datos_persona.ape_mat, datos_persona.fecha_nacimiento, datos_persona.estado
+from datos_persona
+inner join alumno  on alumno.cve_persona = datos_persona.cve_persona
+inner join usuario on usuario.cve_persona = datos_persona.cve_persona;
 
-CREATE VIEW SEVEN AS SELECT ALUMNO.MATRICULA, CARRERAS.DESCRIPCION ,DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT, DATOS_PERSONA.APE_MAT
-FROM DATOS_PERSONA
-INNER JOIN ALUMNO  ON ALUMNO.CVE_PERSONA = DATOS_PERSONA.CVE_PERSONA
-INNER JOIN CARRERAS ON CARRERAS.CVE_CARRERA = DATOS_PERSONA.CVE_CARRERA;
+create view seven as select alumno.matricula, carreras.descripcion ,datos_persona.nombre, datos_persona.ape_pat, datos_persona.ape_mat
+from datos_persona
+inner join alumno  on alumno.cve_persona = datos_persona.cve_persona
+inner join carreras on carreras.cve_carrera = datos_persona.cve_carrera;
 
-CREATE VIEW OCHO AS SELECT ALUMNO.MATRICULA, CARRERAS.DESCRIPCION, GRUPOS.GRUPO,DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT, DATOS_PERSONA.APE_MAT
-FROM DATOS_PERSONA
-INNER JOIN ALUMNO  ON ALUMNO.CVE_PERSONA = DATOS_PERSONA.CVE_PERSONA
-INNER JOIN CARRERAS ON CARRERAS.CVE_CARRERA = DATOS_PERSONA.CVE_CARRERA
-INNER JOIN GRUPOS ON GRUPOS.CVE_GRUPO = DATOS_PERSONA.CVE_GRUPO;
+create view ocho as select alumno.matricula, carreras.descripcion, grupos.grupo,datos_persona.nombre, datos_persona.ape_pat, datos_persona.ape_mat
+from datos_persona
+inner join alumno  on alumno.cve_persona = datos_persona.cve_persona
+inner join carreras on carreras.cve_carrera = datos_persona.cve_carrera
+inner join grupos on grupos.cve_grupo = datos_persona.cve_grupo;
 
-CREATE VIEW NINE AS SELECT TIPO_USUARIO.DESCRIPCION, DATOS_PERSONA.NOMBRE, DATOS_PERSONA.APE_PAT,DATOS_PERSONA.APE_MAT, CURP FROM USUARIO
-INNER JOIN TIPO_USUARIO ON TIPO_USUARIO.CVE_TIPO_USUARIO = USUARIO.CVE_TIPO_USUARIO
-INNER JOIN DATOS_PERSONA ON DATOS_PERSONA.CVE_PERSONA = USUARIO.CVE_PERSONA;
+create view nine as select tipo_usuario.descripcion, datos_persona.nombre, datos_persona.ape_pat,datos_persona.ape_mat, curp from usuario
+inner join tipo_usuario on tipo_usuario.cve_tipo_usuario = usuario.cve_tipo_usuario
+inner join datos_persona on datos_persona.cve_persona = usuario.cve_persona;
 
-CREATE VIEW TEN AS SELECT PERIODOS.AÑO,PERIODOS.MES_INICIO,PERIODOS.MES_FIN, GRUPO FROM GRUPOS
-INNER JOIN PERIODOS ON PERIODOS.CVE_PERIODO = GRUPOS.CVE_PERIODO;
+create view ten as select periodos.año,periodos.mes_inicio,periodos.mes_fin, grupo from grupos
+inner join periodos on periodos.cve_periodo = grupos.cve_periodo;
 
-SELECT * FROM USUARIO;
-SELECT CVE_PERSONA, CVE_TIPO_USUARIO FROM USUARIO WHERE CURP='EIRG000405MHGSVDA2' AND PASS_TEMP=compress('UTEC');*/DROP DATABASE IF EXISTS INTEGRADORA_APP;
-CREATE DATABASE IF NOT EXISTS INTEGRADORA_APP;
-USE INTEGRADORA_APP;
-SELECT DATABASE();
+select * from usuario;
+select cve_persona, cve_tipo_usuario from usuario where curp='eirg000405mhgsvda2' and pass_temp=compress('utec');*/drop database if exists integradora_app;
+create database if not exists integradora_app;
+use integradora_app;
+select database();
 
-DROP TABLE IF EXISTS MEDICAMENTOS;
-CREATE TABLE IF NOT EXISTS MEDICAMENTOS(
-CVE_MEDICAMENTO       INT(4)          AUTO_INCREMENT,
-NOMBRE                VARCHAR(70)     NOT NULL,
-DESCRIPCION           VARCHAR(150)    NOT NULL,
-STOCK                 CHAR(3)         NOT NULL,
-ACTIVO                BIT(2)          NOT NULL,  
-PRIMARY KEY (CVE_MEDICAMENTO)
+drop table if exists medicamentos;
+create table if not exists medicamentos(
+cve_medicamento       int(4)          auto_increment,
+nombre                varchar(70)     not null,
+descripcion           varchar(150)    not null,
+stock                 char(3)         not null,
+activo                bit(2)          not null,  
+primary key (cve_medicamento)
 );
 
-DROP TABLE IF EXISTS TRATAMIENTO;
-CREATE TABLE IF NOT EXISTS TRATAMIENTO(
-CVE_TRATAMIENTO       INT(4)           AUTO_INCREMENT,
-DESCRIPCION           VARCHAR(200)     NOT NULL,
-ACTIVO                BIT(2)           NOT NULL,
-CVE_MEDICAMENTO       INT(4),
-PRIMARY KEY (CVE_TRATAMIENTO)
+drop table if exists tratamiento;
+create table if not exists tratamiento(
+cve_tratamiento       int(4)           auto_increment,
+descripcion           varchar(200)     not null,
+activo                bit(2)           not null,
+cve_medicamento       int(4),
+primary key (cve_tratamiento)
 );
 
-DROP TABLE IF EXISTS NOTA_MEDICA;
-CREATE TABLE IF NOT EXISTS NOTA_MEDICA(
-CVE_NOTA_MEDICA      INT(4)           AUTO_INCREMENT,
-DIAGNOSTICO          VARCHAR(150)     NOT NULL,
-CVE_TRATAMIENTO      INT(2),
-CVE_PERSONA          INT(3),
-CVE_SIGNOS           INT(3),
-PRIMARY KEY (CVE_NOTA_MEDICA)
+drop table if exists nota_medica;
+create table if not exists nota_medica(
+cve_nota_medica      int(4)           auto_increment,
+diagnostico          varchar(150)     not null,
+cve_tratamiento      int(2),
+cve_persona          int(3),
+cve_signos           int(3),
+primary key (cve_nota_medica)
 );
 
-/*NOTA MEDICA*/
-DROP TABLE IF EXISTS SIGNOS;
-CREATE TABLE IF NOT EXISTS SIGNOS(
-CVE_SIGNOS                INT(4)        AUTO_INCREMENT,
-ESTATURA                  INT(4)        NOT NULL,
-PESO                      INT(5)        NOT NULL,
-FRECUENCIA_CARDIACA       VARCHAR(8)    NOT NULL,
-TEMPERATURA               VARCHAR(4)    NOT NULL,
-GLUCOSA                   VARCHAR(8)    NOT NULL,
-TENSION_ARTERIAL          VARCHAR(9)    NOT NULL,
-PRIMARY KEY (CVE_SIGNOS)
+/*nota medica*/
+drop table if exists signos;
+create table if not exists signos(
+cve_signos                int(4)        auto_increment,
+estatura                  int(4)        not null,
+peso                      int(5)        not null,
+frecuencia_cardiaca       varchar(8)    not null,
+temperatura               varchar(4)    not null,
+glucosa                   varchar(8)    not null,
+tension_arterial          varchar(9)    not null,
+primary key (cve_signos)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS GINECOBSTETRICOS;
-CREATE TABLE IF NOT EXISTS GINECOBSTETRICOS(
-CVE_GINECOBSTETRICOS          INT(4)         AUTO_INCREMENT,
-EDAD_DE_PRIMER_PERIODO        CHAR(2)        NOT NULL,
-PERIODO_REGULAR               BIT(2)         NOT NULL,
-DIAS_DE_DURACION              FLOAT(2)       NOT NULL,
-CADA_CUANTOS_DIAS             FLOAT(2)       NOT NULL,
-EMBARAZOS                     BIT(2)         NOT NULL,
-CUANTAS_VECES                 FLOAT(2)       NOT NULL,
-PARTO                         BIT(2)         NOT NULL,
-CESAREA                       BIT(2)         NOT NULL,
-ABORTO                        BIT(2)         NOT NULL,
-LEGRADO                       BIT(2)         NOT NULL,
-METODO_DE_PLANIFICACION       BIT(2)         NOT NULL,
-CUAL_METODO                   VARCHAR(25)    NOT NULL,
-PAPANICOLAO                   BIT(2)         NOT NULL,    
-TIEMPO_DE_HACERLO             VARCHAR(25)    NOT NULL,
-PRIMARY KEY (CVE_GINECOBSTETRICOS)     
+/*historia clinica*/
+drop table if exists ginecobstetricos;
+create table if not exists ginecobstetricos(
+cve_ginecobstetricos          int(4)         auto_increment,
+edad_de_primer_periodo        char(2)        not null,
+periodo_regular               bit(2)         not null,
+dias_de_duracion              float(2)       not null,
+cada_cuantos_dias             float(2)       not null,
+embarazos                     bit(2)         not null,
+cuantas_veces                 float(2)       not null,
+parto                         bit(2)         not null,
+cesarea                       bit(2)         not null,
+aborto                        bit(2)         not null,
+legrado                       bit(2)         not null,
+metodo_de_planificacion       bit(2)         not null,
+cual_metodo                   varchar(25)    not null,
+papanicolao                   bit(2)         not null,    
+tiempo_de_hacerlo             varchar(25)    not null,
+primary key (cve_ginecobstetricos)     
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS HEREDOFAMILIARES;
-CREATE TABLE IF NOT EXISTS HEREDOFAMILIARES(
-CVE_HEREDOFAMILIARES        INT(4)         AUTO_INCREMENT,
-CANCER                      BIT(2)         NOT NULL,
-CONVULSIONES                BIT(2)         NOT NULL,
-HIPERTENSION                BIT(2)         NOT NULL,
-E_CARDICAS                  BIT(2)         NOT NULL,
-E_MENTALES                  BIT(2)         NOT NULL,
-DIABETES                    BIT(2)         NOT NULL,
-E_ALERGICAS                 BIT(2)         NOT NULL,
-TUBERCULOSIS                BIT(2)         NOT NULL,
-PRIMARY KEY (CVE_HEREDOFAMILIARES) 
+/*historia clinica*/
+drop table if exists heredofamiliares;
+create table if not exists heredofamiliares(
+cve_heredofamiliares        int(4)         auto_increment,
+cancer                      bit(2)         not null,
+convulsiones                bit(2)         not null,
+hipertension                bit(2)         not null,
+e_cardicas                  bit(2)         not null,
+e_mentales                  bit(2)         not null,
+diabetes                    bit(2)         not null,
+e_alergicas                 bit(2)         not null,
+tuberculosis                bit(2)         not null,
+primary key (cve_heredofamiliares) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS HISTORIA_CLINICA;
-CREATE TABLE IF NOT EXISTS HISTORIA_CLINICA(
-CVE_HISTORIA                    INT(4)       AUTO_INCREMENT,
-FECHA                           DATE,
-CVE_PERSONA                     INT(4),
-CVE_GINECOBSTETRICOS            INT(4),
-CVE_NO_PATOLOGICOS              INT(4),
-CVE_QUIRURGICOS                 INT(4),
-CVE_ALERGICOS                   INT(4),
-CVE_TRAUMATICOS                 INT(4),
-CVE_TRANSFUNCIONALES             INT(4),
-CVE_ENFERMEDADES                INT(4),
-CVE_CONTACTOS                   INT(4),
-CVE_HEREDOFAMILIARES            INT(4),
-CVE_TRATAMIENTO_HISTORIA        INT(4),
-PRIMARY KEY (CVE_HISTORIA)
+/*historia clinica*/
+drop table if exists historia_clinica;
+create table if not exists historia_clinica(
+cve_historia                    int(4)       auto_increment,
+fecha                           date,
+cve_persona                     int(4),
+cve_ginecobstetricos            int(4),
+cve_no_patologicos              int(4),
+cve_quirurgicos                 int(4),
+cve_alergicos                   int(4),
+cve_traumaticos                 int(4),
+cve_transfuncionales             int(4),
+cve_enfermedades                int(4),
+cve_contactos                   int(4),
+cve_heredofamiliares            int(4),
+cve_tratamiento_historia        int(4),
+primary key (cve_historia)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_ALERGICOS;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_ALERGICOS(
-CVE_ALERGICOS          INT(4)        AUTO_INCREMENT,
-ALERGIAS               BIT(2)        NOT NULL,
-MEDICAMENTOS           VARCHAR(30)   NOT NULL,
-PRIMARY KEY (CVE_ALERGICOS) 
+/*historia clinica*/
+drop table if exists antecedentes_alergicos;
+create table if not exists antecedentes_alergicos(
+cve_alergicos          int(4)        auto_increment,
+alergias               bit(2)        not null,
+medicamentos           varchar(30)   not null,
+primary key (cve_alergicos) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_TRAUMATICOS;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_TRAUMATICOS(
-CVE_TRAUMATICOS          INT(4)         AUTO_INCREMENT,
-ACCIDENTE                BIT(2)        NOT NULL,
-SECUELAS_ACCIDENTE       BIT(2)        NOT NULL,
-FRACTURAS                BIT(2)        NOT NULL,
-COMPLICACIONES           BIT(2)        NOT NULL,
-CUAL_COMPLICACION        VARCHAR(20)   NOT NULL,
-PRIMARY KEY (CVE_TRAUMATICOS) 
+/*historia clinica*/
+drop table if exists antecedentes_traumaticos;
+create table if not exists antecedentes_traumaticos(
+cve_traumaticos          int(4)         auto_increment,
+accidente                bit(2)        not null,
+secuelas_accidente       bit(2)        not null,
+fracturas                bit(2)        not null,
+complicaciones           bit(2)        not null,
+cual_complicacion        varchar(20)   not null,
+primary key (cve_traumaticos) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS TRATAMIENTO_HISTORIA;
-CREATE TABLE IF NOT EXISTS TRATAMIENTO_HISTORIA(
-CVE_TRATAMIENTO_HISTORIA       INT(4)           AUTO_INCREMENT,
-DESCRIPCION                    VARCHAR(200)     NOT NULL,
-PRIMARY KEY (CVE_TRATAMIENTO_HISTORIA) 
+/*historia clinica*/
+drop table if exists tratamiento_historia;
+create table if not exists tratamiento_historia(
+cve_tratamiento_historia       int(4)           auto_increment,
+descripcion                    varchar(200)     not null,
+primary key (cve_tratamiento_historia) 
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS CONTACTOS;
-CREATE TABLE IF NOT EXISTS CONTACTOS(
-CVE_CONTACTOS     INT(4)                AUTO_INCREMENT,
-NOMBRE1            VARCHAR(70)           NOT NULL,
-PARENTESCO1        VARCHAR(20)           NOT NULL,
-DIRECCION1         VARCHAR(50)           NOT NULL,
-TELEFONO1          CHAR(10)              NOT NULL,
-NOMBRE2            VARCHAR(70)           NOT NULL,
-PARENTESCO2        VARCHAR(20)           NOT NULL,
-DIRECCION2         VARCHAR(50)           NOT NULL,
-TELEFONO2          CHAR(10)              NOT NULL,
-PRIMARY KEY (CVE_CONTACTOS)
+/*historia clinica*/
+drop table if exists contactos;
+create table if not exists contactos(
+cve_contactos     int(4)                auto_increment,
+nombre1            varchar(70)           not null,
+parentesco1        varchar(20)           not null,
+direccion1         varchar(50)           not null,
+telefono1          char(10)              not null,
+nombre2            varchar(70)           not null,
+parentesco2        varchar(20)           not null,
+direccion2         varchar(50)           not null,
+telefono2          char(10)              not null,
+primary key (cve_contactos)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ENFERMEDADES;
-CREATE TABLE IF NOT EXISTS ENFERMEDADES (
-CVE_ENFERMEDADES         INT(4)        AUTO_INCREMENT,
-VARICELA                 BIT(2)        NOT NULL,
-TOSFERINA                BIT(2)        NOT NULL,
-SARAMPION                BIT(2)        NOT NULL,
-RUBEOLA                  BIT(2)        NOT NULL,
-SINUSITIS                BIT(2)        NOT NULL,
-PAPERAS                  BIT(2)        NOT NULL,
-HEPATITIS                BIT(2)        NOT NULL,
-TIFOIDEA                 BIT(2)        NOT NULL,
-FIEBRE_REUMATICA         BIT(2)        NOT NULL,
-CONVULCIONES             BIT(2)        NOT NULL,
-PARASITOS                BIT(2)        NOT NULL,
-DIABETIS_MELLITUS        BIT(2)        NOT NULL,
-HIPERTENSION_ARTERIAL    BIT(2)        NOT NULL,
-ANEMIA                   BIT(2)        NOT NULL,
-ENF_CARDIACAS            BIT(2)        NOT NULL,
-ENF_RENALES              BIT(2)        NOT NULL,
-TRATAMIENTO_MEDICO       BIT(2)        NOT NULL,
-TIPO_TRATAMIENTO         BIT(2)        NOT NULL,
-PRIMARY KEY (CVE_ENFERMEDADES)
+/*historia clinica*/
+drop table if exists enfermedades;
+create table if not exists enfermedades (
+cve_enfermedades         int(4)        auto_increment,
+varicela                 bit(2)        not null,
+tosferina                bit(2)        not null,
+sarampion                bit(2)        not null,
+rubeola                  bit(2)        not null,
+sinusitis                bit(2)        not null,
+paperas                  bit(2)        not null,
+hepatitis                bit(2)        not null,
+tifoidea                 bit(2)        not null,
+fiebre_reumatica         bit(2)        not null,
+convulciones             bit(2)        not null,
+parasitos                bit(2)        not null,
+diabetis_mellitus        bit(2)        not null,
+hipertension_arterial    bit(2)        not null,
+anemia                   bit(2)        not null,
+enf_cardiacas            bit(2)        not null,
+enf_renales              bit(2)        not null,
+tratamiento_medico       bit(2)        not null,
+tipo_tratamiento         bit(2)        not null,
+primary key (cve_enfermedades)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_TRANSFUNCIONALES;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_TRANSFUNCIONALES (
-CVE_TRANSFUNCIONALES       INT(4)        AUTO_INCREMENT,
-TRANSFUNCION_SANGUINEA     BIT(2)        NOT NULL,
-FECHA                      DATE          NOT NULL,
-MOTIVO                     VARCHAR(25)   NOT NULL,
-PRIMARY KEY (CVE_TRANSFUNCIONALES)
+/*historia clinica*/
+drop table if exists antecedentes_transfuncionales;
+create table if not exists antecedentes_transfuncionales (
+cve_transfuncionales       int(4)        auto_increment,
+transfuncion_sanguinea     bit(2)        not null,
+fecha                      date          not null,
+motivo                     varchar(25)   not null,
+primary key (cve_transfuncionales)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS PERSONALES_NO_PATOLOGICOS;
-CREATE TABLE IF NOT EXISTS PERSONALES_NO_PATOLOGICOS (
-CVE_NO_PATOLOGICOS        INT(4)         AUTO_INCREMENT,
-VACUNAS_RECIENTES         VARCHAR(20)    NOT NULL,
-PRACTICAS_DEPORTE         BIT(2)         NOT NULL,
-CUAL_DEPORTE              VARCHAR(15)    NOT NULL,
-CUANTAS_VECES             CHAR(2)        NOT NULL,
-FUMAS                     BIT(2)         NOT NULL,
-EDAD_INICIO_F             CHAR(2)        NOT NULL,
-CIGARROS_A_LA_SEMANA      CHAR(2)        NOT NULL,
-BEBIDAS_ALCOHOLICAS       BIT(2)         NOT NULL,
-EDAD_INICIO_A             CHAR(2)        NOT NULL,
-CANTIDAD_POR_SEMANA       CHAR(2)        NOT NULL,
-DROGAS                    BIT(5)         NOT NULL,
-EDAD_INICIO_D             CHAR(2)        NOT NULL,
-CUANTAS_VECES_D           CHAR(2)        NOT NULL, 
-PRIMARY KEY (CVE_NO_PATOLOGICOS)
+/*historia clinica*/
+drop table if exists personales_no_patologicos;
+create table if not exists personales_no_patologicos (
+cve_no_patologicos        int(4)         auto_increment,
+vacunas_recientes         varchar(20)    not null,
+practicas_deporte         bit(2)         not null,
+cual_deporte              varchar(15)    not null,
+cuantas_veces             char(2)        not null,
+fumas                     bit(2)         not null,
+edad_inicio_f             char(2)        not null,
+cigarros_a_la_semana      char(2)        not null,
+bebidas_alcoholicas       bit(2)         not null,
+edad_inicio_a             char(2)        not null,
+cantidad_por_semana       char(2)        not null,
+drogas                    bit(5)         not null,
+edad_inicio_d             char(2)        not null,
+cuantas_veces_d           char(2)        not null, 
+primary key (cve_no_patologicos)
 );
 
-/*HISTORIA CLINICA*/
-DROP TABLE IF EXISTS ANTECEDENTES_QUIRURGICOS;
-CREATE TABLE IF NOT EXISTS ANTECEDENTES_QUIRURGICOS (
-CVE_QUIRURGICOS           INT(4)         AUTO_INCREMENT,
-OPERACION                 BIT(2)         NOT NULL,
-TIPO_CIRUGIA              VARCHAR(20)    NOT NULL,
-FECHA_CIRUJIA             DATE           NOT NULL,
-INSTITUCION               VARCHAR(20)    NOT NULL,
-PRIMARY KEY (CVE_QUIRURGICOS)
+/*historia clinica*/
+drop table if exists antecedentes_quirurgicos;
+create table if not exists antecedentes_quirurgicos (
+cve_quirurgicos           int(4)         auto_increment,
+operacion                 bit(2)         not null,
+tipo_cirugia              varchar(20)    not null,
+fecha_cirujia             date           not null,
+institucion               varchar(20)    not null,
+primary key (cve_quirurgicos)
 );
 
-/*SI LLEVA INSERSION*/
-DROP TABLE IF EXISTS TIPO_USUARIO;
-CREATE TABLE IF NOT EXISTS TIPO_USUARIO (
-CVE_TIPO_USUARIO          INT(4)          AUTO_INCREMENT,
-DESCRIPCION               VARCHAR(25)     NOT NULL,
-ACTIVO                    BIT(2)          NOT NULL,
-PRIMARY KEY (CVE_TIPO_USUARIO)
-);
-
-
-/*SI LLEVA INSERSION*/
-DROP TABLE IF EXISTS CARRERAS;
-CREATE TABLE IF NOT EXISTS CARRERAS (
-CVE_CARRERA               INT(4)          AUTO_INCREMENT,
-DESCRIPCION               VARCHAR(25)     NOT NULL,
-ACTIVO                    BIT(2)          NOT NULL,
-PRIMARY KEY (CVE_CARRERA)
-);
-
-/*SI LLEVA INSERSION*/
-DROP TABLE IF EXISTS PERIODOS;
-CREATE TABLE IF NOT EXISTS PERIODOS(
-CVE_PERIODO			INT(4)			AUTO_INCREMENT,
-AÑO 				CHAR(5)			NOT NULL,
-MES_INICIO		    VARCHAR(12) 	NOT NULL,
-MES_FIN			    VARCHAR(12)		NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-PRIMARY KEY (CVE_PERIODO)
+/*si lleva insersion*/
+drop table if exists tipo_usuario;
+create table if not exists tipo_usuario (
+cve_tipo_usuario          int(4)          auto_increment,
+descripcion               varchar(25)     not null,
+activo                    bit(2)          not null,
+primary key (cve_tipo_usuario)
 );
 
 
-/*DATOS PARA INGRESAR*/
-DROP TABLE IF EXISTS USUARIO;
-CREATE TABLE IF NOT EXISTS USUARIO(
-CVE_USUARIO			INT(4)			AUTO_INCREMENT,
-EMAIL    			VARCHAR(30)		UNIQUE, /* NO VA AQUI */
-CONTRASEÑA			BLOB		NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-CVE_PERSONA			INT(4)			NULL,
-CVE_TIPO_USUARIO	INT(4)          NULL,
-
-PRIMARY KEY (CVE_USUARIO) 
+/*si lleva insersion*/
+drop table if exists carreras;
+create table if not exists carreras (
+cve_carrera               int(4)          auto_increment,
+descripcion               varchar(25)     not null,
+activo                    bit(2)          not null,
+primary key (cve_carrera)
 );
 
-DROP TABLE IF EXISTS PERSONA;
-CREATE TABLE IF NOT EXISTS PERSONA(
-CVE_PERSONA         INT(4)          AUTO_INCREMENT,
-MATRICULA			CHAR(10)		NOT NULL,
-NOMBRE        VARCHAR(30)   NOT NULL,
-APE_PAT             VARCHAR(25)     NOT NULL,
-APE_MAT             VARCHAR(25)     NOT NULL,
-EMAIL            VARCHAR(30)    UNIQUE,
-CARRERA			VARCHAR(50) NOT NULL,
-GRUPO           VARCHAR(10)  NOT NULL,
-TELEFONO       CHAR(10)   NOT NULL,
-SEXO            VARCHAR(20)  NOT NULL,
-CONTRASEÑA        BLOB NOT NULL,
-PRIMARY KEY (CVE_PERSONA)
+/*si lleva insersion*/
+drop table if exists periodos;
+create table if not exists periodos(
+cve_periodo			int(4)			auto_increment,
+año 				char(5)			not null,
+mes_inicio		    varchar(12) 	not null,
+mes_fin			    varchar(12)		not null,
+activo				bit(2)			not null,
+primary key (cve_periodo)
 );
 
 
-DROP TABLE IF EXISTS GRUPOS;
-CREATE TABLE IF NOT EXISTS GRUPOS(
-CVE_GRUPO			INT(4)			AUTO_INCREMENT,
-CVE_CARRERA			INT(4)			NOT NULL,
-CVE_COORDINADOR		INT(4)			NOT NULL,
-GRUPO				CHAR(4)			NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-CVE_PERIODO			INT(4),
-PRIMARY KEY (CVE_GRUPO)
+/*datos para ingresar*/
+drop table if exists usuario;
+create table if not exists usuario(
+cve_usuario			int(4)			auto_increment,
+email    			varchar(30)		unique, /* no va aqui */
+contraseña			blob		not null,
+activo				bit(2)			not null,
+cve_persona			int(4)			null,
+cve_tipo_usuario	int(4)          null,
+
+primary key (cve_usuario) 
+);
+
+drop table if exists persona;
+create table if not exists persona(
+cve_persona         int(4)          auto_increment,
+matricula			char(10)		not null,
+nombre        varchar(30)   not null,
+ape_pat             varchar(25)     not null,
+ape_mat             varchar(25)     not null,
+email            varchar(30)    unique,
+carrera			varchar(50) not null,
+grupo           varchar(10)  not null,
+telefono       char(10)   not null, 
+sexo            varchar(20)  not null,
+contrasena        varchar(12) not null,
+cve_tipo_usuario	int(4)          null,
+primary key (cve_persona)
 );
 
 
-DROP TABLE IF EXISTS COORDINADOR;
-CREATE TABLE IF NOT EXISTS COORDINADOR(
-CVE_COORDINADOR		INT(4)			AUTO_INCREMENT,
-CVE_PERSONA			INT(4)  NULL,
-CVE_CARRERA			INT(4)  NULL,
-PRIMARY KEY (CVE_COORDINADOR)
+drop table if exists grupos;
+create table if not exists grupos(
+cve_grupo			int(4)			auto_increment,
+cve_carrera			int(4)			not null,
+cve_coordinador		int(4)			not null,
+grupo				char(4)			not null,
+activo				bit(2)			not null,
+cve_periodo			int(4),
+primary key (cve_grupo)
 );
 
-DROP TABLE IF EXISTS ALUMNO;
-CREATE TABLE IF NOT EXISTS ALUMNO(
-CVE_ALUMNO			INT(4)			AUTO_INCREMENT,
-MATRICULA			CHAR(10)		NOT NULL,
-ACTIVO				BIT(2)			NOT NULL,
-CVE_PERSONA			INT(4),
-CVE_CARRERA			INT(4),
-CVE_USUARIO			INT(4),
-CVE_GRUPO 			INT(4),
-PRIMARY KEY (CVE_ALUMNO)
+
+drop table if exists coordinador;
+create table if not exists coordinador(
+cve_coordinador		int(4)			auto_increment,
+cve_persona			int(4)  null,
+cve_carrera			int(4)  null,
+primary key (cve_coordinador)
+);
+
+drop table if exists alumno;
+create table if not exists alumno(
+cve_alumno			int(4)			auto_increment,
+matricula			char(10)		not null,
+activo				bit(2)			not null,
+cve_persona			int(4),
+cve_carrera			int(4),
+cve_usuario			int(4),
+cve_grupo 			int(4),
+primary key (cve_alumno)
 );		
 
 
-/*DROP TABLE IF EXISTS DATOS_PERSONA;
-CREATE TABLE IF NOT EXISTS DATOS_PERSONA(
-CVE_PERSONA         INT(4)          AUTO_INCREMENT,
-NOMBRE              VARCHAR(25)     NOT NULL,
-APE_PAT             VARCHAR(25)     NOT NULL,
-APE_MAT             VARCHAR(25)     NOT NULL,
-FECHA_NACIMIENTO    DATE,
-GENERO              VARCHAR(18)     NOT NULL,
-ESTADO           	VARCHAR(25)     NOT NULL,
-CVE_CARRERA         INT(4)          NULL,
-CVE_GRUPO           INT(4)          NULL,
-PRIMARY KEY(CVE_PERSONA)
+/*drop table if exists datos_persona;
+create table if not exists datos_persona(
+cve_persona         int(4)          auto_increment,
+nombre              varchar(25)     not null,
+ape_pat             varchar(25)     not null,
+ape_mat             varchar(25)     not null,
+fecha_nacimiento    date,
+genero              varchar(18)     not null,
+estado           	varchar(25)     not null,
+cve_carrera         int(4)          null,
+cve_grupo           int(4)          null,
+primary key(cve_persona)
 ); 
 */
-DROP TABLE IF EXISTS EVENTOS;
-CREATE TABLE IF NOT EXISTS EVENTOS(
-CODIGO				INT(4)          AUTO_INCREMENT,
-FECHA				DATE,
-ARTICULO			VARCHAR(25)		NOT NULL,
-CONTENIDO			VARCHAR(255)	NOT NULL,
-TIPO				VARCHAR(25)		NOT NULL,
-FOTO				lONGBLOB,
-PRIMARY KEY (CODIGO) 
+drop table if exists eventos;
+create table if not exists eventos(
+codigo				int(4)          auto_increment,
+fecha				date,
+articulo			varchar(25)		not null,
+contenido			varchar(255)	not null,
+tipo				varchar(25)		not null,
+foto				longblob,
+primary key (codigo) 
 );
 
-SHOW TABLES;
-INSERT INTO TIPO_USU(CVE_PERIODO,AÑO,MES_INICIO,MES_FIN,ACTIVO) VALUES
-(NULL,'2020','MARZO','AGOSTO',1);
+show tables;
+insert into tipo_usuario(cve_tipo_usuario,descripcion,activo) values
+(null,'doctora',1),
+(null,'alumno',1);
+
+insert into periodos(cve_periodo,año,mes_inicio,mes_fin,activo) values
+(null,'2020','marzo','agosto',1);
 
 
 
-INSERT INTO CARRERAS(CVE_CARRERA,DESCRIPCION,ACTIVO) VALUES
-(NULL,'TIC',1);
+insert into carreras(cve_carrera,descripcion,activo) values
+(null,'tic',1);
 
-/*INSERT INTO DATOS_PERSONA(CVE_PERSONA,NOMBRE,APE_PAT,APE_MAT,FECHA_NACIMIENTO,GENERO,ESTADO,CVE_CARRERA,CVE_GRUPO)
-VALUES
-(NULL,'GUADALUPE','ESPINOZA','RIVEROS','2000/04/05','MUJER','HIDALGO','1','1'),
-(NULL,'ANDREA SARAI','JUAREZ','MUNGUIA','2000/06/14','MUJER','HIDALGO','1','1'),
-(NULL,'RIGOBERTO','GARCIA','GARCIA','2000/04/05','HOMBRE','HIDALGO','1','1');*/
+/*insert into datos_persona(cve_persona,nombre,ape_pat,ape_mat,fecha_nacimiento,genero,estado,cve_carrera,cve_grupo)
+values
+(null,'guadalupe','espinoza','riveros','2000/04/05','mujer','hidalgo','1','1'),
+(null,'andrea sarai','juarez','munguia','2000/06/14','mujer','hidalgo','1','1'),
+(null,'rigoberto','garcia','garcia','2000/04/05','hombre','hidalgo','1','1');*/
 
-INSERT INTO COORDINADOR(CVE_COORDINADOR,CVE_PERSONA,CVE_CARRERA) VALUES
-(NULL,'3','1');
+insert into coordinador(cve_coordinador,cve_persona,cve_carrera) values
+(null,'3','1');
 
 
-INSERT INTO GRUPARIO(CVE_TIPO_USUARIO,DESCRIPCION,ACTIVO) VALUES
-(NULL,'DOCTORA',1),
-(NULL,'ALUMNO',1);
+insert into grupos(cve_grupo,cve_carrera,cve_coordinador,grupo,activo,cve_periodo) values
+(null,'1','1','31',1,'1');
 
-INSERT INTO PERIODOSOS(CVE_GRUPO,CVE_CARRERA,CVE_COORDINADOR,GRUPO,ACTIVO,CVE_PERIODO) VALUES
-(NULL,'1','1','31',1,'1');
+#encriptacion de contraseñas 
 
-#ENCRIPTACION DE CONTRASEÑAS 
-
-/*INSERT INTO USUARIO(CVE_USUARIO,CURP,PASS_TEMP,ACTIVO,CVE_PERSONA,CVE_TIPO_USUARIO) VALUES /usuario
-(NULL,'EIRG000405MHGSVDA2','UTEC',1,'1','1'),
-(NULL,'JUMA000614MMCRNNA4','UTEC',1,'2','2'),
-(NULL,'EAND000502HHGSRGA6','UTEC',1,'3','2'); 
+/*insert into usuario(cve_usuario,curp,pass_temp,activo,cve_persona,cve_tipo_usuario) values /usuario
+(null,'eirg000405mhgsvda2','utec',1,'1','1'),
+(null,'juma000614mmcrnna4','utec',1,'2','2'),
+(null,'eand000502hhgsrga6','utec',1,'3','2'); 
 ;*/
 
-select * FROM USUARIO;
+select * from usuario;
 
-# DESINCRIPTACION
+# desincriptacion
 
-/*SELECT cast(uncompress(PASS_TEMP) AS CHAR) FROM USUARIO;*/
+/*select cast(uncompress(pass_temp) as char) from usuario;*/
 
-SELECT * FROM USUARIO;
+select * from usuario;
 
-INSERT INTO ALUMNO(CVE_ALUMNO,MATRICULA,ACTIVO,CVE_PERSONA,CVE_CARRERA,CVE_USUARIO,CVE_GRUPO) VALUES 
-(NULL,'1718110388',1,'1','1','1','1'),
-(NULL,'1718110394',1,'2','1','2','1'),
-(NULL,'1718110384',1,'3','1','3','1');
-
-
+insert into alumno(cve_alumno,matricula,activo,cve_persona,cve_carrera,cve_usuario,cve_grupo) values 
+(null,'1718110388',1,'1','1','1','1'),
+(null,'1718110394',1,'2','1','2','1'),
+(null,'1718110384',1,'3','1','3','1');
 
 
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_GINECOBSTETRICOS) REFERENCES GINECOBSTETRICOS (CVE_GINECOBSTETRICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_NO_PATOLOGICOS) REFERENCES PERSONALES_NO_PATOLOGICOS (CVE_NO_PATOLOGICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_QUIRURGICOS) REFERENCES ANTECEDENTES_QUIRURGICOS (CVE_QUIRURGICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_ALERGICOS) REFERENCES ANTECEDENTES_ALERGICOS (CVE_ALERGICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_TRAUMATICOS) REFERENCES ANTECEDENTES_TRAUMATICOS (CVE_TRAUMATICOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_TRANSFUNCIONALES) REFERENCES ANTECEDENTES_TRANSFUNCIONALES (CVE_TRANSFUNCIONALES);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_ENFERMEDADES) REFERENCES ENFERMEDADES (CVE_ENFERMEDADES);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_CONTACTOS) REFERENCES CONTACTOS (CVE_CONTACTOS);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_HEREDOFAMILIARES) REFERENCES HEREDOFAMILIARES (CVE_HEREDOFAMILIARES);
-ALTER TABLE HISTORIA_CLINICA ADD FOREIGN KEY (CVE_TRATAMIENTO_HISTORIA) REFERENCES TRATAMIENTO_HISTORIA (CVE_TRATAMIENTO_HISTORIA);
-ALTER TABLE TRATAMIENTO ADD FOREIGN KEY (CVE_MEDICAMENTO) REFERENCES MEDICAMENTOS (CVE_MEDICAMENTO);
-ALTER TABLE NOTA_MEDICA ADD FOREIGN KEY (CVE_TRATAMIENTO) REFERENCES TRATAMIENTO (CVE_TRATAMIENTO);
-ALTER TABLE NOTA_MEDICA ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE NOTA_MEDICA ADD FOREIGN KEY (CVE_SIGNOS) REFERENCES SIGNOS (CVE_SIGNOS);
-ALTER TABLE USUARIO ADD FOREIGN KEY (CVE_TIPO_USUARIO) REFERENCES TIPO_USUARIO (CVE_TIPO_USUARIO);
-ALTER TABLE USUARIO ADD FOREIGN KEY (CVE_PERSONA) REFERENCES PERSONA (CVE_PERSONA);
-ALTER TABLE GRUPOS ADD fOREIGN KEY (CVE_CARRERA) REFERENCES CARRERAS (CVE_CARRERA);
-ALTER TABLE GRUPOS ADD fOREIGN KEY (CVE_COORDINADOR) REFERENCES COORDINADOR (CVE_COORDINADOR);
-ALTER TABLE GRUPOS ADD fOREIGN KEY (CVE_PERIODO) REFERENCES PERIODOS (CVE_PERIODO);
-/*LLAVES FORANES DEL CORDINADOR ESTAN EN LAS EL LA VERSI9ON DE GIT*/
+
+
+alter table historia_clinica add foreign key (cve_persona) references persona (cve_persona);
+alter table historia_clinica add foreign key (cve_ginecobstetricos) references ginecobstetricos (cve_ginecobstetricos);
+alter table historia_clinica add foreign key (cve_no_patologicos) references personales_no_patologicos (cve_no_patologicos);
+alter table historia_clinica add foreign key (cve_quirurgicos) references antecedentes_quirurgicos (cve_quirurgicos);
+alter table historia_clinica add foreign key (cve_alergicos) references antecedentes_alergicos (cve_alergicos);
+alter table historia_clinica add foreign key (cve_traumaticos) references antecedentes_traumaticos (cve_traumaticos);
+alter table historia_clinica add foreign key (cve_transfuncionales) references antecedentes_transfuncionales (cve_transfuncionales);
+alter table historia_clinica add foreign key (cve_enfermedades) references enfermedades (cve_enfermedades);
+alter table historia_clinica add foreign key (cve_contactos) references contactos (cve_contactos);
+alter table historia_clinica add foreign key (cve_heredofamiliares) references heredofamiliares (cve_heredofamiliares);
+alter table historia_clinica add foreign key (cve_tratamiento_historia) references tratamiento_historia (cve_tratamiento_historia);
+alter table tratamiento add foreign key (cve_medicamento) references medicamentos (cve_medicamento);
+alter table nota_medica add foreign key (cve_tratamiento) references tratamiento (cve_tratamiento);
+alter table nota_medica add foreign key (cve_persona) references persona (cve_persona);
+alter table nota_medica add foreign key (cve_signos) references signos (cve_signos);
+alter table usuario add foreign key (cve_tipo_usuario) references tipo_usuario (cve_tipo_usuario);
+alter table usuario add foreign key (cve_persona) references persona (cve_persona);
+alter table grupos add foreign key (cve_carrera) references carreras (cve_carrera);
+alter table grupos add foreign key (cve_coordinador) references coordinador (cve_coordinador);
+alter table grupos add foreign key (cve_periodo) references periodos (cve_periodo);
+/*llaves foranes del cordinador estan en las el la versi9on de git*/
