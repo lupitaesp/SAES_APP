@@ -10,6 +10,7 @@ class Registro {
   String telefono;
   String sexo;
   String contrasena;
+  String usuario;
 
   Registro(
       {this.cve_persona,
@@ -22,7 +23,8 @@ class Registro {
       this.grupo,
       this.telefono,
       this.sexo,
-      this.contrasena});
+      this.contrasena,
+      this.usuario});
 
   //Patrones de diseño, ventajas de regresar un objeto
   factory Registro.fromJson(Map<String, dynamic> json) {
@@ -37,6 +39,7 @@ class Registro {
         grupo: json['grupo'] as String,
         telefono: json['telefono'] as String,
         sexo: json['sexo'] as String,
-        contrasena: json['contrasena'] as String);
+        contrasena: json['contrasena'] as String,
+        usuario: json['usuario'] as String);
   }
 }

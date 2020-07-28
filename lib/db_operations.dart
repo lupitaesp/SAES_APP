@@ -48,7 +48,8 @@ class BDConnections {
       String grupo,
       String telefono,
       String sexo,
-      String contrasena) async {
+      String contrasena,
+      String usuario) async {
     try {
       //Mapeamos para comparar
       var map = Map<String, dynamic>();
@@ -63,6 +64,7 @@ class BDConnections {
       map['telefono'] = telefono;
       map['sexo'] = sexo;
       map['contrasena'] = contrasena;
+      map['usuario'] = usuario;
 
       //Body es lo que estamos mapeando
       final response = await http.post(SERVER, body: map);

@@ -23,6 +23,7 @@ class HomaPageState extends State<Registro> {
   TextEditingController _telefonoConroller;
   TextEditingController _sexoConroller;
   TextEditingController _contrasenaConroller;
+  TextEditingController _usuarioConroller;
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class HomaPageState extends State<Registro> {
     _telefonoConroller = TextEditingController();
     _sexoConroller = TextEditingController();
     _contrasenaConroller = TextEditingController();
+    _usuarioConroller = TextEditingController();
   }
 
   //INSERT DATA
@@ -51,7 +53,8 @@ class HomaPageState extends State<Registro> {
         _grupoConroller.text.isEmpty ||
         _telefonoConroller.text.isEmpty ||
         _sexoConroller.text.isEmpty ||
-        _contrasenaConroller.text.isEmpty) {
+        _contrasenaConroller.text.isEmpty ||
+        _usuarioConroller.text.isEmpty) {
       print("Empy fields");
       return;
     }
@@ -66,7 +69,8 @@ class HomaPageState extends State<Registro> {
             _grupoConroller.text,
             _telefonoConroller.text,
             _sexoConroller.text,
-            _contrasenaConroller.text)
+            _contrasenaConroller.text,
+            _usuarioConroller.text)
         .then((result) {
       if ('sucess' == result) {
         _matriculaConroller.text = "";
@@ -79,6 +83,7 @@ class HomaPageState extends State<Registro> {
         _telefonoConroller.text = "";
         _sexoConroller.text = "";
         _contrasenaConroller.text = "";
+        _usuarioConroller.text = "";
         _clearValues();
       }
     });
@@ -96,6 +101,7 @@ class HomaPageState extends State<Registro> {
     _telefonoConroller.text = "";
     _sexoConroller.text = "";
     _contrasenaConroller.text = "";
+    _usuarioConroller.text = "";
   }
 
   @override
@@ -165,6 +171,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar el nombre vacío'
                                   : null,
                               controller: _nombreConroller,
+                              keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.person, color: Colors.green),
                                 labelText: 'Nombre(s) del usuario',
@@ -212,6 +219,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar el apellido paterno vacío'
                                   : null,
                               controller: _apepatConroller,
+                              keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.people, color: Colors.green),
                                 labelText: 'Apellido Paterno',
@@ -243,6 +251,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar el apellido materno vacío'
                                   : null,
                               controller: _apematConroller,
+                              keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.people, color: Colors.green),
                                 labelText: 'Apellido Materno',
@@ -282,6 +291,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar la matricula vacía'
                                   : null,
                               controller: _matriculaConroller,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.important_devices,
                                     color: Colors.green),
@@ -319,6 +329,7 @@ class HomaPageState extends State<Registro> {
                               margin: EdgeInsets.only(right: 20.0, left: 20.0),
                               child: TextFormField(
                                 controller: _emailConroller,
+                                keyboardType: TextInputType.emailAddress,
                                 validator: (valor) => !valor.contains('@')
                                     ? 'Correo incorrecto, inténtalo de nuevo'
                                     : null,
@@ -363,6 +374,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar la carrera vacía'
                                   : null,
                               controller: _carreraConroller,
+                              keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.category, color: Colors.green),
                                 labelText: 'Carrera',
@@ -402,6 +414,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar el grupo vacío'
                                   : null,
                               controller: _grupoConroller,
+                              keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.domain, color: Colors.green),
                                 labelText: 'Grupo',
@@ -433,6 +446,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar el teléfono vacío'
                                   : null,
                               controller: _telefonoConroller,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.phone, color: Colors.green),
                                 labelText: 'Teléfono',
@@ -472,6 +486,7 @@ class HomaPageState extends State<Registro> {
                                   ? 'No puede dejar el sexo vacío'
                                   : null,
                               controller: _sexoConroller,
+                              keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 icon: Icon(Icons.person_outline,
                                     color: Colors.green),
@@ -509,6 +524,7 @@ class HomaPageState extends State<Registro> {
                               margin: EdgeInsets.only(right: 20.0, left: 20.0),
                               child: TextFormField(
                                 controller: _contrasenaConroller,
+                                keyboardType: TextInputType.text,
                                 validator: (valor) => valor.length < 3
                                     ? 'Incorrecto, inténtalo de nuevo'
                                     : null,
@@ -535,6 +551,48 @@ class HomaPageState extends State<Registro> {
                                   ),
                                 ),
                                 obscureText: true,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              margin: EdgeInsets.only(right: 20.0, left: 20.0),
+                              child: TextFormField(
+                                controller: _usuarioConroller,
+                                keyboardType: TextInputType.text,
+                                validator: (valor) => valor.length < 3
+                                    ? 'Incorrecto, inténtalo de nuevo'
+                                    : null,
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.verified_user,
+                                      color: Colors.green),
+                                  labelText: 'Tipo de Usuario',
+                                  hintStyle: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide(
+                                      color: Colors.blue[800],
+                                      width: 3,
+                                    ),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      color: Colors.blue[500],
+                                      width: 3,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           )
