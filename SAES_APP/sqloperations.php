@@ -32,8 +32,9 @@
        $telefono = $_POST["telefono"];
        $sexo = $_POST["sexo"];
        $contrasena = $_POST["contrasena"];
-       $sql = "INSERT INTO $table (matricula,nombre,ape_pat,ape_mat,email,carrera,grupo,telefono,sexo,contrasena)
-       VALUES('$matricula','$nombre','$ape_pat','$ape_mat','$email','$carrera','$grupo','$telefono','$sexo','$contrasena')";
+       $usuario = $_POST["usuario"];
+       $sql = "INSERT INTO $table (matricula,nombre,ape_pat,ape_mat,email,carrera,grupo,telefono,sexo,contrasena,usuario)
+       VALUES('$matricula','$nombre','$ape_pat','$ape_mat','$email','$carrera','$grupo','$telefono','$sexo','$contrasena','$usuario')";
        $result = $conn->query($sql);
        echo "success";            
        $conn->close();
