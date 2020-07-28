@@ -241,17 +241,6 @@ primary key (cve_periodo)
 );
 
 
-/*datos para ingresar*/
-drop table if exists usuario;
-create table if not exists usuario(
-cve_usuario			int(4)			auto_increment,
-email    			varchar(30)		unique, /* no va aqui */
-contraseña			blob		not null,
-activo				bit(2)			not null,
-cve_persona			int(4)			null,
-cve_tipo_usuario	int(4)          null,
-primary key (cve_usuario) 
-);
 
 drop table if exists persona;
 create table if not exists persona(
@@ -260,14 +249,13 @@ matricula			char(10)		not null,
 nombre        varchar(30)   not null,
 ape_pat             varchar(25)     not null,
 ape_mat             varchar(25)     not null,
-fecha_nacimiento    date, 
 email            varchar(30)    unique,
 carrera			varchar(50) not null,
 grupo           varchar(10)  not null,
 telefono       char(10)   not null,
 sexo            varchar(20)  not null,
 contrasena        varchar(15)  not null,
-cve_tipo_usuario	int(4)          null,
+usuario	varchar(12)         not null,
 
 primary key (cve_persona)
 );
@@ -306,20 +294,7 @@ primary key (cve_alumno)
 );		
 
 
-/*drop table if exists datos_persona;
-create table if not exists datos_persona(
-cve_persona         int(4)          auto_increment,
-nombre              varchar(25)     not null,
-ape_pat             varchar(25)     not null,
-ape_mat             varchar(25)     not null,
-fecha_nacimiento    date,
-genero              varchar(18)     not null,
-estado           	varchar(25)     not null,
-cve_carrera         int(4)          null,
-cve_grupo           int(4)          null,
-primary key(cve_persona)
-); 
-*/
+
 drop table if exists eventos;
 create table if not exists eventos(
 codigo				int(4)          auto_increment,
@@ -344,11 +319,7 @@ insert into periodos(cve_periodo,año,mes_inicio,mes_fin,activo) values
 insert into carreras(cve_carrera,descripcion,activo) values
 (null,'tic',1);
 
-/*insert into datos_persona(cve_persona,nombre,ape_pat,ape_mat,fecha_nacimiento,genero,estado,cve_carrera,cve_grupo)
-values
-(null,'guadalupe','espinoza','riveros','2000/04/05','mujer','hidalgo','1','1'),
-(null,'andrea sarai','juarez','munguia','2000/06/14','mujer','hidalgo','1','1'),
-(null,'rigoberto','garcia','garcia','2000/04/05','hombre','hidalgo','1','1');*/
+
 
 insert into coordinador(cve_coordinador,cve_persona,cve_carrera) values
 (null,'3','1');
@@ -357,21 +328,7 @@ insert into coordinador(cve_coordinador,cve_persona,cve_carrera) values
 insert into grupos(cve_grupo,cve_carrera,cve_coordinador,grupo,activo,cve_periodo) values
 (null,'1','1','31',1,'1');
 
-#encriptacion de contraseñas 
 
-/*insert into usuario(cve_usuario,curp,pass_temp,activo,cve_persona,cve_tipo_usuario) values /usuario
-(null,'eirg000405mhgsvda2','utec',1,'1','1'),
-(null,'juma000614mmcrnna4','utec',1,'2','2'),
-(null,'eand000502hhgsrga6','utec',1,'3','2'); 
-;*/
-
-select * from usuario;
-
-# desincriptacion
-
-/*select cast(uncompress(pass_temp) as char) from usuario;*/
-
-select * from usuario;
 
 insert into alumno(cve_alumno,matricula,activo,cve_persona,cve_carrera,cve_usuario,cve_grupo) values 
 (null,'1718110388',1,'1','1','1','1'),
@@ -396,15 +353,10 @@ alter table tratamiento add foreign key (cve_medicamento) references medicamento
 alter table nota_medica add foreign key (cve_tratamiento) references tratamiento (cve_tratamiento);
 alter table nota_medica add foreign key (cve_persona) references persona (cve_persona);
 alter table nota_medica add foreign key (cve_signos) references signos (cve_signos);
-alter table persona add foreign key (cve_tipo_usuario) references tipo_usuario (cve_tipo_usuario);
-alter table usuario add foreign key (cve_persona) references persona (cve_persona);
 alter table grupos add foreign key (cve_carrera) references carreras (cve_carrera);
 alter table grupos add foreign key (cve_coordinador) references coordinador (cve_coordinador);
 alter table grupos add foreign key (cve_periodo) references periodos (cve_periodo);
-alter table coordinador add foreign key (cve_persona) references persona (cve_persona);
 alter table coordinador add foreign key (cve_carrera) references carreras (cve_carrera);
-alter table datos_persona add foreign key (cve_carrera) references carreras (cve_carrera);
-alter table datos_persona add foreign key (cve_grupo) references grupos (cve_grupo);
 
 
 /*#consulta para la busqueda
@@ -695,18 +647,6 @@ primary key (cve_periodo)
 );
 
 
-/*datos para ingresar*/
-drop table if exists usuario;
-create table if not exists usuario(
-cve_usuario			int(4)			auto_increment,
-email    			varchar(30)		unique, /* no va aqui */
-contraseña			blob		not null,
-activo				bit(2)			not null,
-cve_persona			int(4)			null,
-cve_tipo_usuario	int(4)          null,
-
-primary key (cve_usuario) 
-);
 
 drop table if exists persona;
 create table if not exists persona(
@@ -721,7 +661,7 @@ grupo           varchar(10)  not null,
 telefono       char(10)   not null, 
 sexo            varchar(20)  not null,
 contrasena        varchar(12) not null,
-cve_tipo_usuario	int(4)          null,
+usuario	varchar(12)        not  null,
 primary key (cve_persona)
 );
 
@@ -759,20 +699,6 @@ primary key (cve_alumno)
 );		
 
 
-/*drop table if exists datos_persona;
-create table if not exists datos_persona(
-cve_persona         int(4)          auto_increment,
-nombre              varchar(25)     not null,
-ape_pat             varchar(25)     not null,
-ape_mat             varchar(25)     not null,
-fecha_nacimiento    date,
-genero              varchar(18)     not null,
-estado           	varchar(25)     not null,
-cve_carrera         int(4)          null,
-cve_grupo           int(4)          null,
-primary key(cve_persona)
-); 
-*/
 drop table if exists eventos;
 create table if not exists eventos(
 codigo				int(4)          auto_increment,
@@ -797,11 +723,6 @@ insert into periodos(cve_periodo,año,mes_inicio,mes_fin,activo) values
 insert into carreras(cve_carrera,descripcion,activo) values
 (null,'tic',1);
 
-/*insert into datos_persona(cve_persona,nombre,ape_pat,ape_mat,fecha_nacimiento,genero,estado,cve_carrera,cve_grupo)
-values
-(null,'guadalupe','espinoza','riveros','2000/04/05','mujer','hidalgo','1','1'),
-(null,'andrea sarai','juarez','munguia','2000/06/14','mujer','hidalgo','1','1'),
-(null,'rigoberto','garcia','garcia','2000/04/05','hombre','hidalgo','1','1');*/
 
 insert into coordinador(cve_coordinador,cve_persona,cve_carrera) values
 (null,'3','1');
@@ -810,21 +731,7 @@ insert into coordinador(cve_coordinador,cve_persona,cve_carrera) values
 insert into grupos(cve_grupo,cve_carrera,cve_coordinador,grupo,activo,cve_periodo) values
 (null,'1','1','31',1,'1');
 
-#encriptacion de contraseñas 
 
-/*insert into usuario(cve_usuario,curp,pass_temp,activo,cve_persona,cve_tipo_usuario) values /usuario
-(null,'eirg000405mhgsvda2','utec',1,'1','1'),
-(null,'juma000614mmcrnna4','utec',1,'2','2'),
-(null,'eand000502hhgsrga6','utec',1,'3','2'); 
-;*/
-
-select * from usuario;
-
-# desincriptacion
-
-/*select cast(uncompress(pass_temp) as char) from usuario;*/
-
-select * from usuario;
 
 insert into alumno(cve_alumno,matricula,activo,cve_persona,cve_carrera,cve_usuario,cve_grupo) values 
 (null,'1718110388',1,'1','1','1','1'),
@@ -849,8 +756,6 @@ alter table tratamiento add foreign key (cve_medicamento) references medicamento
 alter table nota_medica add foreign key (cve_tratamiento) references tratamiento (cve_tratamiento);
 alter table nota_medica add foreign key (cve_persona) references persona (cve_persona);
 alter table nota_medica add foreign key (cve_signos) references signos (cve_signos);
-alter table usuario add foreign key (cve_tipo_usuario) references tipo_usuario (cve_tipo_usuario);
-alter table usuario add foreign key (cve_persona) references persona (cve_persona);
 alter table grupos add foreign key (cve_carrera) references carreras (cve_carrera);
 alter table grupos add foreign key (cve_coordinador) references coordinador (cve_coordinador);
 alter table grupos add foreign key (cve_periodo) references periodos (cve_periodo);
