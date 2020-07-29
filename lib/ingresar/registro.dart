@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import '../db_operations.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
+import 'login_screen.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(new MaterialApp(
       home: new Registro(),
@@ -15,7 +14,6 @@ class Registro extends StatefulWidget {
 
 class HomaPageState extends State<Registro> {
   List<Registro> _Registro;
-  GlobalKey<ScaffoldState> _scaffoldKey;
   TextEditingController _matriculaConroller;
   TextEditingController _nombreConroller;
   TextEditingController _apepatConroller;
@@ -28,8 +26,7 @@ class HomaPageState extends State<Registro> {
   TextEditingController _contrasenaConroller;
   TextEditingController _usuarioConroller;
   final formkey = new GlobalKey<FormState>();
-
-  final _scaffoldkey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -114,17 +111,27 @@ class HomaPageState extends State<Registro> {
     final form = formkey.currentState;
     if (form.validate()) {
       print('form is valid');
-      _insertData();
-      _clearValues();
+      _showScaffold(
+             "DATOS REGISTRADOS!");
+       _insertData();
+       _clearValues();
     } else {
       print('form invalid');
     }
+  }
+
+  void _showScaffold(String message) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.indigo,
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.grey[400],
         title: Text('REGISTRO DE USUARIO',
@@ -133,7 +140,10 @@ class HomaPageState extends State<Registro> {
         centerTitle: false,
         leading: IconButton(
           icon: Image.asset('assets/saes2.png'),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => LoginPage()));
+          },
         ),
       ),
       body: ListView(
@@ -624,17 +634,10 @@ class HomaPageState extends State<Registro> {
                     Column(
                       children: <Widget>[
                         MaterialButton(
-                          onPressed: validateAndSave,
+                          onPressed: 
+                            validateAndSave,
+                         
                           child: InkWell(
-                            //Direccion de la pantalla de usuario
-                            //METODO INSERT
-                            /*onTap: () {
-                              _insertData();
-                              _clearValues();
-                            },*/
-                            /*Navigator.push(context,
-                                new MaterialPageRoute(builder: (context)=> LoginPage()));*/
-
                             child: Container(
                               height: 45,
                               width: MediaQuery.of(context).size.width / 1.2,
