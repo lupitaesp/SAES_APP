@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import '../db_operations.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(new MaterialApp(
       home: new Registro(),
@@ -24,6 +27,9 @@ class HomaPageState extends State<Registro> {
   TextEditingController _sexoConroller;
   TextEditingController _contrasenaConroller;
   TextEditingController _usuarioConroller;
+  final formkey = new GlobalKey<FormState>();
+
+  final _scaffoldkey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -104,6 +110,17 @@ class HomaPageState extends State<Registro> {
     _usuarioConroller.text = "";
   }
 
+  void validateAndSave() {
+    final form = formkey.currentState;
+    if (form.validate()) {
+      print('form is valid');
+      _insertData();
+      _clearValues();
+    } else {
+      print('form invalid');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -153,6 +170,8 @@ class HomaPageState extends State<Registro> {
           Padding(
             padding: const EdgeInsets.all(1),
             child: Form(
+              key: formkey, // that should work just fine
+
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
@@ -168,7 +187,7 @@ class HomaPageState extends State<Registro> {
                             //NOMBRE
                             child: TextFormField(
                               validator: (valor) => valor.length < 3
-                                  ? 'No puede dejar el nombre vacío'
+                                  ? 'No se puede dejar el nombre vacío'
                                   : null,
                               controller: _nombreConroller,
                               keyboardType: TextInputType.text,
@@ -287,8 +306,8 @@ class HomaPageState extends State<Registro> {
                               child: Container(
                             margin: EdgeInsets.only(right: 20.0, left: 20.0),
                             child: TextFormField(
-                              validator: (valor) => valor.length < 3
-                                  ? 'No puede dejar la matricula vacía'
+                              validator: (valor) => valor.length < 10
+                                  ? 'Debes ingresar 10 digitos'
                                   : null,
                               controller: _matriculaConroller,
                               keyboardType: TextInputType.number,
@@ -328,17 +347,19 @@ class HomaPageState extends State<Registro> {
                             child: Container(
                               margin: EdgeInsets.only(right: 20.0, left: 20.0),
                               child: TextFormField(
+                                validator: (val) =>
+                                    !val.contains('@utectulancingo')
+                                        ? 'Ingresa tu correo institucional'
+                                        : null,
                                 controller: _emailConroller,
                                 keyboardType: TextInputType.emailAddress,
-                                validator: (valor) => !valor.contains('@')
-                                    ? 'Correo incorrecto, inténtalo de nuevo'
-                                    : null,
                                 decoration: InputDecoration(
+                                  hintText: "ejemplo@utectulancingo.edu.mx",
                                   icon: Icon(Icons.mail, color: Colors.green),
                                   labelText: 'Correo electrónico',
                                   hintStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 20),
+                                      fontSize: 15),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
                                     borderSide: BorderSide(
@@ -442,8 +463,8 @@ class HomaPageState extends State<Registro> {
                               child: Container(
                             margin: EdgeInsets.only(right: 20.0, left: 10.0),
                             child: TextFormField(
-                              validator: (valor) => valor.length < 3
-                                  ? 'No puede dejar el teléfono vacío'
+                              validator: (valor) => valor.length < 10
+                                  ? 'Debes ingresar 10 digitos'
                                   : null,
                               controller: _telefonoConroller,
                               keyboardType: TextInputType.number,
@@ -569,7 +590,7 @@ class HomaPageState extends State<Registro> {
                                 controller: _usuarioConroller,
                                 keyboardType: TextInputType.text,
                                 validator: (valor) => valor.length < 3
-                                    ? 'Incorrecto, inténtalo de nuevo'
+                                    ? 'Ingresa el tipo de usuario'
                                     : null,
                                 decoration: InputDecoration(
                                   icon: Icon(Icons.verified_user,
@@ -602,35 +623,39 @@ class HomaPageState extends State<Registro> {
                     SizedBox(height: 40),
                     Column(
                       children: <Widget>[
-                        InkWell(
-                          //Direccion de la pantalla de usuario
-                          onTap: () {
+                        MaterialButton(
+                          onPressed: validateAndSave,
+                          child: InkWell(
+                            //Direccion de la pantalla de usuario
                             //METODO INSERT
-                            _insertData();
-                            _clearValues();
+                            /*onTap: () {
+                              _insertData();
+                              _clearValues();
+                            },*/
                             /*Navigator.push(context,
-                              new MaterialPageRoute(builder: (context)=> LoginPage()));*/
-                          },
-                          child: Container(
-                            height: 45,
-                            width: MediaQuery.of(context).size.width / 1.2,
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.green[200],
-                                    Colors.indigo,
-                                    Colors.green,
-                                    Colors.indigo[200]
-                                  ],
+                                new MaterialPageRoute(builder: (context)=> LoginPage()));*/
+
+                            child: Container(
+                              height: 45,
+                              width: MediaQuery.of(context).size.width / 1.2,
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.green[200],
+                                      Colors.indigo,
+                                      Colors.green,
+                                      Colors.indigo[200]
+                                    ],
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50))),
+                              child: Center(
+                                child: Text(
+                                  'Registrar'.toUpperCase(),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(50))),
-                            child: Center(
-                              child: Text(
-                                'Registrar'.toUpperCase(),
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),

@@ -4,7 +4,7 @@ import 'Registrar.dart';
 
 class BDConnections {
   //Direccion IPv4 de la computadora (Se encuentra con el comando "ipconfig")
-  static const SERVER = "http://192.168.0.109/SAES_APP/sqloperations.php";
+  static const SERVER = "http://192.168.0.108/SAES_APP/sqloperations.php";
   static const _SELECT_TABLE_COMMAND = "SELECT_TABLE";
   static const _INSERT_DATA_COMMAND = "INSERT_DATA";
 
