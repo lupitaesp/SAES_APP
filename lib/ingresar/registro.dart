@@ -219,31 +219,32 @@ class HomaPageState extends State<Registro> {
                             margin: EdgeInsets.only(right: 20.0, left: 20.0),
                             //NOMBRE
                             child: TextFormField(
-                                validator: (val) => val.length == 0
-                                    ? 'Debes subir una imagen'
-                                    : null,
-                                controller: _fotoConroller,
-                                decoration: InputDecoration(
-                          icon: Icon(Icons.camera_front, color: Colors.green),
-                          labelText: 'Foto del usuario',
-                          hintStyle: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.blue[800],
-                              width: 3,
+                              validator: (val) => val.length == 0
+                                  ? 'Debes subir una imagen'
+                                  : null,
+                              controller: _fotoConroller,
+                              decoration: InputDecoration(
+                                icon: Icon(Icons.camera_front,
+                                    color: Colors.green),
+                                labelText: 'Foto del usuario',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(
+                                    color: Colors.blue[800],
+                                    width: 3,
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color: Colors.blue[500],
+                                    width: 3,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(
-                              color: Colors.blue[500],
-                              width: 3,
-                            ),
-                          ),
-                        ),
-                               ),
                           )),
                           Container(
                             margin: EdgeInsets.only(right: 20.0, left: 0),
@@ -258,37 +259,45 @@ class HomaPageState extends State<Registro> {
                     ),
                     SizedBox(height: 10),
                     Padding(
+                      //CARRERA
                       padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        child: TextFormField(
-                          validator: (valor) => valor.length < 3
-                              ? 'No se puede dejar el nombre vacío'
-                              : null,
-                          controller: _nombreConroller,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            icon: Icon(Icons.person, color: Colors.green),
-                            labelText: 'Nombre(s) del usuario',
-                            hintStyle: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                color: Colors.blue[800],
-                                width: 3,
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                              child: Container(
+                            margin: EdgeInsets.only(right: 20.0, left: 20.0),
+                            child: TextFormField(
+                              validator: (valor) => valor.length < 3
+                                  ? 'No se puede dejar el nombre vacío'
+                                  : null,
+                              controller: _nombreConroller,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                icon: Icon(Icons.person, color: Colors.green),
+                                labelText: 'Nombre(s) del usuario',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(
+                                    color: Colors.blue[800],
+                                    width: 3,
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color: Colors.blue[500],
+                                    width: 3,
+                                  ),
+                                ),
                               ),
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(
-                                color: Colors.blue[500],
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
+                          ))
+                        ],
                       ),
                     ),
+
                     Padding(
                       //APELLIDO PATERNO DE USUARIO
                       padding: const EdgeInsets.all(10.0),
