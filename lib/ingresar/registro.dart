@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import '../convertidor.dart';
 import '../db_operations.dart';
 import 'login_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() => runApp(new MaterialApp(
       home: new Registro(),
@@ -14,6 +17,7 @@ class Registro extends StatefulWidget {
 
 class HomaPageState extends State<Registro> {
   List<Registro> _Registro;
+  TextEditingController _fotoConroller;
   TextEditingController _matriculaConroller;
   TextEditingController _nombreConroller;
   TextEditingController _apepatConroller;
@@ -27,11 +31,13 @@ class HomaPageState extends State<Registro> {
   TextEditingController _usuarioConroller;
   final formkey = new GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  String imagen;
 
   @override
   void initState() {
     super.initState();
     _Registro = [];
+    _fotoConroller = TextEditingController();
     _matriculaConroller = TextEditingController();
     _nombreConroller = TextEditingController();
     _apepatConroller = TextEditingController();
@@ -47,7 +53,8 @@ class HomaPageState extends State<Registro> {
 
   //INSERT DATA
   _insertData() {
-    if (_matriculaConroller.text.isEmpty ||
+    if (_fotoConroller.text.isEmpty ||
+        _matriculaConroller.text.isEmpty ||
         _nombreConroller.text.isEmpty ||
         _apepatConroller.text.isEmpty ||
         _apematConroller.text.isEmpty ||
@@ -73,9 +80,11 @@ class HomaPageState extends State<Registro> {
             _telefonoConroller.text,
             _sexoConroller.text,
             _contrasenaConroller.text,
-            _usuarioConroller.text)
+            _usuarioConroller.text,
+            imagen)
         .then((result) {
       if ('sucess' == result) {
+        _fotoConroller.text = "";
         _matriculaConroller.text = "";
         _nombreConroller.text = "";
         _apepatConroller.text = "";
@@ -94,6 +103,7 @@ class HomaPageState extends State<Registro> {
 
   //CLEAR TEXTFIELD VALUES
   _clearValues() {
+    _fotoConroller.text = "";
     _matriculaConroller.text = "";
     _nombreConroller.text = "";
     _apepatConroller.text = "";
@@ -111,10 +121,9 @@ class HomaPageState extends State<Registro> {
     final form = formkey.currentState;
     if (form.validate()) {
       print('form is valid');
-      _showScaffold(
-             "DATOS REGISTRADOS!");
-       _insertData();
-       _clearValues();
+      _showScaffold("DATOS REGISTRADOS!");
+      _insertData();
+      _clearValues();
     } else {
       print('form invalid');
     }
@@ -125,6 +134,21 @@ class HomaPageState extends State<Registro> {
       content: Text(message),
       backgroundColor: Colors.indigo,
     ));
+  }
+
+  //Metodo para imagen
+  pickImagefromGallery() {
+    ImagePicker.pickImage(source: ImageSource.gallery).then((imgFile) {
+      String imgString = Convertir.base64String(imgFile.readAsBytesSync());
+      // Photo photo = Photo(null,imgString);
+      //bdHelper.insert(photo);
+      //fotos();
+      imagen = imgString;
+      //Funciona para la obtencion de imagen ya sea galeria o camera
+      //Navigator.of(context).pop();
+      _fotoConroller.text = "Campo lleno";
+      return imagen;
+    });
   }
 
   @override
@@ -181,7 +205,6 @@ class HomaPageState extends State<Registro> {
             padding: const EdgeInsets.all(1),
             child: Form(
               key: formkey, // that should work just fine
-
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
@@ -196,38 +219,37 @@ class HomaPageState extends State<Registro> {
                             margin: EdgeInsets.only(right: 20.0, left: 20.0),
                             //NOMBRE
                             child: TextFormField(
-                              validator: (valor) => valor.length < 3
-                                  ? 'No se puede dejar el nombre vacío'
-                                  : null,
-                              controller: _nombreConroller,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.person, color: Colors.green),
-                                labelText: 'Nombre(s) del usuario',
-                                hintStyle: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.blue[800],
-                                    width: 3,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide(
-                                    color: Colors.blue[500],
-                                    width: 3,
-                                  ),
-                                ),
-                              ),
+                                validator: (val) => val.length == 0
+                                    ? 'Debes subir una imagen'
+                                    : null,
+                                controller: _fotoConroller,
+                                decoration: InputDecoration(
+                          icon: Icon(Icons.camera_front, color: Colors.green),
+                          labelText: 'Foto del usuario',
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: Colors.blue[800],
+                              width: 3,
                             ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide(
+                              color: Colors.blue[500],
+                              width: 3,
+                            ),
+                          ),
+                        ),
+                               ),
                           )),
                           Container(
                             margin: EdgeInsets.only(right: 20.0, left: 0),
                             child: FloatingActionButton(
                               backgroundColor: Colors.blue[800],
-                              onPressed: () {},
+                              onPressed: pickImagefromGallery,
                               child: Icon(Icons.camera_alt),
                             ),
                           ),
@@ -235,6 +257,38 @@ class HomaPageState extends State<Registro> {
                       ),
                     ),
                     SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        child: TextFormField(
+                          validator: (valor) => valor.length < 3
+                              ? 'No se puede dejar el nombre vacío'
+                              : null,
+                          controller: _nombreConroller,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            icon: Icon(Icons.person, color: Colors.green),
+                            labelText: 'Nombre(s) del usuario',
+                            hintStyle: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.blue[800],
+                                width: 3,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.blue[500],
+                                width: 3,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     Padding(
                       //APELLIDO PATERNO DE USUARIO
                       padding: const EdgeInsets.all(10.0),
@@ -634,9 +688,7 @@ class HomaPageState extends State<Registro> {
                     Column(
                       children: <Widget>[
                         MaterialButton(
-                          onPressed: 
-                            validateAndSave,
-                         
+                          onPressed: validateAndSave,
                           child: InkWell(
                             child: Container(
                               height: 45,

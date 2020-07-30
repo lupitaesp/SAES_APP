@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Registrar.dart';
+import 'package:saes/ingresar/registro.dart';
 
 class BDConnections {
   //Direccion IPv4 de la computadora (Se encuentra con el comando "ipconfig")
@@ -9,7 +10,7 @@ class BDConnections {
   static const _INSERT_DATA_COMMAND = "INSERT_DATA";
 
   //Get Data from
-  static Future<List<Registro>> selectData() async {
+  static Future<List<Registrar>> selectData() async {
     try {
       //Mapeamos para comparar
       var map = Map<String, dynamic>();
@@ -19,22 +20,22 @@ class BDConnections {
       print('SELECT response: ${response.body}');
       if (200 == response.statusCode) {
         //Mapear la lista
-        List<Registro> list = parseResponse(response.body);
+        List<Registrar> list = parseResponse(response.body);
         return list;
       } else {
-        return List<Registro>();
+        return List<Registrar>();
       }
     } catch (e) {
       print("Error getting datafrom SQL Server");
       print(e.toString());
-      return List<Registro>();
+      return List<Registrar>();
     }
   }
 
   //ParseResponse Method
-  static List<Registro> parseResponse(String responseBody) {
+  static List<Registrar> parseResponse(String responseBody) {
     final parseData = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parseData.map<Registro>((json) => Registro.fromJson(json)).toList();
+    return parseData.map<Registrar>((json) => Registrar.fromJson(json)).toList();
   }
 
   //INSERT DATA ON DB
@@ -49,7 +50,8 @@ class BDConnections {
       String telefono,
       String sexo,
       String contrasena,
-      String usuario) async {
+      String usuario,
+      String foto) async {
     try {
       //Mapeamos para comparar
       var map = Map<String, dynamic>();
@@ -65,6 +67,7 @@ class BDConnections {
       map['sexo'] = sexo;
       map['contrasena'] = contrasena;
       map['usuario'] = usuario;
+      map['foto'] = foto;
 
       //Body es lo que estamos mapeando
       final response = await http.post(SERVER, body: map);

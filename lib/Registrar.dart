@@ -1,4 +1,6 @@
-class Registro {
+import 'dart:async';
+
+class Registrar {
   String cve_persona;
   String matricula;
   String nombre;
@@ -11,8 +13,9 @@ class Registro {
   String sexo;
   String contrasena;
   String usuario;
+  String foto;
 
-  Registro(
+  Registrar(
       {this.cve_persona,
       this.matricula,
       this.nombre,
@@ -24,11 +27,12 @@ class Registro {
       this.telefono,
       this.sexo,
       this.contrasena,
-      this.usuario});
+      this.usuario,
+      this.foto});
 
   //Patrones de diseño, ventajas de regresar un objeto
-  factory Registro.fromJson(Map<String, dynamic> json) {
-    return Registro(
+  factory Registrar.fromJson(Map<String, dynamic> json) {
+    return Registrar(
         cve_persona: json['cve_persona'] as String,
         matricula: json['matricula'] as String,
         nombre: json['nombre'] as String,
@@ -40,6 +44,7 @@ class Registro {
         telefono: json['telefono'] as String,
         sexo: json['sexo'] as String,
         contrasena: json['contrasena'] as String,
-        usuario: json['usuario'] as String);
+        usuario: json['usuario'] as String,
+        foto: json['foto'] as String);
   }
 }
