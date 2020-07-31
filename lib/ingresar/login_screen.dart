@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:saes/principal.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -53,7 +54,10 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: false,
         leading: IconButton(
           icon: Image.asset('assets/saes2.png'),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => Principal()));
+          },
         ),
       ),
       body: Container(
