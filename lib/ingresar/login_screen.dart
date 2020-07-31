@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,6 +12,31 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController mail = new TextEditingController();
+  TextEditingController pass = new TextEditingController();
+
+  Future<List> _login() async {
+    final response =
+        await http.post("http://192.168.0.108/SAES_APP/login.php", body: {
+      "email": mail.text,
+      "contrasena": pass.text,
+    });
+    var datauser = json.decode(response.body);
+    if(datauser.length==0){
+      setState(() {
+        //Snackbar
+      });
+    }else{
+      if(datauser[0]['USUARIO']=='Alumno'){
+        print("BENVENIDO ALUMNO");
+      }else if(datauser[0]['USUARIO']=='Doctora'){
+        print("bienvenido doctora");
+      }
+    }
+  }
+
+  
+
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
@@ -31,11 +59,9 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         child: ListView(
           children: <Widget>[
-             new Padding(
-                      padding: const EdgeInsets.only(
-                        top: 3, right: 32
-                      ),
- ),
+            new Padding(
+              padding: const EdgeInsets.only(top: 3, right: 32),
+            ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 3.5,
@@ -51,7 +77,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   borderRadius:
                       BorderRadius.only(bottomLeft: Radius.circular(90))),
-             
             ),
             new Padding(
               padding: const EdgeInsets.only(top: 40, right: 32),
@@ -64,16 +89,17 @@ class _LoginPageState extends State<LoginPage> {
                 children: <Widget>[
                   Container(
                     width: MediaQuery.of(context).size.width / 1.2,
-                    height: 45,
+                    height: 50,
                     padding:
                         EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(50)),
                         color: Colors.white,
                         boxShadow: [
-                          BoxShadow(color: Colors.black12, blurRadius: 5)
+                          BoxShadow(color: Colors.black12, blurRadius: 10)
                         ]),
                     child: TextField(
+                      controller: mail,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -98,6 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                           BoxShadow(color: Colors.black12, blurRadius: 5)
                         ]),
                     child: TextField(
+                      controller: pass,
                       obscureText: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -114,8 +141,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   InkWell(
                     //Direccion de la pantalla de usuario
+
                     onTap: () {
-                      Navigator.pushNamed(context, '/');
+                      _login();
+                      print("FUNCIONANDO");
                     },
                     child: Container(
                       height: 45,
