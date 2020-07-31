@@ -33,8 +33,9 @@
        $sexo = $_POST["sexo"];
        $contrasena = $_POST["contrasena"];
        $usuario = $_POST["usuario"];
-       $sql = "INSERT INTO $table (matricula,nombre,ape_pat,ape_mat,email,carrera,grupo,telefono,sexo,contrasena,usuario)
-       VALUES('$matricula','$nombre','$ape_pat','$ape_mat','$email','$carrera','$grupo','$telefono','$sexo','$contrasena','$usuario')";
+       $foto    = $_POST["foto"];
+       $sql = "INSERT INTO $table (matricula,nombre,ape_pat,ape_mat,email,carrera,grupo,telefono,sexo,contrasena,usuario,foto)
+       VALUES('$matricula','$nombre','$ape_pat','$ape_mat','$email','$carrera','$grupo','$telefono','$sexo','$contrasena','$usuario','$foto')";
        $result = $conn->query($sql);
        echo "success";            
        $conn->close();
