@@ -421,7 +421,7 @@ class HomaPageState extends State<Registro> {
                               margin: EdgeInsets.only(right: 20.0, left: 20.0),
                               child: TextFormField(
                                 validator: (val) =>
-                                    !val.contains('@utectulancingo')
+                                    !val.contains('@utectulancingo.edu.mx')
                                         ? 'Ingresa tu correo institucional'
                                         : null,
                                 controller: _emailConroller,
