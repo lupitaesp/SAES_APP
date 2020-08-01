@@ -662,6 +662,7 @@ telefono       char(10)   not null,
 sexo            varchar(20)  not null,
 contrasena        varchar(12) not null,
 usuario	varchar(12)        not  null,
+foto     text not null,
 primary key (cve_persona)
 );
 
