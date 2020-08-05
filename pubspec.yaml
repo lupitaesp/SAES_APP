@@ -19,6 +19,7 @@ environment:
 dependencies:
   form_field_validator: ^1.0.1
   splashscreen: ^1.2.0
+  flutter_swiper: ^1.1.6
   flutter:
     sdk: flutter
 
@@ -63,6 +64,8 @@ flutter:
     - assets/Halcon.png
     - assets/utec.png
     - assets/saes2.png
+    - assets/app/mundoutec.jpg
+    -  assets/app/5.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
