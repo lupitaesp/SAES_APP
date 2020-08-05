@@ -1,9 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:saes/principal.dart';
+import 'package:saes/principal/principal.dart';
+import 'package:saes/usuarios/alumno.dart';
+import 'package:saes/usuarios/doctora.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -30,8 +31,12 @@ class _LoginPageState extends State<LoginPage> {
     }else{
       if(datauser[0]['USUARIO']=='Alumno'){
         print("BENVENIDO ALUMNO");
+         Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => Alumno()));
       }else if(datauser[0]['USUARIO']=='Doctora'){
-        print("bienvenido doctora");
+        print("BIENVENIDO DOCTORA");
+           Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => Doctora()));
       }
     }
   }

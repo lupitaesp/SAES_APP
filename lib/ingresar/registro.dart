@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../convertidor.dart';
-import '../db_operations.dart';
+import '../operaciones/convertidor.dart';
+import '../operaciones/db_operations.dart';
 import 'login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';

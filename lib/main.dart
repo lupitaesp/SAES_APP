@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saes/splash.dart';
+import 'package:saes/principal/splash.dart';
 
 
 void main() => runApp(MyApp());
