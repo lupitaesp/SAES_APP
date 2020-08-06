@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saes/ingresar/login_screen.dart';
 import 'package:saes/ingresar/registro.dart';
+import 'package:saes/usuarios/alumno/perfilAlumno.dart';
 
 
 class Principal extends StatefulWidget{

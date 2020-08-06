@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:saes/principal/principal.dart';
-import 'package:saes/usuarios/alumno.dart';
-import 'package:saes/usuarios/doctora.dart';
+import 'package:saes/usuarios/alumno/alumno.dart';
+import 'package:saes/usuarios/doctora/doctora.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,35 +13,83 @@ class LoginPage extends StatefulWidget {
   }
 }
 
+String nombre = '';
+String ape_pat = '';
+String ape_mat = '';
+String matricula = '';
+String carrera = '';
+String grupo = '';
+String telefono = '';
+String email = '';
+String foto = '';
+
 class _LoginPageState extends State<LoginPage> {
   TextEditingController mail = new TextEditingController();
   TextEditingController pass = new TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   Future<List> _login() async {
     final response =
-        await http.post("http://192.168.0.108/SAES_APP/login.php", body: {
+        await http.post("http://192.168.0.106/SAES_APP/login.php", body: {
       "email": mail.text,
       "contrasena": pass.text,
     });
     var datauser = json.decode(response.body);
-    if(datauser.length==0){
+    if (datauser.length == 0) {
       setState(() {
-        //Snackbar
+        _showScaffold('Datos Vacíos');
       });
-    }else{
-      if(datauser[0]['USUARIO']=='Alumno'){
+    } else {
+      if (datauser[0]['usuario'] == 'Alumno') {
         print("BENVENIDO ALUMNO");
-         Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => Alumno()));
-      }else if(datauser[0]['USUARIO']=='Doctora'){
+        Navigator.push(
+            context,
+            new MaterialPageRoute(
+                builder: (context) => Alumno(
+                      nombre: nombre,
+                      ape_pat: ape_pat,
+                      ape_mat: ape_mat,
+                      matricula: matricula,
+                      carrera: carrera,
+                      grupo: grupo,
+                      telefono: telefono,
+                      email: email,
+                      foto: foto,
+                    )));
+      } else if (datauser[0]['usuario'] == 'Doctora') {
         print("BIENVENIDO DOCTORA");
-           Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => Doctora()));
+        Navigator.push(
+            context,
+            new MaterialPageRoute(
+                builder: (context) => Doctora(
+                    nombre: nombre,
+                    ape_pat: ape_pat,
+                    ape_mat: ape_mat,
+                    email: email,
+                    telefono: telefono,
+                    foto: foto)));
       }
+      setState(() {
+        nombre = datauser[0]['nombre'];
+        ape_pat = datauser[0]['ape_pat'];
+        ape_mat = datauser[0]['ape_mat'];
+        matricula = datauser[0]['matricula'];
+        carrera = datauser[0]['carrera'];
+        grupo = datauser[0]['grupo'];
+        telefono = datauser[0]['telefono'];
+        email = datauser[0]['email'];
+        foto = datauser[0]['foto'];
+      });
     }
+    return datauser;
   }
 
-  
+  void _showScaffold(String message) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.indigo,
+    ));
+  }
 
   @override
   void initState() {
@@ -150,7 +198,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   InkWell(
                     //Direccion de la pantalla de usuario
-
                     onTap: () {
                       _login();
                       print("FUNCIONANDO");
