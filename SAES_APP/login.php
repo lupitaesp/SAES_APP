@@ -19,7 +19,7 @@
         return;
     } 
 
-    $queryResult=$conn->query("SELECT USUARIO FROM PERSONA WHERE email='".$email."' AND contrasena='".$contrasena."'");
+    $queryResult=$conn->query("SELECT * FROM PERSONA WHERE email='".$email."' AND contrasena='".$contrasena."'");
     
     $result=array();
 
