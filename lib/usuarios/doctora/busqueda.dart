@@ -1,11 +1,23 @@
+import 'package:saes/operaciones/Registrar.dart';
+import 'package:saes/operaciones/convertidor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:saes/operaciones/Registrar.dart';
-import 'package:saes/operaciones/convertidor.dart';
 
-class Select extends StatelessWidget {
+class Busqueda extends StatefulWidget {
+  @override
+  _myHomePageState createState() => new _myHomePageState();
+}
+
+
+class _myHomePageState extends State<Busqueda> {
   //get fechStudent => null;
+  String searchString = "";
+  bool _isSearching = false;
+  TextEditingController searchController = TextEditingController();
+
+
+
 
   Future<List<Registrar>> fetchStudent() async {
     String url = "http://192.168.0.106/SAES_APP/GetPerfil.php";
@@ -39,7 +51,48 @@ class Select extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Demo'),
+        backgroundColor: Colors.grey[400],
+       // centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: _isSearching ? TextField(
+          decoration: InputDecoration(
+              hintText: "Buscando..."),
+          onChanged: (value) {
+            setState(() {
+              searchString = value;
+            });
+          },
+          controller: searchController,
+        )
+            :Text("Buscar usuario",
+         style: TextStyle(color: Colors.grey[600]),
+         
+        ),
+         leading: IconButton(
+          icon: Image.asset('assets/saes2.png'),
+          onPressed: () {
+           
+          },
+        ),
+        actions: <Widget>[
+          !_isSearching ? IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (){
+              setState(() {
+                searchString = "";
+                this._isSearching = !this._isSearching;
+              });
+            },
+          )
+              :IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              setState(() {
+                this._isSearching = !this._isSearching;
+              });
+            },
+          )
+         ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -49,12 +102,13 @@ class Select extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               // print(fetchStudent());
               if (snapshot.hasData) {
-                return ListView.builder(
+                return  ListView.builder(
                   itemCount: snapshot.data.length,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                    Registrar perfil = snapshot.data[index];
-                    return ListTile(
+                      Registrar perfil = snapshot.data[index];
+                    return snapshot.data[index].matricula.contains(searchController.text)
+                    ? ListTile(
                       leading: CircleAvatar(
                         minRadius: 30.0,
                         maxRadius: 30.0,
@@ -62,7 +116,7 @@ class Select extends StatelessWidget {
                         backgroundImage: Convertir.imageFromBase64sString(   '${perfil.foto}',).image,
                       ),
                       title: new Text(
-                          '${perfil.nombre}',
+                          '${perfil.nombre}'+" " '${perfil.ape_pat}'+" "+ '${perfil.ape_mat}',
                         style: TextStyle(
                           fontSize: 18.0,
                         ),
@@ -73,11 +127,12 @@ class Select extends StatelessWidget {
                           fontSize: 15.0,
                         ),
                       ),
-                      /* onTap: (){
-                              Navigator.push(context,
-                                new MaterialPageRoute(builder: (context)=> DetailPage(snapshot.data[index])));
-                            },*/
-                    );
+                      onTap: (){
+                            //  Navigator.push(context,
+                               // new MaterialPageRoute(builder: (context)=> DetailPage(snapshot.data[index])));
+                            },
+                    )
+                    :Container();
                   },
                 );
               }
@@ -91,6 +146,21 @@ class Select extends StatelessWidget {
       ),
     );
   }
-
-  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

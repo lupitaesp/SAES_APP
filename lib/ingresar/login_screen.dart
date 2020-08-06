@@ -26,6 +26,7 @@ String foto = '';
 class _LoginPageState extends State<LoginPage> {
   TextEditingController mail = new TextEditingController();
   TextEditingController pass = new TextEditingController();
+  final formkey = new GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   Future<List> _login() async {
@@ -100,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.grey[400],
         title:

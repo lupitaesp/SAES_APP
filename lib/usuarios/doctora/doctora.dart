@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saes/principal/principal.dart';
+import 'package:saes/usuarios/doctora/busqueda.dart';
 import 'package:saes/usuarios/doctora/perfilDoctora.dart';
 
 import '../rounded.dart';
@@ -261,8 +262,8 @@ class Doctora extends StatelessWidget {
                     title: Text('Historial Clinico',
                         style: TextStyle(color: Colors.green, fontSize: 15)),
                     onTap: () {
-                      //Navigator.push(context,
-                        //  MaterialPageRoute(builder: (context) => Perfil()));
+                      Navigator.push(context,
+                         MaterialPageRoute(builder: (context) => Busqueda()));
                     },
                   ),
                   _buildDivider(),
