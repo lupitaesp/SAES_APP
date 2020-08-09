@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:saes/operaciones/Registrar.dart';
 import 'package:saes/principal/principal.dart';
 import 'package:saes/usuarios/alumno/perfilAlumno.dart';
+import 'package:saes/usuarios/alumno/web.dart';
+import 'package:saes/usuarios/historia/historia_clinica.dart';
 import 'package:saes/usuarios/rounded.dart';
-import 'package:saes/usuarios/doctora/busqueda.dart';
+import 'package:http/http.dart' as http;
+
+void main() => runApp(MyApp2());
+
+class MyApp2 extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+     routes: {
+       '/': (BuildContext context) => Alumno(),
+      // '/show': (BuildContext context) => Container()
+     }
+    );
+  }
+}
+
+
 
 class Alumno extends StatelessWidget {
   Alumno(
@@ -26,10 +48,12 @@ class Alumno extends StatelessWidget {
   String email;
   String foto;
 
-
-  static final String path = "lib/src/pages/blog/news1.dart";
   final Color primary = Colors.white;
   final Color active = Colors.green[700];
+
+  void _http() async {
+    final response = await http.post("http://192.168.0.106/SAES_APP/login.php");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -285,10 +309,12 @@ class Alumno extends StatelessWidget {
                     leading: Icon(Icons.note_add, color: active),
                     title: Text('Historial Clinico',
                         style: TextStyle(color: Colors.green, fontSize: 15)),
-                    /*  onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Perfil()));
-                    },*/
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HistoriaClinica()));
+                    },
                   ),
                   _buildDivider(),
                   ListTile(
@@ -303,11 +329,11 @@ class Alumno extends StatelessWidget {
                   _buildDivider(),
                   ListTile(
                     leading: Icon(Icons.info_outline, color: active),
-                    title: Text('Contactanos',
+                    title: Text('Acerca de nosotros',
                         style: TextStyle(color: Colors.green, fontSize: 15)),
                     onTap: () {
-                      /* Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Perfil()));*/
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Web()));
                     },
                   ),
                   _buildDivider(),
@@ -315,7 +341,7 @@ class Alumno extends StatelessWidget {
                     leading: Icon(Icons.close, color: active),
                     title: Text('Cerrar Sesión',
                         style: TextStyle(color: Colors.green, fontSize: 15)),
-                     onTap: () {
+                    onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Principal()));
                     },

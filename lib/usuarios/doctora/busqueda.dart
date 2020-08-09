@@ -9,15 +9,11 @@ class Busqueda extends StatefulWidget {
   _myHomePageState createState() => new _myHomePageState();
 }
 
-
 class _myHomePageState extends State<Busqueda> {
   //get fechStudent => null;
   String searchString = "";
   bool _isSearching = false;
   TextEditingController searchController = TextEditingController();
-
-
-
 
   Future<List<Registrar>> fetchStudent() async {
     String url = "http://192.168.0.106/SAES_APP/GetPerfil.php";
@@ -39,12 +35,12 @@ class _myHomePageState extends State<Busqueda> {
     }
   }
 
-
-
   //ParseResponse Method
   static List<Registrar> parseResponse(String responseBody) {
     final parseData = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parseData.map<Registrar>((json) => Registrar.fromJson(json)).toList();
+    return parseData
+        .map<Registrar>((json) => Registrar.fromJson(json))
+        .toList();
   }
 
   @override
@@ -52,47 +48,46 @@ class _myHomePageState extends State<Busqueda> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[400],
-       // centerTitle: true,
+        // centerTitle: true,
         automaticallyImplyLeading: false,
-        title: _isSearching ? TextField(
-          decoration: InputDecoration(
-              hintText: "Buscando..."),
-          onChanged: (value) {
-            setState(() {
-              searchString = value;
-            });
-          },
-          controller: searchController,
-        )
-            :Text("Buscar usuario",
-         style: TextStyle(color: Colors.grey[600]),
-         
-        ),
-         leading: IconButton(
+        title: _isSearching
+            ? TextField(
+                decoration: InputDecoration(hintText: "Buscando..."),
+                onChanged: (value) {
+                  setState(() {
+                    searchString = value;
+                  });
+                },
+                controller: searchController,
+              )
+            : Text(
+                "Buscar usuario",
+                style: TextStyle(color: Colors.grey[600]),
+              ),
+        leading: IconButton(
           icon: Image.asset('assets/saes2.png'),
-          onPressed: () {
-           
-          },
+          onPressed: () {},
         ),
         actions: <Widget>[
-          !_isSearching ? IconButton(
-            icon: Icon(Icons.search),
-            onPressed: (){
-              setState(() {
-                searchString = "";
-                this._isSearching = !this._isSearching;
-              });
-            },
-          )
-              :IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              setState(() {
-                this._isSearching = !this._isSearching;
-              });
-            },
-          )
-         ],
+          !_isSearching
+              ? IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    setState(() {
+                      searchString = "";
+                      this._isSearching = !this._isSearching;
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    setState(() {
+                      this._isSearching = !this._isSearching;
+                    });
+                  },
+                )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -102,37 +97,43 @@ class _myHomePageState extends State<Busqueda> {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               // print(fetchStudent());
               if (snapshot.hasData) {
-                return  ListView.builder(
+                return ListView.builder(
                   itemCount: snapshot.data.length,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                      Registrar perfil = snapshot.data[index];
-                    return snapshot.data[index].matricula.contains(searchController.text)
-                    ? ListTile(
-                      leading: CircleAvatar(
-                        minRadius: 30.0,
-                        maxRadius: 30.0,
-                        backgroundColor: Colors.white,
-                        backgroundImage: Convertir.imageFromBase64sString(   '${perfil.foto}',).image,
-                      ),
-                      title: new Text(
-                          '${perfil.nombre}'+" " '${perfil.ape_pat}'+" "+ '${perfil.ape_mat}',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                        ),
-                      ),
-                      subtitle: new Text(
-                         '${perfil.matricula}',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                        ),
-                      ),
-                      onTap: (){
-                            //  Navigator.push(context,
-                               // new MaterialPageRoute(builder: (context)=> DetailPage(snapshot.data[index])));
+                    Registrar perfil = snapshot.data[index];
+                    return snapshot.data[index].matricula
+                            .contains(searchController.text)
+                        ? ListTile(
+                            leading: CircleAvatar(
+                              minRadius: 30.0,
+                              maxRadius: 30.0,
+                              backgroundColor: Colors.white,
+                              backgroundImage: Convertir.imageFromBase64sString(
+                                '${perfil.foto}',
+                              ).image,
+                            ),
+                            title: new Text(
+                              '${perfil.nombre}' +
+                                  " " '${perfil.ape_pat}' +
+                                  " " +
+                                  '${perfil.ape_mat}',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                              ),
+                            ),
+                            subtitle: new Text(
+                              '${perfil.matricula}',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                              ),
+                            ),
+                            onTap: () {
+                              //  Navigator.push(context,
+                              // new MaterialPageRoute(builder: (context)=> DetailPage(snapshot.data[index])));
                             },
-                    )
-                    :Container();
+                          )
+                        : Container();
                   },
                 );
               }
@@ -147,20 +148,3 @@ class _myHomePageState extends State<Busqueda> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
