@@ -5,6 +5,8 @@
     $password = "";
     $dbname = "integradora_app";
     $table = "persona"; 
+
+   
  
     //This command came from the app, you will see it soon 
     $action = $_POST["action"];
@@ -41,6 +43,10 @@
        $conn->close();
        return;
    }
+
+
+  
+
    //Update y Delete 
 
     ?>

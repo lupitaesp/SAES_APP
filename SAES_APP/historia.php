@@ -1,23 +1,25 @@
 <?php
-
     //CONECTAR CON EL SERVIDOR 
-    $usuario = "root";
-    $contrasena = "";
-    $servidor = "localhost";
-    $basededatos = "integradora_app";
-    
-    //VERIFICAR LA CONEXION A LA BASE DE DATOS
-    $conexion = mysqli_connect( $servidor,$usuario,$contrasena,$basededatos) or die ("No se ha podido conectar al servidor de Base de datos");
-    $db = mysqli_select_db( $conexion, $basededatos ) or die ( "Upps! Pues siempre no quizo conectar a la base de datos" );
-
-    //RECUPERAR VARIABLES
-    //$PERSONA = $_POST['CLAVE_PERSONA']; //// CLAVE DE PERSONA    ////   CHECAR 
-
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "integradora_app";
+    $table = "historial"; 
+ 
+    //This command came from the app, you will see it soon 
+    $action = $_POST["action"];
+     
+    // Create Connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check Connection
+    if($conn->connect_error){
+        die("Connection Failed: " . $conn->connect_error);
+        return;
+    } 
     //FECHA DE HISTORIA
-    $fecha=$_POST['fecha'];
 
     //ANTECEDENTES HEREDOFAMILIARES
-    $cardicas=$_POST['heredofamiliares1'];
+   /* $cardicas=$_POST['heredofamiliares1'];
     $hipertension=$_POST['heredofamiliares2'];
     $convulsiones=$_POST['heredofamiliares3'];
     $cancer=$_POST['heredofamiliares4'];
@@ -79,61 +81,25 @@
     $tiempo_papanicolaou=$_POST['tiempo_papanicolaou'];
 
     //TRATAMIENTO ACTUAL
-    $tratamiento_actual=$_POST['tratamiento_actual'];
-
-
-
-    //EJECUCION DE SENTENCIA EN SQL
-
-    $sql_historia="INSERT INTO HISTORIA_CLINICA (FECHA) VALUES ('$fecha')";
-    $ejecutar1=mysqli_query($conexion,$sql_historia); 
-
-    $sql_heredofamiliares="INSERT INTO HEREDOFAMILIARES (CANCER,CONVULSIONES,HIPERTENSION,E_CARDICAS,E_MENTALES,DIABETES,
-    E_ALERGICAS,TUBERCULOSIS) VALUES ('$cardicas','$hipertension','$convulsiones','$cancer','$mentales','$diabetes','$alergias','$tuberculosis')";
-    $ejecutar2=mysqli_query($conexion,$sql_heredofamiliares);
-
-    $sql_no_patologicos="INSERT INTO PERSONALES_NO_PATOLOGICOS  (VACUNAS_RECIENTES,CUAL_DEPORTE,CUANTAS_VECES,EDAD_INICIO_F,
-    CIGARROS_A_LA_SEMANA,EDAD_INICIO_A,CANTIDAD_POR_SEMANA,EDAD_INICIO_D,CUANTAS_VECES_D) VALUES ('$vacunas_recientes',
-    '$cual_deporte','$veces_semana','$edad_inicio_fumar','$cigarros_semana','$edad_inicio_bebidas','$cantidad_semana',
-    '$edad_inicio_drogas','$veces_semana_drogas')";
-    $ejecutar3=mysqli_query($conexion,$sql_no_patologicos); 
-
-    $sql_quirurgicos="INSERT INTO ANTECEDENTES_QUIRURGICOS (TIPO_CIRUJIA,FECHA_CIRUJIA,INSTITUCION) VALUES ('$tipo_cirujia',
-    '$fecha_cirujia','$institucion')";
-    $ejecutar4=mysqli_query($conexion,$sql_quirurgicos); 
-
-    $sql_alergicos="INSERT INTO ANTECEDENTES_ALERGICOS (MEDICAMENTOS) VALUES ('$medicamento_alergia')";
-    $ejecutar5=mysqli_query($conexion,$sql_alergicos);
-
-    $sql_traumaticos="INSERT INTO ANTECEDENTES_TRAUMATICOS (CUAL_COMPLICACION) VALUES ('$complicacion')";
-    $ejecutar6=mysqli_query($conexion,$sql_traumaticos);
-
-    $sql_transfucionales="INSERT INTO ANTECEDENTES_TRANSFUNCIONALES (FECHA,MOTIVO) VALUES ('$fecha_transfuncion','$motivo_transfuncion')";
-    $ejecutar7=mysqli_query($conexion,$sql_transfucionales); //CHECAR FECHA
-
-    $sql_enfermedades="INSERT INTO ENFERMEDADES (VARICELA,TOSFERINA,SARAMPION,RUBEOLA,SINUSITIS,PAPERAS,HEPATITIS,TIFOIDEA,
-    FIEBRE_REUMATICA,CONVULCIONES,PARASITOS,DIABETIS_MELLITUS,HIPERTENSION_ARTERIAL,ANEMIA,ENF_CARDIACAS,ENF_RENALES,
-    TRATAMIENTO_MEDICO,TIPO_TRATAMIENTO) VALUES ('$varicera','$tosferina','$sarampeon','$rubeola','$sinusitis','$paperas',
-    '$hepatitis','$tifoidea','$fiebre','$convulsiones_e','$parasitosis','$diabetes_e','$hipertension_e','$anemia','$e_cardiacas',
-    '$e_renales')";
-    $ejecutar8=mysqli_query($conexion,$sql_enfermedades);
-
-    $sql_ginecobstetricos="INSERT INTO GINECOBSTETRICOS (EDAD_DE_PRIMER_PERIODO,DIAS_DE_DURACION,
-    CADA_CUANTOS_DIAS,CUANTAS_VECES,CUAL_METODO,TIEMPO_DE_HACERLO) VALUES ('$primer_menstruacion','$duracion',
-    '$cada_cuantos_dias','$veces','$metodo_planificacion','$tiempo_papanicolaou')";
-    $ejecutar9=mysqli_query($conexion,$sql_ginecobstetricos);
-
-    $sql_tratamiento="INSERT INTO TRATAMIENTO_HISTORIA (DESCRIPCION) VALUES ('$tratamiento_actual')";
-    $ejecutar10=mysqli_query($conexion,$sql_tratamiento);
-
-
-    //VERIFICAR CONEXION
-    if(!$ejecutar1 and !$ejecutar2 and !$ejecutar3 and !$ejecutar4 and !$ejecutar5 and !$ejecutar6 and !$ejecutar7 and 
-    !$ejecutar8 and !$ejecutar9 and !$ejecutar10){
-        echo "Hubo un error en la ejecucion";
-    }else{
-        echo "Datos guardados correctamente<br><a href='historia.html'>Volver</a>";
+    $tratamiento_actual=$_POST['tratamiento_actual'];*/
+    if("INSERT_HISTORIAL" == $action){
+        $matricula = $_POST['matricula'];
+        $fecha_nac=$_POST['fecha_nac'];
+        $edad=$_POST['edad'];
+        $nss=$_POST['nss'];
+        $lugar_residencia=$_POST['lugar_residencia'];
+        $sql = "INSERT INTO $table (matricula,fecha_nac,edad,nss,lugar_residencia)
+        VALUES('$matricula','$fecha_nac','$edad','$nss','$lugar_residencia')";
+        $result = $conn->query($sql);
+        echo "SI SE PUDO";            
+        $conn->close();
+        return;
     }
+  
+
+
+
+
 
     //mysqli_close( $conexion );
 ?>
