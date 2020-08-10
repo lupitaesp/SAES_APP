@@ -5,7 +5,6 @@ select database();
 
 drop table if exists persona;
 create table if not exists persona(
-/cve_persona         int(4)          auto_increment,/
 matricula			char(10)		not null,
 nombre        varchar(30)   not null,
 ape_pat             varchar(25)     not null,
@@ -24,13 +23,11 @@ primary key (matricula)
 drop table if exists historial;
 create table if not exists historial(
 cve_historia         int(4)          auto_increment,
-/INFORMACION PERONAL/
 fecha_nac                 date             not null,
 edad                       char(2)          not null,
 nss                       varchar(13)       not null,
 lugar_residencia            varchar(30)     not null,
 matricula			char(10)		not null,
-/ANTECEDENTES HEREDOFAMILIARES/
 e_cardicas                  varchar(2)         not null,
 hipertension               varchar(2)         not null,
 convulsiones                 varchar(2)          not null,
@@ -39,7 +36,6 @@ e_mentales                  varchar(2)         not null,
 diabetes                    varchar(2)         not null,
 e_alergicas                 varchar(2)         not null,
 tuberculosis                varchar(2)         not null,
-/PERSONALES NO PATOLOGICOS/
 vacunas_recientes         varchar(20)    not null,
 practicas_deporte         varchar(2)         not null,
 cual_deporte              varchar(15)    not null,
@@ -53,25 +49,20 @@ cantidad_por_semana       varchar(2)        not null,
 drogas                    varchar(5)         not null,
 edad_inicio_d             varchar(15)        not null,
 cuantas_veces_d           varchar(15)        not null,
-/ANTECEDENTES QUIRURGICOS/
 cirujia					varchar(2) 		not null,
 fecha_cirujia           date           not null,
 tipo_cirujia 			varchar(20) 	not null,
 institucion 			varchar(30)		not null,
-/ANTECEDENTES ALERGICOS/
 alergias               varchar(2)        not null,
 medicamentos           varchar(30)   	 not null,
-/ANTECEDENTES TRAUMATICOS/
 accidente                varchar(2)        not null,
 secuelas_accidente       varchar(2)        not null,
 fracturas                varchar(2)        not null,
 complicaciones           varchar(2)        not null,
 cual_complicacion        varchar(20)   		not null,
-/ANTECEDENTES TRANSFUNCIONALES/
 transfuncion_sanguinea     varchar(2)        not null,
 fecha_transfucion             date          not null,
 motivo                     varchar(25)   not null,
-/ENFERMEDADES/
 varicela                 varchar(2)        not null,
 tosferina                varchar(2)        not null,
 sarampion                varchar(2)        not null,
@@ -88,7 +79,6 @@ hipertension_arterial    varchar(2)        not null,
 anemia                   varchar(2)        not null,
 enf_cardiacas           varchar(2)        not null,
 enf_renales              varchar(2)        not null,
-/ANTECEDENTES GINECOBSTETRICOS/
 edad_de_primer_periodo        char(2)        not null,
 periodo_regular               varchar(2)         not null,
 dias_de_duracion              varchar(2)       not null,
@@ -103,9 +93,7 @@ metodo_de_planificacion       varchar(2)         not null,
 cual_metodo                   varchar(25)    not null,
 papanicolao                   varchar(2)         not null,    
 tiempo_de_hacerlo             varchar(25)    not null,
-/TRATAMIENTO/
 descripcion_tratamiento           varchar(200)     not null,
-/CONTACTOS/
 nombre1            varchar(70)           not null,
 parentesco1        varchar(20)           not null,
 direccion1         varchar(50)           not null,
@@ -114,8 +102,7 @@ nombre2            varchar(70)           not null,
 parentesco2        varchar(20)           not null,
 direccion2         varchar(50)           not null,
 telefono2          char(10)              not null,
-primary key(cve_historia),
-foreign key(matricula) references persona(matricula)
+primary key(cve_historia)
 );
 
 show tables;
