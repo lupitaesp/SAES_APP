@@ -14,8 +14,8 @@ class _FormularioState extends State<HistoriaClinica> {
   //C O N T R O L A D O R E S
   List<HistoriaClinica> _HistoriaClinica;
   final formkey = new GlobalKey<FormState>();
-  final formkey1 = new GlobalKey<FormState>(); 
-  final formkey2 = new GlobalKey<FormState>(); 
+  final formkey1 = new GlobalKey<FormState>();
+  final formkey2 = new GlobalKey<FormState>();
   final formkey3 = new GlobalKey<FormState>();
   final formkey4 = new GlobalKey<FormState>();
   final formkey5 = new GlobalKey<FormState>();
@@ -132,17 +132,183 @@ class _FormularioState extends State<HistoriaClinica> {
     edad = TextEditingController();
     nss = TextEditingController();
     lugar_residencia = TextEditingController();
+
+    /*ANTECEDENTES HEREDOFAMILIARES*/
+    e_cardicas = TextEditingController();
+    hipertension = TextEditingController();
+    convulsiones = TextEditingController();
+    cancer = TextEditingController();
+    e_mentales = TextEditingController();
+    diabetes = TextEditingController();
+    e_alergicas = TextEditingController(); //aqui
+    tuberculosis = TextEditingController();
+
+    /*PERSONALES NO PATOLOGICOS*/
+    vacunas_recientes = TextEditingController();
+    practicas_deporte = TextEditingController();
+    cual_deporte = TextEditingController();
+    cuantas_veces_deporte = TextEditingController();
+    fumas = TextEditingController();
+    edad_inicio_f = TextEditingController();
+    cigarros_a_la_semana = TextEditingController();
+    bebidas_alcoholicas = TextEditingController();
+    edad_inicio_a = TextEditingController();
+    cantidad_por_semana = TextEditingController();
+    drogas = TextEditingController();
+    edad_inicio_d = TextEditingController();
+    cuantas_veces_d = TextEditingController();
+
+    /*ANTECEDENTES QUIRURGICOS*/
+    cirujia = TextEditingController();
+    fecha_cirujia = TextEditingController();
+    tipo_cirujia = TextEditingController();
+    institucion = TextEditingController();
+
+    /*ANTECEDENTES ALERGICOS*/
+    alergias = TextEditingController();
+    medicamentos = TextEditingController();
+
+    /*ANTECEDENTES TRAUMATICOS*/
+    accidente = TextEditingController();
+    secuelas_accidente = TextEditingController();
+    fracturas = TextEditingController();
+    complicaciones = TextEditingController();
+    cual_complicacion = TextEditingController();
+
+    /*ANTECEDENTES TRANSFUNCIONALES*/
+    transfuncion_sanguinea = TextEditingController();
+    fecha_transfucion = TextEditingController();
+    motivo = TextEditingController();
+
+    /*ENFERMEDADES*/
+    varicela = TextEditingController();
+    tosferina = TextEditingController();
+    sarampion = TextEditingController();
+    rubeola = TextEditingController();
+    sinusitis = TextEditingController();
+    paperas = TextEditingController();
+    hepatitis = TextEditingController();
+    tifoidea = TextEditingController();
+    fiebre_reumatica = TextEditingController();
+    convulciones = TextEditingController();
+    parasitos = TextEditingController();
+    diabetis_mellitus = TextEditingController();
+    hipertension_arterial = TextEditingController(); //aqui
+    anemia = TextEditingController();
+    enf_cardiacas = TextEditingController(); //aqui
+    enf_renales = TextEditingController();
+
+    /*ANTECEDENTES GINECOBSTETRICOS*/
+    edad_de_primer_periodo = TextEditingController();
+    periodo_regular = TextEditingController();
+    dias_de_duracion = TextEditingController();
+    cada_cuantos_dias = TextEditingController();
+    embarazos = TextEditingController();
+    cuantas_veces_emb = TextEditingController();
+    parto = TextEditingController();
+    cesarea = TextEditingController();
+    aborto = TextEditingController();
+    legrado = TextEditingController();
+    metodo_de_planificacion = TextEditingController();
+    cual_metodo = TextEditingController();
+    papanicolao = TextEditingController();
+    tiempo_de_hacerlo = TextEditingController();
+
+    /*TRATAMIENTO*/
+    descripcion_tratamiento = TextEditingController();
+
+    /*CONTACTOS*/
+    nombre1 = TextEditingController();
+    parentesco1 = TextEditingController();
+    direccion1 = TextEditingController();
+    telefono1 = TextEditingController();
+    nombre2 = TextEditingController();
+    parentesco2 = TextEditingController();
+    direccion2 = TextEditingController();
+    telefono2 = TextEditingController();
   }
 
   //INSERT DATA
   _historiaData() {
-    if (fecha_nac.text.isEmpty ||
+    /*if (fecha_nac.text.isEmpty ||
         edad.text.isEmpty ||
         nss.text.isEmpty ||
-        lugar_residencia.text.isEmpty) {
+        lugar_residencia.text.isEmpty||
+        
+      e_cardicas.text.isEmpty ||
+      hipertension.text.isEmpty ||
+      convulsiones.text.isEmpty ||
+      cancer.text.isEmpty ||
+      e_mentales.text.isEmpty ||
+      diabetes.text.isEmpty ||
+      e_alergicas.text.isEmpty ||
+      tuberculosis.text.isEmpty ||
+
+      vacunas_recientes.text.isEmpty ||
+      practicas_deporte.text.isEmpty ||
+      cual_deporte.text.isEmpty ||
+      cuantas_veces_deporte.text.isEmpty ||
+      fumas.text.isEmpty ||
+      edad_inicio_f.text.isEmpty ||
+      cigarros_a_la_semana.text.isEmpty ||
+      bebidas_alcoholicas.text.isEmpty ||
+      edad_inicio_a.text.isEmpty ||
+      cantidad_por_semana.text.isEmpty ||
+      drogas.text.isEmpty ||
+      edad_inicio_d.text.isEmpty ||
+      cuantas_veces_d.text.isEmpty ||
+
+      cirujia.text.isEmpty ||
+      fecha_cirujia.text.isEmpty ||
+      tipo_cirujia.text.isEmpty ||
+      institucion.text.isEmpty ||
+
+      alergias.text.isEmpty ||
+      medicamentos.text.isEmpty ||
+
+      accidente.text.isEmpty ||
+      secuelas_accidente.text.isEmpty ||
+      fracturas.text.isEmpty ||
+      complicaciones.text.isEmpty ||
+      cual_complicacion.text.isEmpty ||
+
+      transfuncion_sanguinea.text.isEmpty ||
+      fecha_transfucion.text.isEmpty ||
+      motivo.text.isEmpty ||
+
+      varicela.text.isEmpty ||
+      tosferina.text.isEmpty ||
+      sarampion.text.isEmpty ||
+      rubeola.text.isEmpty ||
+      sinusitis.text.isEmpty ||
+      paperas.text.isEmpty ||
+      hepatitis.text.isEmpty ||
+      tifoidea.text.isEmpty ||
+      fiebre_reumatica.text.isEmpty ||
+      convulciones.text.isEmpty ||
+      parasitos.text.isEmpty ||
+      diabetis_mellitus.text.isEmpty ||
+      hipertension_arterial.text.isEmpty ||
+      anemia.text.isEmpty ||
+      enf_cardiacas.text.isEmpty ||
+      enf_renales.text.isEmpty ||
+
+
+
+      descripcion_tratamiento.text.isEmpty ||
+
+      nombre1.text.isEmpty ||
+      parentesco1.text.isEmpty ||
+      direccion1.text.isEmpty ||
+      telefono1.text.isEmpty ||
+      nombre2.text.isEmpty ||
+      parentesco2.text.isEmpty ||
+      direccion2.text.isEmpty ||
+      telefono2.text.isEmpty
+        ) {
       print("Empy fields");
       return;
-    }
+    }*/
     //_showProgress('Adding Student...');
     BDConnections2.historiaData(
       '$matricula',
@@ -150,12 +316,171 @@ class _FormularioState extends State<HistoriaClinica> {
       nss.text,
       edad.text,
       lugar_residencia.text,
+      e_cardicas.text,
+      hipertension.text,
+      convulsiones.text,
+      cancer.text,
+      e_mentales.text,
+      diabetes.text,
+      e_alergicas.text,
+      tuberculosis.text,
+      vacunas_recientes.text,
+      practicas_deporte.text,
+      cual_deporte.text,
+      cuantas_veces_deporte.text,
+      fumas.text,
+      edad_inicio_f.text,
+      cigarros_a_la_semana.text,
+      bebidas_alcoholicas.text,
+      edad_inicio_a.text,
+      cantidad_por_semana.text,
+      drogas.text,
+      edad_inicio_d.text,
+      cuantas_veces_d.text,
+      cirujia.text,
+      fecha_cirujia.text,
+      tipo_cirujia.text,
+      institucion.text,
+      alergias.text,
+      medicamentos.text,
+      accidente.text,
+      secuelas_accidente.text,
+      fracturas.text,
+      complicaciones.text,
+      cual_complicacion.text,
+      transfuncion_sanguinea.text,
+      fecha_transfucion.text,
+      motivo.text,
+      varicela.text,
+      tosferina.text,
+      sarampion.text,
+      rubeola.text,
+      sinusitis.text,
+      paperas.text,
+      hepatitis.text,
+      tifoidea.text,
+      fiebre_reumatica.text,
+      //convulciones.text,
+      parasitos.text,
+      diabetis_mellitus.text,
+      hipertension_arterial.text,
+      anemia.text,
+      enf_cardiacas.text,
+      enf_renales.text,
+      edad_de_primer_periodo.text,
+      periodo_regular.text,
+      dias_de_duracion.text,
+      cada_cuantos_dias.text,
+      embarazos.text,
+      cuantas_veces_emb.text,
+      parto.text,
+      cesarea.text,
+      aborto.text,
+      legrado.text,
+      metodo_de_planificacion.text,
+      cual_metodo.text,
+      // papanicolao.text,
+      tiempo_de_hacerlo.text,
+      descripcion_tratamiento.text,
+      nombre1.text,
+      parentesco1.text,
+      direccion1.text,
+      telefono1.text,
+      nombre2.text,
+      parentesco2.text,
+      direccion2.text,
+      telefono2.text,
     ).then((result) {
       if ('sucess' == result) {
         fecha_nac.text = "";
         edad.text = "";
         nss.text = "";
         lugar_residencia.text = "";
+
+        e_cardicas.text = "";
+        hipertension.text = "";
+        convulsiones.text = "";
+        cancer.text = "";
+        e_mentales.text = "";
+        diabetes.text = "";
+        e_alergicas.text = "";
+        tuberculosis.text = "";
+
+        vacunas_recientes.text = "";
+        practicas_deporte.text = "";
+        cual_deporte.text = "";
+        cuantas_veces_deporte.text = "";
+        fumas.text = "";
+        edad_inicio_f.text = "";
+        cigarros_a_la_semana.text = "";
+        bebidas_alcoholicas.text = "";
+        edad_inicio_a.text = "";
+        cantidad_por_semana.text = "";
+        drogas.text = "";
+        edad_inicio_d.text = "";
+        cuantas_veces_d.text = "";
+
+        cirujia.text = "";
+        fecha_cirujia.text = "";
+        tipo_cirujia.text = "";
+        institucion.text = "";
+
+        //alergias.text = "";
+        medicamentos.text = "";
+
+        accidente.text = "";
+        secuelas_accidente.text = "";
+        fracturas.text = "";
+        complicaciones.text = "";
+        cual_complicacion.text = "";
+
+        transfuncion_sanguinea.text = "";
+        fecha_transfucion.text = "";
+        motivo.text = "";
+
+        varicela.text = "";
+        tosferina.text = "";
+        sarampion.text = "";
+        rubeola.text = "";
+        sinusitis.text = "";
+        paperas.text = "";
+        hepatitis.text = "";
+        tifoidea.text = "";
+        fiebre_reumatica.text = "";
+        convulciones.text = "";
+        parasitos.text = "";
+        diabetis_mellitus.text = "";
+        hipertension_arterial.text = "";
+        anemia.text = "";
+        //enf_cardiacas.text = "";
+        enf_renales.text = "";
+
+        edad_de_primer_periodo.text = "";
+        periodo_regular.text = "";
+        dias_de_duracion.text = "";
+        cada_cuantos_dias.text = "";
+        embarazos.text = "";
+        cuantas_veces_emb.text = "";
+        parto.text = "";
+        cesarea.text = "";
+        aborto.text = "";
+        legrado.text = "";
+        metodo_de_planificacion.text = "";
+        cual_metodo.text = "";
+        papanicolao.text = "";
+        tiempo_de_hacerlo.text = "";
+
+        descripcion_tratamiento.text = "";
+
+        nombre1.text = "";
+        parentesco1.text = "";
+        direccion1.text = "";
+        telefono1.text = "";
+        nombre2.text = "";
+        parentesco2.text = "";
+        direccion2.text = "";
+        telefono2.text = "";
+
         _clearValues();
       }
     });
@@ -163,9 +488,93 @@ class _FormularioState extends State<HistoriaClinica> {
 
   _clearValues() {
     fecha_nac.text = "";
-    nss.text = "";
     edad.text = "";
+    nss.text = "";
     lugar_residencia.text = "";
+
+    e_cardicas.text = "";
+    hipertension.text = "";
+    convulsiones.text = "";
+    cancer.text = "";
+    e_mentales.text = "";
+    diabetes.text = "";
+    e_alergicas.text = "";
+    tuberculosis.text = "";
+
+    vacunas_recientes.text = "";
+    practicas_deporte.text = "";
+    cual_deporte.text = "";
+    cuantas_veces_deporte.text = "";
+    fumas.text = "";
+    edad_inicio_f.text = "";
+    cigarros_a_la_semana.text = "";
+    bebidas_alcoholicas.text = "";
+    edad_inicio_a.text = "";
+    cantidad_por_semana.text = "";
+    drogas.text = "";
+    edad_inicio_d.text = "";
+    cuantas_veces_d.text = "";
+
+    cirujia.text = "";
+    fecha_cirujia.text = "";
+    tipo_cirujia.text = "";
+    institucion.text = "";
+
+    alergias.text = "";
+    medicamentos.text = "";
+
+    accidente.text = "";
+    secuelas_accidente.text = "";
+    fracturas.text = "";
+    complicaciones.text = "";
+    cual_complicacion.text = "";
+
+    transfuncion_sanguinea.text = "";
+    fecha_transfucion.text = "";
+    motivo.text = "";
+
+    varicela.text = "";
+    tosferina.text = "";
+    sarampion.text = "";
+    rubeola.text = "";
+    sinusitis.text = "";
+    paperas.text = "";
+    hepatitis.text = "";
+    tifoidea.text = "";
+    fiebre_reumatica.text = "";
+    convulciones.text = "";
+    parasitos.text = "";
+    diabetis_mellitus.text = "";
+    hipertension_arterial.text = "";
+    anemia.text = "";
+    enf_cardiacas.text = "";
+    enf_renales.text = "";
+
+    edad_de_primer_periodo.text = "";
+    periodo_regular.text = "";
+    dias_de_duracion.text = "";
+    cada_cuantos_dias.text = "";
+    embarazos.text = "";
+    cuantas_veces_emb.text = "";
+    parto.text = "";
+    cesarea.text = "";
+    aborto.text = "";
+    legrado.text = "";
+    metodo_de_planificacion.text = "";
+    cual_metodo.text = "";
+    papanicolao.text = "";
+    tiempo_de_hacerlo.text = "";
+
+    descripcion_tratamiento.text = "";
+
+    nombre1.text = "";
+    parentesco1.text = "";
+    direccion1.text = "";
+    telefono1.text = "";
+    nombre2.text = "";
+    parentesco2.text = "";
+    direccion2.text = "";
+    telefono2.text = "";
   }
 
   void validateAndSave() {
@@ -209,6 +618,7 @@ class _FormularioState extends State<HistoriaClinica> {
               MaterialButton(
                 onPressed: () {
                   _historiaData();
+                  _clearValues();
                 },
                 child: InkWell(
                   child: Container(
@@ -243,7 +653,7 @@ class _FormularioState extends State<HistoriaClinica> {
 
 //TARJETA DE DATOS PERSONALES
   Widget _datosPersonales(Color color) {
-   // final form = GlobalKey<FormState>();
+    // final form = GlobalKey<FormState>();
     return InkWell(
         child: Padding(
       padding: EdgeInsets.all(16),
@@ -339,9 +749,9 @@ class _FormularioState extends State<HistoriaClinica> {
   }
 
 //TARJETA NUMERO UNO ANTECEDENTES HEREDOFAMILIARES
-Widget _heredofamiliares(Color color) {
+  Widget _heredofamiliares(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -360,8 +770,9 @@ Widget _heredofamiliares(Color color) {
                 centerTitle: true,
               ),
               Text(''),
-              Text('ESCRIBE SI O NO SEGÚN LAS ENFERMEDADES QUE HAYAN PADECIDO O PADEZCAN ALGUNOS DE LOS FAMILIARES DIRECTOS:', 
-                style: TextStyle(color: Colors.black)),
+              Text(
+                  'ESCRIBE SI O NO SEGÚN LAS ENFERMEDADES QUE HAYAN PADECIDO O PADEZCAN ALGUNOS DE LOS FAMILIARES DIRECTOS:',
+                  style: TextStyle(color: Colors.black)),
               Row(
                 children: <Widget>[
                   Expanded(
@@ -369,13 +780,13 @@ Widget _heredofamiliares(Color color) {
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: e_cardicas,
-                      validator: (val) =>
-                          val.length > 3 ? null : 'Respuesta inválida',
-                      decoration: InputDecoration(
-                        labelText: 'E. Cardícas',
-                        hintText: 'E. Cardícas',
-                        icon: Icon(Icons.label_important),
-                        isDense: true,
+                        validator: (val) =>
+                            val.length > 3 ? null : 'Respuesta inválida',
+                        decoration: InputDecoration(
+                          labelText: 'E. Cardícas',
+                          hintText: 'E. Cardícas',
+                          icon: Icon(Icons.label_important),
+                          isDense: true,
                         ),
                       ),
                     ),
@@ -404,6 +815,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: convulsiones,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -472,10 +884,10 @@ Widget _heredofamiliares(Color color) {
               Row(
                 children: <Widget>[
                   Expanded(
-                    child:Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: alergias,
+                        controller: e_alergicas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -510,15 +922,13 @@ Widget _heredofamiliares(Color color) {
           ),
         ),
       ),
-     )
-   );
-}
-
+    ));
+  }
 
 //TARJETA NUMERO DOS PERSONALES NO PATOLOGICOS
-Widget _personalesNoPatologicos(Color color) {
+  Widget _personalesNoPatologicos(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -557,7 +967,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: practicas_deporte ,
+                        controller: practicas_deporte,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -589,17 +999,17 @@ Widget _personalesNoPatologicos(Color color) {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                  child: TextFormField(
-                    controller: cuantas_veces_deporte ,
+                child: TextFormField(
+                  controller: cuantas_veces_deporte,
                   validator: (val) =>
                       val.length > 2 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: 'Veces a la semana',
-                          hintText: 'Ingrese cantidad semanal',
-                          icon: Icon(Icons.view_week),
-                          isDense: true,
-                        ),
+                  decoration: InputDecoration(
+                    labelText: 'Veces a la semana',
+                    hintText: 'Ingrese cantidad semanal',
+                    icon: Icon(Icons.view_week),
+                    isDense: true,
                   ),
+                ),
               ),
               Row(
                 children: <Widget>[
@@ -607,7 +1017,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: fumas ,
+                        controller: fumas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -657,7 +1067,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:bebidas_alcoholicas,
+                        controller: bebidas_alcoholicas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -673,7 +1083,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:edad_inicio_a ,
+                        controller: edad_inicio_a,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -690,7 +1100,7 @@ Widget _personalesNoPatologicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  controller: cantidad_por_semana ,
+                  controller: cantidad_por_semana,
                   validator: (val) =>
                       val.length > 4 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -738,9 +1148,10 @@ Widget _personalesNoPatologicos(Color color) {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
                 child: TextFormField(
-                  controller: cuantas_veces_d ,
+                  controller: cuantas_veces_d,
                   validator: (val) =>
                       val.length > 4 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -755,14 +1166,13 @@ Widget _personalesNoPatologicos(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO TRES ANTECEDENTES QUIRURGICOS
-Widget _antecedentesQuirurgicos(Color color) {
+  Widget _antecedentesQuirurgicos(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -820,7 +1230,7 @@ Widget _antecedentesQuirurgicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  controller: tipo_cirujia ,
+                  controller: tipo_cirujia,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -832,9 +1242,10 @@ Widget _antecedentesQuirurgicos(Color color) {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
                 child: TextFormField(
-                  controller: institucion ,
+                  controller: institucion,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -849,14 +1260,13 @@ Widget _antecedentesQuirurgicos(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO CUATRO ANTECEDENTES ALERGICOS
-Widget _antecedentesAlergicos(Color color) {
+  Widget _antecedentesAlergicos(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -876,9 +1286,10 @@ Widget _antecedentesAlergicos(Color color) {
                 centerTitle: true,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
                 child: TextFormField(
-                  controller: alergias ,
+                  controller: alergias,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -890,9 +1301,10 @@ Widget _antecedentesAlergicos(Color color) {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
                 child: TextFormField(
-                  controller: medicamentos ,
+                  controller: medicamentos,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -907,14 +1319,13 @@ Widget _antecedentesAlergicos(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO CINCO ANTECEDENTES TRAUMATICOS
-Widget _antecedentesTraumaticos(Color color) {
+  Widget _antecedentesTraumaticos(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -939,7 +1350,7 @@ Widget _antecedentesTraumaticos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: accidente ,
+                        controller: accidente,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -951,31 +1362,29 @@ Widget _antecedentesTraumaticos(Color color) {
                       ),
                     ),
                   ),
-              
                 ],
-                
               ),
-               Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller: secuelas_accidente,
-                        validator: (val) =>
-                            val.length > 3 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: '¿Hubo secuelas?',
-                          hintText: 'Si / No',
-                          icon: Icon(Icons.select_all),
-                          isDense: true,
-                        ),
-                      ),
-                    ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                child: TextFormField(
+                  controller: secuelas_accidente,
+                  validator: (val) =>
+                      val.length > 3 ? null : 'Respuesta inválida',
+                  decoration: InputDecoration(
+                    labelText: '¿Hubo secuelas?',
+                    hintText: 'Si / No',
+                    icon: Icon(Icons.select_all),
+                    isDense: true,
+                  ),
+                ),
+              ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: fracturas ,
+                        controller: fracturas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -987,27 +1396,27 @@ Widget _antecedentesTraumaticos(Color color) {
                       ),
                     ),
                   ),
-                
                 ],
               ),
-               Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller: complicaciones,
-                        validator: (val) =>
-                            val.length > 3 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: '¿Complicaciones?',
-                          hintText: 'Si / No',
-                          icon: Icon(Icons.settings_input_component),
-                          isDense: true,
-                        ),
-                      ),
-                    ),
-               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  controller: cual_complicacion ,
+                  controller: complicaciones,
+                  validator: (val) =>
+                      val.length > 3 ? null : 'Respuesta inválida',
+                  decoration: InputDecoration(
+                    labelText: '¿Complicaciones?',
+                    hintText: 'Si / No',
+                    icon: Icon(Icons.settings_input_component),
+                    isDense: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
+                child: TextFormField(
+                  controller: cual_complicacion,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -1018,20 +1427,17 @@ Widget _antecedentesTraumaticos(Color color) {
                   ),
                 ),
               ),
-             
             ],
           ),
-          
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO SEIS ANTECEDENTES TRANSFUNCIOMALES
-Widget _antecedentesTransfuncionales(Color color) {
+  Widget _antecedentesTransfuncionales(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -1050,40 +1456,34 @@ Widget _antecedentesTransfuncionales(Color color) {
                 //backgroundColor: Theme.of(context).accentColor,
                 centerTitle: true,
               ),
-             
-                  
-                    Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller: transfuncion_sanguinea,
-                        validator: (val) =>
-                            val.length > 3 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: '¿Transfunciones?',
-                          hintText: 'Si / No',
-                          icon: Icon(Icons.straighten),
-                          isDense: true,
-                        ),
-                      ),
-                    ), 
-                  
-                  
-                   Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller: fecha_transfucion,
-                        validator: (val) =>
-                            val.length > 12 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: 'Fecha de transfuncion',
-                          hintText: '0000/00/00',
-                          icon: Icon(Icons.insert_invitation),
-                          isDense: true,
-                        ),
-                      ),
-                    ), 
-                 
-               
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                child: TextFormField(
+                  controller: transfuncion_sanguinea,
+                  validator: (val) =>
+                      val.length > 3 ? null : 'Respuesta inválida',
+                  decoration: InputDecoration(
+                    labelText: '¿Transfunciones?',
+                    hintText: 'Si / No',
+                    icon: Icon(Icons.straighten),
+                    isDense: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                child: TextFormField(
+                  controller: fecha_transfucion,
+                  validator: (val) =>
+                      val.length > 12 ? null : 'Respuesta inválida',
+                  decoration: InputDecoration(
+                    labelText: 'Fecha de transfuncion',
+                    hintText: '0000/00/00',
+                    icon: Icon(Icons.insert_invitation),
+                    isDense: true,
+                  ),
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
@@ -1102,14 +1502,13 @@ Widget _antecedentesTransfuncionales(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO SIETE ENFERMEDADES
-Widget _enfermedades(Color color) {
+  Widget _enfermedades(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -1129,7 +1528,8 @@ Widget _enfermedades(Color color) {
                 centerTitle: true,
               ),
               Text(''),
-              Text('ESCRIBE SI O NO SEGÚN LAS ENFERMEDADES QUE PADECES O HAS PADECIDO:'),
+              Text(
+                  'ESCRIBE SI O NO SEGÚN LAS ENFERMEDADES QUE PADECES O HAS PADECIDO:'),
               Row(
                 children: <Widget>[
                   Expanded(
@@ -1172,7 +1572,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: sarampion ,
+                        controller: sarampion,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1208,7 +1608,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:sinusitis,
+                        controller: sinusitis,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1224,7 +1624,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:paperas,
+                        controller: paperas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1244,7 +1644,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:hepatitis,
+                        controller: hepatitis,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1260,7 +1660,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:tifoidea ,
+                        controller: tifoidea,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1280,7 +1680,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:fiebre_reumatica ,
+                        controller: fiebre_reumatica,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1296,7 +1696,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:convulsiones,
+                        controller: convulciones,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1316,7 +1716,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:parasitos,
+                        controller: parasitos,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1332,7 +1732,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:diabetes ,
+                        controller: diabetis_mellitus,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1352,7 +1752,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:hipertension,
+                        controller: hipertension_arterial,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1368,7 +1768,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:anemia ,
+                        controller: anemia,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1388,7 +1788,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 0),
                       child: TextFormField(
-                        controller:e_cardicas ,
+                        controller: enf_cardiacas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1402,9 +1802,10 @@ Widget _enfermedades(Color color) {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 24, top: 16),
                       child: TextFormField(
-                        controller:enf_renales ,
+                        controller: enf_renales,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1422,14 +1823,13 @@ Widget _enfermedades(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO SIETE ANTECEDENTES GINECOBSTETRICOS
-Widget _antecedentesGinecobstetricos(Color color) {
+  Widget _antecedentesGinecobstetricos(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -1457,7 +1857,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                       child: TextFormField(
                         controller: edad_de_primer_periodo,
                         //validator: (val) =>
-                          //  val.length > 3 ? null : 'Respuesta inválida',
+                        //  val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
                           labelText: 'Primer periodo',
                           hintText: 'Ingresa la edad',
@@ -1467,23 +1867,21 @@ Widget _antecedentesGinecobstetricos(Color color) {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller: periodo_regular,
-                        //validator: (val) =>
-                          //  val.length > 3 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: '¿Periodo regular?',
-                          hintText: 'Si / No',
-                          icon: Icon(Icons.graphic_eq),
-                          isDense: true,
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                child: TextFormField(
+                  controller: periodo_regular,
+                  //validator: (val) =>
+                  //  val.length > 3 ? null : 'Respuesta inválida',
+                  decoration: InputDecoration(
+                    labelText: '¿Periodo regular?',
+                    hintText: 'Si / No',
+                    icon: Icon(Icons.graphic_eq),
+                    isDense: true,
+                  ),
+                ),
               ),
               Row(
                 children: <Widget>[
@@ -1491,9 +1889,9 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:dias_de_duracion ,
+                        controller: dias_de_duracion,
                         //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
+                        //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
                           labelText: '¿Cuánto dura?',
                           hintText: 'Ingrese duración',
@@ -1503,23 +1901,22 @@ Widget _antecedentesGinecobstetricos(Color color) {
                       ),
                     ),
                   ),
-                 
                 ],
               ),
               Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller: cada_cuantos_dias,
-                        //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
-                        decoration: InputDecoration(
-                          labelText: 'Cada cuantos días',
-                          hintText: 'Cada cuantos días',
-                          icon: Icon(Icons.timeline),
-                          isDense: true,
-                        ),
-                      ),
-                    ),
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                child: TextFormField(
+                  controller: cada_cuantos_dias,
+                  //validator: (val) =>
+                  //  val.length > 3 ? null : 'Full name is invalid',
+                  decoration: InputDecoration(
+                    labelText: 'Cada cuantos días',
+                    hintText: 'Cada cuantos días',
+                    icon: Icon(Icons.timeline),
+                    isDense: true,
+                  ),
+                ),
+              ),
               Row(
                 children: <Widget>[
                   Expanded(
@@ -1528,7 +1925,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                       child: TextFormField(
                         controller: embarazos,
                         //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
+                        //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
                           labelText: '¿Embarazos?',
                           hintText: 'Si / No',
@@ -1541,31 +1938,32 @@ Widget _antecedentesGinecobstetricos(Color color) {
                 ],
               ),
               Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
-                        controller:cuantas_veces_emb ,
-                        //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
-                        decoration: InputDecoration(
-                          labelText: '¿Cuántas veces?',
-                          hintText: 'Ingrese número',
-                          icon: Icon(Icons.format_list_numbered),
-                          isDense: true,
-                        ),
-                      ),
-                    ),
+                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                child: TextFormField(
+                  controller: cuantas_veces_emb,
+                  //validator: (val) =>
+                  //  val.length > 3 ? null : 'Full name is invalid',
+                  decoration: InputDecoration(
+                    labelText: '¿Cuántas veces?',
+                    hintText: 'Ingrese número',
+                    icon: Icon(Icons.format_list_numbered),
+                    isDense: true,
+                  ),
+                ),
+              ),
               Text(''),
               Text(''),
-              Text('INGRESE SI O NO, EN DADO CASO DE HABER PASADO POR UNO DE LOS SIGUIENTES PROCESOS:'),
+              Text(
+                  'INGRESE SI O NO, EN DADO CASO DE HABER PASADO POR UNO DE LOS SIGUIENTES PROCESOS:'),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:parto ,
+                        controller: parto,
                         //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
+                        //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
                           labelText: 'Parto normal',
                           hintText: 'Parto normal',
@@ -1579,9 +1977,9 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller:cesarea ,
+                        controller: cesarea,
                         //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
+                        //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
                           labelText: 'Cesárea',
                           hintText: 'Cesárea',
@@ -1599,8 +1997,9 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 0),
                       child: TextFormField(
+                        controller: aborto,
                         //validator: (val) =>
-                          //  val.length > 3 ? null : 'Full name is invalid',
+                        //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
                           labelText: 'Aborto',
                           hintText: 'Aborto',
@@ -1612,11 +2011,12 @@ Widget _antecedentesGinecobstetricos(Color color) {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 24, top: 16),
                       child: TextFormField(
-                        controller:legrado ,
+                        controller: legrado,
                         //validator: (val) =>
-                          //  val.contains('@') ? null : 'Email is invalid',
+                        //  val.contains('@') ? null : 'Email is invalid',
                         decoration: InputDecoration(
                           labelText: 'Legrado',
                           hintText: 'Legrado',
@@ -1629,65 +2029,69 @@ Widget _antecedentesGinecobstetricos(Color color) {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
-                  child: TextFormField(
-                    controller:metodo_de_planificacion ,
-                    //validator: (val) =>
-                      //  val.contains('@') ? null : 'Email is invalid',
-                    decoration: InputDecoration(
-                     labelText: '¿Tiene algún método de planificación?',
-                     hintText: 'Si / No',
-                       icon: Icon(Icons.open_with),
-                      isDense: true,
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
+                child: TextFormField(
+                  controller: metodo_de_planificacion,
+                  //validator: (val) =>
+                  //  val.contains('@') ? null : 'Email is invalid',
+                  decoration: InputDecoration(
+                    labelText: '¿Tiene algún método de planificación?',
+                    hintText: 'Si / No',
+                    icon: Icon(Icons.open_with),
+                    isDense: true,
+                  ),
                 ),
-               ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
-                  child: TextFormField(
-                    controller:cual_metodo ,
-                    //validator: (val) =>
-                      //  val.contains('@') ? null : 'Email is invalid',
-                    decoration: InputDecoration(
-                     labelText: '¿Cuál es ese método?',
-                     hintText: 'Ingreselo aquí',
-                       icon: Icon(Icons.clear_all),
-                      isDense: true,
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
+                child: TextFormField(
+                  controller: cual_metodo,
+                  //validator: (val) =>
+                  //  val.contains('@') ? null : 'Email is invalid',
+                  decoration: InputDecoration(
+                    labelText: '¿Cuál es ese método?',
+                    hintText: 'Ingreselo aquí',
+                    icon: Icon(Icons.clear_all),
+                    isDense: true,
+                  ),
                 ),
-               ),
               ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
-                        child: TextFormField(
-                          controller:papanicolao,
-                          //validator: (val) =>
-                            //  val.contains('@') ? null : 'Email is invalid',
-                          decoration: InputDecoration(
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 16, top: 0),
+                      child: TextFormField(
+                        controller: papanicolao,
+                        //validator: (val) =>
+                        //  val.contains('@') ? null : 'Email is invalid',
+                        decoration: InputDecoration(
                           labelText: '¿Papanicolau?',
                           hintText: 'Si / No',
-                            icon: Icon(Icons.crop_landscape),
-                            isDense: true,
+                          icon: Icon(Icons.crop_landscape),
+                          isDense: true,
+                        ),
                       ),
-                     ),
                     ),
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
-                        child: TextFormField(
-                          controller: tiempo_de_hacerlo ,
-                          //validator: (val) =>
-                            //  val.contains('@') ? null : 'Email is invalid',
-                          decoration: InputDecoration(
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 16, top: 0),
+                      child: TextFormField(
+                        controller: tiempo_de_hacerlo,
+                        //validator: (val) =>
+                        //  val.contains('@') ? null : 'Email is invalid',
+                        decoration: InputDecoration(
                           labelText: '¿Hace cuánto?',
                           hintText: 'Ingrese tiempo',
-                            icon: Icon(Icons.insert_invitation),
-                            isDense: true,
+                          icon: Icon(Icons.insert_invitation),
+                          isDense: true,
+                        ),
                       ),
-                     ),
                     ),
                   ),
                 ],
@@ -1696,14 +2100,13 @@ Widget _antecedentesGinecobstetricos(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //TARJETA NUMERO OCHO TRATAMIENTO ACTUAL
-Widget _tratamientoActual(Color color) {
+  Widget _tratamientoActual(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -1723,11 +2126,12 @@ Widget _tratamientoActual(Color color) {
                 centerTitle: true,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
                 child: TextFormField(
-                  controller:descripcion_tratamiento ,
+                  controller: descripcion_tratamiento,
                   //validator: (val) =>
-                    //  val.contains('@') ? null : 'Email is invalid',
+                  //  val.contains('@') ? null : 'Email is invalid',
                   decoration: InputDecoration(
                     labelText: 'Descripción de tratamiento actual',
                     hintText: 'Descripción de tratamiento actual',
@@ -1740,14 +2144,13 @@ Widget _tratamientoActual(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 
 //APARTADO PARA CONTACTOS DEL ALUMNO
-Widget _contactos(Color color) {
+  Widget _contactos(Color color) {
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
@@ -1770,7 +2173,7 @@ Widget _contactos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 child: TextFormField(
-                  controller:nombre1,
+                  controller: nombre1,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -1787,7 +2190,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
-                        controller:parentesco1,
+                        controller: parentesco1,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1803,7 +2206,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
-                        controller:telefono1,
+                        controller: telefono1,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1819,15 +2222,15 @@ Widget _contactos(Color color) {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                  child: TextFormField(
-                    controller:direccion1 ,
-                    validator: (val) =>
+                child: TextFormField(
+                  controller: direccion1,
+                  validator: (val) =>
                       val.length < 10 ? null : 'Respuesta inválida',
-                      decoration: InputDecoration(
-                          labelText: 'Dirección',
-                          hintText: 'Dirección',
-                          icon: Icon(Icons.home),
-                          isDense: true,
+                  decoration: InputDecoration(
+                    labelText: 'Dirección',
+                    hintText: 'Dirección',
+                    icon: Icon(Icons.home),
+                    isDense: true,
                   ),
                 ),
               ),
@@ -1836,7 +2239,7 @@ Widget _contactos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 child: TextFormField(
-                  controller:nombre2,
+                  controller: nombre2,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -1853,7 +2256,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
-                        controller:parentesco2,
+                        controller: parentesco2,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1869,7 +2272,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
-                        controller:telefono2,
+                        controller: telefono2,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1885,15 +2288,15 @@ Widget _contactos(Color color) {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                  child: TextFormField(
-                    controller:direccion2 ,
-                    validator: (val) =>
+                child: TextFormField(
+                  controller: direccion2,
+                  validator: (val) =>
                       val.length < 10 ? null : 'Respuesta inválida',
-                      decoration: InputDecoration(
-                          labelText: 'Dirección',
-                          hintText: 'Dirección',
-                          icon: Icon(Icons.home),
-                          isDense: true,
+                  decoration: InputDecoration(
+                    labelText: 'Dirección',
+                    hintText: 'Dirección',
+                    icon: Icon(Icons.home),
+                    isDense: true,
                   ),
                 ),
               ),
@@ -1901,7 +2304,6 @@ Widget _contactos(Color color) {
           ),
         ),
       ),
-     )
-    );
+    ));
   }
 }

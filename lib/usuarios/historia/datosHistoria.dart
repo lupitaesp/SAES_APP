@@ -64,7 +64,7 @@ class Historia{
     String hepatitis;
     String tifoidea;
     String fiebre_reumatica;
-    String convulciones;
+    //String convulciones;
     String parasitos;
     String diabetis_mellitus;
     String hipertension_arterial;
@@ -85,7 +85,7 @@ class Historia{
     String legrado;
     String metodo_de_planificacion;
     String cual_metodo;
-    String papanicolao; 
+    //String papanicolao; 
     String tiempo_de_hacerlo;
 
   /*TRATAMIENTO*/
@@ -168,7 +168,7 @@ class Historia{
           this.hepatitis,
           this.tifoidea,
           this.fiebre_reumatica,
-          this.convulciones,
+         // this.convulciones,
           this.parasitos,
           this.diabetis_mellitus,
           this.hipertension_arterial,
@@ -189,7 +189,7 @@ class Historia{
           this.legrado,
           this.metodo_de_planificacion,
           this.cual_metodo,
-          this.papanicolao, 
+          //this.papanicolao, 
           this.tiempo_de_hacerlo,
 
         /*TRATAMIENTO*/
@@ -273,7 +273,7 @@ class Historia{
         hepatitis: json['hepatitis'] as String,
         tifoidea: json['tifoidea'] as String,
         fiebre_reumatica: json['fiebre_reumatica'] as String,
-        convulciones: json['convulciones'] as String,
+       // convulciones: json['convulciones'] as String,
         parasitos: json['parasitos'] as String,
         diabetis_mellitus: json['diabetis_mellitus'] as String,
         hipertension_arterial: json['hipertension_arterial'] as String,
@@ -294,7 +294,7 @@ class Historia{
         legrado: json['legrado'] as String,
         metodo_de_planificacion: json['metodo_de_planificacion'] as String,
         cual_metodo: json['cual_metodo'] as String,
-        papanicolao: json['papanicolao'] as String,
+        //papanicolao: json['papanicolao'] as String,
         tiempo_de_hacerlo: json['tiempo_de_hacerlo'] as String,
 
         /*TRATAMIENTO*/
