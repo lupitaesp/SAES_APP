@@ -14,7 +14,16 @@ class _FormularioState extends State<HistoriaClinica> {
   //C O N T R O L A D O R E S
   List<HistoriaClinica> _HistoriaClinica;
   final formkey = new GlobalKey<FormState>();
- 
+  final formkey1 = new GlobalKey<FormState>(); 
+  final formkey2 = new GlobalKey<FormState>(); 
+  final formkey3 = new GlobalKey<FormState>();
+  final formkey4 = new GlobalKey<FormState>();
+  final formkey5 = new GlobalKey<FormState>();
+  final formkey6 = new GlobalKey<FormState>();
+  final formkey7 = new GlobalKey<FormState>();
+  final formkey8 = new GlobalKey<FormState>();
+  final formkey9 = new GlobalKey<FormState>();
+  final formkey10 = new GlobalKey<FormState>();
   /*INFORMACION PERONAL*/
   TextEditingController fecha_nac; // L I S T O
   TextEditingController edad; // L I S T O
@@ -184,7 +193,7 @@ class _FormularioState extends State<HistoriaClinica> {
       body: ListView(
         children: <Widget>[
           _datosPersonales(Colors.transparent),
-          /*  _heredofamiliares(Colors.transparent),
+          _heredofamiliares(Colors.transparent),
           _personalesNoPatologicos(Colors.transparent),
           _antecedentesQuirurgicos(Colors.transparent),
           _antecedentesAlergicos(Colors.transparent),
@@ -193,7 +202,7 @@ class _FormularioState extends State<HistoriaClinica> {
           _enfermedades(Colors.transparent),
           _antecedentesGinecobstetricos(Colors.transparent),
           _tratamientoActual(Colors.transparent),
-          _contactos(Colors.transparent),*/
+          _contactos(Colors.transparent),
           SizedBox(height: 40),
           Column(
             children: <Widget>[
@@ -328,10 +337,9 @@ class _FormularioState extends State<HistoriaClinica> {
       ),
     ));
   }
-/*
+
 //TARJETA NUMERO UNO ANTECEDENTES HEREDOFAMILIARES
 Widget _heredofamiliares(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -340,7 +348,7 @@ Widget _heredofamiliares(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey1,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -360,6 +368,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: e_cardicas,
                       validator: (val) =>
                           val.length > 3 ? null : 'Respuesta inválida',
                       decoration: InputDecoration(
@@ -375,6 +384,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: hipertension,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -409,6 +419,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: cancer,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -428,6 +439,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: e_mentales,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -443,6 +455,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: diabetes,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -462,6 +475,7 @@ Widget _heredofamiliares(Color color) {
                     child:Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: alergias,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -477,6 +491,7 @@ Widget _heredofamiliares(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: tuberculosis,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -499,9 +514,9 @@ Widget _heredofamiliares(Color color) {
    );
 }
 
+
 //TARJETA NUMERO DOS PERSONALES NO PATOLOGICOS
 Widget _personalesNoPatologicos(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -510,7 +525,7 @@ Widget _personalesNoPatologicos(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey2,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -525,6 +540,7 @@ Widget _personalesNoPatologicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
+                  controller: vacunas_recientes,
                   validator: (val) =>
                       val.length < 5 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -541,6 +557,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: practicas_deporte ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -556,6 +573,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: cual_deporte,
                         validator: (val) =>
                             val.length < 5 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -572,6 +590,7 @@ Widget _personalesNoPatologicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                   child: TextFormField(
+                    controller: cuantas_veces_deporte ,
                   validator: (val) =>
                       val.length > 2 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -588,6 +607,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: fumas ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -603,6 +623,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: edad_inicio_f,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -619,6 +640,7 @@ Widget _personalesNoPatologicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
+                  controller: cigarros_a_la_semana,
                   validator: (val) =>
                       val.length > 4 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -635,6 +657,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:bebidas_alcoholicas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -650,6 +673,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:edad_inicio_a ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -666,6 +690,7 @@ Widget _personalesNoPatologicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
+                  controller: cantidad_por_semana ,
                   validator: (val) =>
                       val.length > 4 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -682,6 +707,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: drogas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -697,6 +723,7 @@ Widget _personalesNoPatologicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: edad_inicio_d,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -713,6 +740,7 @@ Widget _personalesNoPatologicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
                 child: TextFormField(
+                  controller: cuantas_veces_d ,
                   validator: (val) =>
                       val.length > 4 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -733,7 +761,6 @@ Widget _personalesNoPatologicos(Color color) {
 
 //TARJETA NUMERO TRES ANTECEDENTES QUIRURGICOS
 Widget _antecedentesQuirurgicos(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -742,7 +769,7 @@ Widget _antecedentesQuirurgicos(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey3,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -760,6 +787,7 @@ Widget _antecedentesQuirurgicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: cirujia,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -775,6 +803,7 @@ Widget _antecedentesQuirurgicos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: fecha_cirujia,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -791,6 +820,7 @@ Widget _antecedentesQuirurgicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
+                  controller: tipo_cirujia ,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -804,6 +834,7 @@ Widget _antecedentesQuirurgicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
                 child: TextFormField(
+                  controller: institucion ,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -824,7 +855,6 @@ Widget _antecedentesQuirurgicos(Color color) {
 
 //TARJETA NUMERO CUATRO ANTECEDENTES ALERGICOS
 Widget _antecedentesAlergicos(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -833,7 +863,7 @@ Widget _antecedentesAlergicos(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey4,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -848,6 +878,7 @@ Widget _antecedentesAlergicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
                 child: TextFormField(
+                  controller: alergias ,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -861,6 +892,7 @@ Widget _antecedentesAlergicos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
                 child: TextFormField(
+                  controller: medicamentos ,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -881,7 +913,6 @@ Widget _antecedentesAlergicos(Color color) {
 
 //TARJETA NUMERO CINCO ANTECEDENTES TRAUMATICOS
 Widget _antecedentesTraumaticos(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -890,7 +921,7 @@ Widget _antecedentesTraumaticos(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey5,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -908,6 +939,7 @@ Widget _antecedentesTraumaticos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: accidente ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -919,10 +951,14 @@ Widget _antecedentesTraumaticos(Color color) {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
+              
+                ],
+                
+              ),
+               Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: secuelas_accidente,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -933,15 +969,13 @@ Widget _antecedentesTraumaticos(Color color) {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: fracturas ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -953,10 +987,13 @@ Widget _antecedentesTraumaticos(Color color) {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
+                
+                ],
+              ),
+               Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: complicaciones,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -967,12 +1004,10 @@ Widget _antecedentesTraumaticos(Color color) {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
                 child: TextFormField(
+                  controller: cual_complicacion ,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -983,8 +1018,10 @@ Widget _antecedentesTraumaticos(Color color) {
                   ),
                 ),
               ),
+             
             ],
           ),
+          
         ),
       ),
      )
@@ -993,7 +1030,6 @@ Widget _antecedentesTraumaticos(Color color) {
 
 //TARJETA NUMERO SEIS ANTECEDENTES TRANSFUNCIOMALES
 Widget _antecedentesTransfuncionales(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -1002,7 +1038,7 @@ Widget _antecedentesTransfuncionales(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey6,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -1014,12 +1050,12 @@ Widget _antecedentesTransfuncionales(Color color) {
                 //backgroundColor: Theme.of(context).accentColor,
                 centerTitle: true,
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child:Padding(
+             
+                  
+                    Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: transfuncion_sanguinea,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1030,11 +1066,12 @@ Widget _antecedentesTransfuncionales(Color color) {
                         ),
                       ),
                     ), 
-                  ),
-                  Expanded(
-                    child:Padding(
+                  
+                  
+                   Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: fecha_transfucion,
                         validator: (val) =>
                             val.length > 12 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1045,12 +1082,12 @@ Widget _antecedentesTransfuncionales(Color color) {
                         ),
                       ),
                     ), 
-                  ),
-                ],
-              ),
+                 
+               
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
+                  controller: motivo,
                   validator: (val) =>
                       val.length < 5 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -1071,7 +1108,6 @@ Widget _antecedentesTransfuncionales(Color color) {
 
 //TARJETA NUMERO SIETE ENFERMEDADES
 Widget _enfermedades(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -1080,7 +1116,7 @@ Widget _enfermedades(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey7,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -1100,6 +1136,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: varicela,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1115,6 +1152,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: tosferina,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1134,6 +1172,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: sarampion ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1149,6 +1188,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: rubeola,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1168,6 +1208,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:sinusitis,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1183,6 +1224,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:paperas,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1202,6 +1244,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:hepatitis,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1217,6 +1260,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:tifoidea ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1236,6 +1280,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:fiebre_reumatica ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1251,6 +1296,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:convulsiones,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1270,6 +1316,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:parasitos,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1285,6 +1332,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:diabetes ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1304,6 +1352,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:hipertension,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1319,6 +1368,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:anemia ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1338,6 +1388,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 0),
                       child: TextFormField(
+                        controller:e_cardicas ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1353,6 +1404,7 @@ Widget _enfermedades(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
                       child: TextFormField(
+                        controller:enf_renales ,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1376,7 +1428,6 @@ Widget _enfermedades(Color color) {
 
 //TARJETA NUMERO SIETE ANTECEDENTES GINECOBSTETRICOS
 Widget _antecedentesGinecobstetricos(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -1385,7 +1436,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey8,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -1404,6 +1455,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: edad_de_primer_periodo,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1419,6 +1471,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: periodo_regular,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1438,6 +1491,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:dias_de_duracion ,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
@@ -1449,10 +1503,13 @@ Widget _antecedentesGinecobstetricos(Color color) {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
+                 
+                ],
+              ),
+              Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: cada_cuantos_dias,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
@@ -1463,15 +1520,13 @@ Widget _antecedentesGinecobstetricos(Color color) {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller: embarazos,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
@@ -1483,10 +1538,12 @@ Widget _antecedentesGinecobstetricos(Color color) {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
+                ],
+              ),
+              Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:cuantas_veces_emb ,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
@@ -1497,9 +1554,6 @@ Widget _antecedentesGinecobstetricos(Color color) {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
               Text(''),
               Text(''),
               Text('INGRESE SI O NO, EN DADO CASO DE HABER PASADO POR UNO DE LOS SIGUIENTES PROCESOS:'),
@@ -1509,6 +1563,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:parto ,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
@@ -1524,6 +1579,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
+                        controller:cesarea ,
                         //validator: (val) =>
                           //  val.length > 3 ? null : 'Full name is invalid',
                         decoration: InputDecoration(
@@ -1558,6 +1614,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
                       child: TextFormField(
+                        controller:legrado ,
                         //validator: (val) =>
                           //  val.contains('@') ? null : 'Email is invalid',
                         decoration: InputDecoration(
@@ -1574,6 +1631,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
                   child: TextFormField(
+                    controller:metodo_de_planificacion ,
                     //validator: (val) =>
                       //  val.contains('@') ? null : 'Email is invalid',
                     decoration: InputDecoration(
@@ -1587,6 +1645,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
                   child: TextFormField(
+                    controller:cual_metodo ,
                     //validator: (val) =>
                       //  val.contains('@') ? null : 'Email is invalid',
                     decoration: InputDecoration(
@@ -1603,6 +1662,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
                         child: TextFormField(
+                          controller:papanicolao,
                           //validator: (val) =>
                             //  val.contains('@') ? null : 'Email is invalid',
                           decoration: InputDecoration(
@@ -1618,6 +1678,7 @@ Widget _antecedentesGinecobstetricos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 0),
                         child: TextFormField(
+                          controller: tiempo_de_hacerlo ,
                           //validator: (val) =>
                             //  val.contains('@') ? null : 'Email is invalid',
                           decoration: InputDecoration(
@@ -1641,7 +1702,6 @@ Widget _antecedentesGinecobstetricos(Color color) {
 
 //TARJETA NUMERO OCHO TRATAMIENTO ACTUAL
 Widget _tratamientoActual(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -1650,7 +1710,7 @@ Widget _tratamientoActual(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey9,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -1665,6 +1725,7 @@ Widget _tratamientoActual(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
                 child: TextFormField(
+                  controller:descripcion_tratamiento ,
                   //validator: (val) =>
                     //  val.contains('@') ? null : 'Email is invalid',
                   decoration: InputDecoration(
@@ -1685,7 +1746,6 @@ Widget _tratamientoActual(Color color) {
 
 //APARTADO PARA CONTACTOS DEL ALUMNO
 Widget _contactos(Color color) {
-  final form = GlobalKey<FormState>();
     return InkWell(
       child: Padding(
       padding: EdgeInsets.all(16),
@@ -1694,7 +1754,7 @@ Widget _contactos(Color color) {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey10,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -1710,6 +1770,7 @@ Widget _contactos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 child: TextFormField(
+                  controller:nombre1,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -1726,6 +1787,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
+                        controller:parentesco1,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1741,6 +1803,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
+                        controller:telefono1,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1757,6 +1820,7 @@ Widget _contactos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                   child: TextFormField(
+                    controller:direccion1 ,
                     validator: (val) =>
                       val.length < 10 ? null : 'Respuesta inválida',
                       decoration: InputDecoration(
@@ -1772,6 +1836,7 @@ Widget _contactos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 child: TextFormField(
+                  controller:nombre2,
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
@@ -1788,6 +1853,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
+                        controller:parentesco2,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1803,6 +1869,7 @@ Widget _contactos(Color color) {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       child: TextFormField(
+                        controller:telefono2,
                         validator: (val) =>
                             val.length < 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
@@ -1819,6 +1886,7 @@ Widget _contactos(Color color) {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                   child: TextFormField(
+                    controller:direccion2 ,
                     validator: (val) =>
                       val.length < 10 ? null : 'Respuesta inválida',
                       decoration: InputDecoration(
@@ -1835,5 +1903,5 @@ Widget _contactos(Color color) {
       ),
      )
     );
-  }*/
+  }
 }
