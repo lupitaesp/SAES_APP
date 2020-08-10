@@ -1,113 +1,176 @@
 import 'package:flutter/material.dart';
+import 'package:saes/ingresar/login_screen.dart';
+import 'package:saes/operaciones/db_historial.dart';
+import 'package:saes/operaciones/db_operations.dart';
 
 class HistoriaClinica extends StatefulWidget {
+  String matricula;
+  HistoriaClinica({this.matricula});
   @override
   _FormularioState createState() => _FormularioState();
 }
 
 class _FormularioState extends State<HistoriaClinica> {
   //C O N T R O L A D O R E S
-
-    /*INFORMACION PERONAL*/
-    TextEditingController fecha_nac;          // L I S T O
-    TextEditingController edad;               // L I S T O 
-    TextEditingController nss;                // L I S T O
-    TextEditingController lugar_residencia;   // L I S T O
+  List<HistoriaClinica> _HistoriaClinica;
+  final formkey = new GlobalKey<FormState>();
+ 
+  /*INFORMACION PERONAL*/
+  TextEditingController fecha_nac; // L I S T O
+  TextEditingController edad; // L I S T O
+  TextEditingController nss; // L I S T O
+  TextEditingController lugar_residencia; // L I S T O
 
   /*ANTECEDENTES HEREDOFAMILIARES*/
-    TextEditingController e_cardicas;         // L I S T O
-    TextEditingController hipertension;       // L I S T O
-    TextEditingController convulsiones;       // L I S T O
-    TextEditingController cancer;             // L I S T O
-    TextEditingController e_mentales;         // L I S T O
-    TextEditingController diabetes;           // L I S T O
-    TextEditingController e_alergicas;        // L I S T O
-    TextEditingController tuberculosis;       // L I S T O
+  TextEditingController e_cardicas; // L I S T O
+  TextEditingController hipertension; // L I S T O
+  TextEditingController convulsiones; // L I S T O
+  TextEditingController cancer; // L I S T O
+  TextEditingController e_mentales; // L I S T O
+  TextEditingController diabetes; // L I S T O
+  TextEditingController e_alergicas; // L I S T O
+  TextEditingController tuberculosis; // L I S T O
 
   /*PERSONALES NO PATOLOGICOS*/
-    TextEditingController vacunas_recientes;    // L I S T O
-    TextEditingController practicas_deporte;    // L I S T O
-    TextEditingController cual_deporte;         // L I S T O
-    TextEditingController cuantas_veces_deporte;// L I S T O
-    TextEditingController fumas;                // L I S T O
-    TextEditingController edad_inicio_f;        // L I S T O
-    TextEditingController cigarros_a_la_semana; // L I S T O
-    TextEditingController bebidas_alcoholicas;  // L I S T O
-    TextEditingController edad_inicio_a;        // L I S T O
-    TextEditingController cantidad_por_semana;  // L I S T O
-    TextEditingController drogas;               // L I S T O
-    TextEditingController edad_inicio_d;        // L I S T O
-    TextEditingController cuantas_veces_d;      // L I S T O
+  TextEditingController vacunas_recientes; // L I S T O
+  TextEditingController practicas_deporte; // L I S T O
+  TextEditingController cual_deporte; // L I S T O
+  TextEditingController cuantas_veces_deporte; // L I S T O
+  TextEditingController fumas; // L I S T O
+  TextEditingController edad_inicio_f; // L I S T O
+  TextEditingController cigarros_a_la_semana; // L I S T O
+  TextEditingController bebidas_alcoholicas; // L I S T O
+  TextEditingController edad_inicio_a; // L I S T O
+  TextEditingController cantidad_por_semana; // L I S T O
+  TextEditingController drogas; // L I S T O
+  TextEditingController edad_inicio_d; // L I S T O
+  TextEditingController cuantas_veces_d; // L I S T O
 
   /*ANTECEDENTES QUIRURGICOS*/
-    TextEditingController cirujia;              // L I S T O
-    TextEditingController fecha_cirujia;        // L I S T O
-    TextEditingController tipo_cirujia;         // L I S T O
-    TextEditingController institucion;          // L I S T O
+  TextEditingController cirujia; // L I S T O
+  TextEditingController fecha_cirujia; // L I S T O
+  TextEditingController tipo_cirujia; // L I S T O
+  TextEditingController institucion; // L I S T O
 
   /*ANTECEDENTES ALERGICOS*/
-    TextEditingController alergias;             // L I S T O
-    TextEditingController medicamentos;         // L I S T O
+  TextEditingController alergias; // L I S T O
+  TextEditingController medicamentos; // L I S T O
 
   /*ANTECEDENTES TRAUMATICOS*/
-    TextEditingController accidente;            // L I S T O
-    TextEditingController secuelas_accidente;   // L I S T O
-    TextEditingController fracturas;            // L I S T O
-    TextEditingController complicaciones;       // L I S T O
-    TextEditingController cual_complicacion;    // L I S T O
+  TextEditingController accidente; // L I S T O
+  TextEditingController secuelas_accidente; // L I S T O
+  TextEditingController fracturas; // L I S T O
+  TextEditingController complicaciones; // L I S T O
+  TextEditingController cual_complicacion; // L I S T O
 
   /*ANTECEDENTES TRANSFUNCIONALES*/
-    TextEditingController transfuncion_sanguinea; // L I S T O
-    TextEditingController fecha_transfucion;      // L I S T O
-    TextEditingController motivo;
+  TextEditingController transfuncion_sanguinea; // L I S T O
+  TextEditingController fecha_transfucion; // L I S T O
+  TextEditingController motivo;
 
   /*ENFERMEDADES*/
-    TextEditingController varicela;               // L I S T O
-    TextEditingController tosferina;              // L I S T O
-    TextEditingController sarampion;              // L I S T O
-    TextEditingController rubeola;                // L I S T O
-    TextEditingController sinusitis;              // L I S T O
-    TextEditingController paperas;                // L I S T O
-    TextEditingController hepatitis;              // L I S T O
-    TextEditingController tifoidea;               // L I S T O
-    TextEditingController fiebre_reumatica;       // L I S T O
-    TextEditingController convulciones;           // L I S T O
-    TextEditingController parasitos;              // L I S T O
-    TextEditingController diabetis_mellitus;      // L I S T O
-    TextEditingController hipertension_arterial;  // L I S T O
-    TextEditingController anemia;                 // L I S T O
-    TextEditingController enf_cardiacas;          // L I S T O
-    TextEditingController enf_renales;            // L I S T O
+  TextEditingController varicela; // L I S T O
+  TextEditingController tosferina; // L I S T O
+  TextEditingController sarampion; // L I S T O
+  TextEditingController rubeola; // L I S T O
+  TextEditingController sinusitis; // L I S T O
+  TextEditingController paperas; // L I S T O
+  TextEditingController hepatitis; // L I S T O
+  TextEditingController tifoidea; // L I S T O
+  TextEditingController fiebre_reumatica; // L I S T O
+  TextEditingController convulciones; // L I S T O
+  TextEditingController parasitos; // L I S T O
+  TextEditingController diabetis_mellitus; // L I S T O
+  TextEditingController hipertension_arterial; // L I S T O
+  TextEditingController anemia; // L I S T O
+  TextEditingController enf_cardiacas; // L I S T O
+  TextEditingController enf_renales; // L I S T O
 
   /*ANTECEDENTES GINECOBSTETRICOS*/
-    TextEditingController edad_de_primer_periodo;   // L I S T O
-    TextEditingController periodo_regular;        // L I S T O
-    TextEditingController dias_de_duracion;       // L I S T O
-    TextEditingController cada_cuantos_dias;      // L I S T O  
-    TextEditingController embarazos;              // L I S T O
-    TextEditingController cuantas_veces_emb;      // L I S T O
-    TextEditingController parto;                  // L I S T O
-    TextEditingController cesarea;                // L I S T O
-    TextEditingController aborto;                 // L I S T O    
-    TextEditingController legrado;                // L I S T O
-    TextEditingController metodo_de_planificacion;  // L I S T O  
-    TextEditingController cual_metodo;            // L I S T O
-    TextEditingController papanicolao;            // L I S T O
-    TextEditingController tiempo_de_hacerlo;      // L I S T O
+  TextEditingController edad_de_primer_periodo; // L I S T O
+  TextEditingController periodo_regular; // L I S T O
+  TextEditingController dias_de_duracion; // L I S T O
+  TextEditingController cada_cuantos_dias; // L I S T O
+  TextEditingController embarazos; // L I S T O
+  TextEditingController cuantas_veces_emb; // L I S T O
+  TextEditingController parto; // L I S T O
+  TextEditingController cesarea; // L I S T O
+  TextEditingController aborto; // L I S T O
+  TextEditingController legrado; // L I S T O
+  TextEditingController metodo_de_planificacion; // L I S T O
+  TextEditingController cual_metodo; // L I S T O
+  TextEditingController papanicolao; // L I S T O
+  TextEditingController tiempo_de_hacerlo; // L I S T O
 
   /*TRATAMIENTO*/
-    TextEditingController descripcion_tratamiento;  // L I S T O
+  TextEditingController descripcion_tratamiento; // L I S T O
 
   /*CONTACTOS*/
-    TextEditingController nombre1;              // L I S T O
-    TextEditingController parentesco1;          // L I S T O
-    TextEditingController direccion1;           // L I S T O  
-    TextEditingController telefono1;            // L I S T O
-    TextEditingController nombre2;              // L I S T O
-    TextEditingController parentesco2;          // L I S T O
-    TextEditingController direccion2;           // L I S T O
-    TextEditingController telefono2;            // L I S T O
-    
+  TextEditingController nombre1; // L I S T O
+  TextEditingController parentesco1; // L I S T O
+  TextEditingController direccion1; // L I S T O
+  TextEditingController telefono1; // L I S T O
+  TextEditingController nombre2; // L I S T O
+  TextEditingController parentesco2; // L I S T O
+  TextEditingController direccion2; // L I S T O
+  TextEditingController telefono2; // L I S T O
+
+  @override
+  void initState() {
+    super.initState();
+    _HistoriaClinica = [];
+    fecha_nac = TextEditingController();
+    edad = TextEditingController();
+    nss = TextEditingController();
+    lugar_residencia = TextEditingController();
+  }
+
+  //INSERT DATA
+  _historiaData() {
+    if (fecha_nac.text.isEmpty ||
+        edad.text.isEmpty ||
+        nss.text.isEmpty ||
+        lugar_residencia.text.isEmpty) {
+      print("Empy fields");
+      return;
+    }
+    //_showProgress('Adding Student...');
+    BDConnections2.historiaData(
+      '$matricula',
+      fecha_nac.text,
+      nss.text,
+      edad.text,
+      lugar_residencia.text,
+    ).then((result) {
+      if ('sucess' == result) {
+        fecha_nac.text = "";
+        edad.text = "";
+        nss.text = "";
+        lugar_residencia.text = "";
+        _clearValues();
+      }
+    });
+  }
+
+  _clearValues() {
+    fecha_nac.text = "";
+    nss.text = "";
+    edad.text = "";
+    lugar_residencia.text = "";
+  }
+
+  void validateAndSave() {
+    final form = formkey.currentState;
+    if (form.validate()) {
+      print('form is valid');
+      // _showScaffold("DATOS REGISTRADOS!");
+      _historiaData();
+      _clearValues();
+    } else {
+      print('form invalid');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,13 +178,13 @@ class _FormularioState extends State<HistoriaClinica> {
         backgroundColor: Colors.grey[400],
         elevation: .0,
         leading: Image.asset('assets/saes2.png'),
-        title: Text('HISTORIA CLINICA', style: TextStyle(color: Colors.grey[600])),
+        title:
+            Text('HISTORIA CLINICA', style: TextStyle(color: Colors.grey[600])),
       ),
-      body:
-      ListView(
+      body: ListView(
         children: <Widget>[
           _datosPersonales(Colors.transparent),
-          _heredofamiliares(Colors.transparent),
+          /*  _heredofamiliares(Colors.transparent),
           _personalesNoPatologicos(Colors.transparent),
           _antecedentesQuirurgicos(Colors.transparent),
           _antecedentesAlergicos(Colors.transparent),
@@ -130,25 +193,57 @@ class _FormularioState extends State<HistoriaClinica> {
           _enfermedades(Colors.transparent),
           _antecedentesGinecobstetricos(Colors.transparent),
           _tratamientoActual(Colors.transparent),
-          _contactos(Colors.transparent),
+          _contactos(Colors.transparent),*/
+          SizedBox(height: 40),
+          Column(
+            children: <Widget>[
+              MaterialButton(
+                onPressed: () {
+                  _historiaData();
+                },
+                child: InkWell(
+                  child: Container(
+                    height: 45,
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.green[200],
+                            Colors.indigo,
+                            Colors.green,
+                            Colors.indigo[200]
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    child: Center(
+                      child: Text(
+                        'GUARDAR'.toUpperCase(),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
-      )
+      ),
     );
-  }  
-}
+  }
 
 //TARJETA DE DATOS PERSONALES
-Widget _datosPersonales(Color color) {
-  final form = GlobalKey<FormState>();
+  Widget _datosPersonales(Color color) {
+   // final form = GlobalKey<FormState>();
     return InkWell(
-      child: Padding(
+        child: Padding(
       padding: EdgeInsets.all(16),
       child: Material(
         elevation: 1,
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(8),
         child: Form(
-          key: form,
+          key: formkey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -163,10 +258,12 @@ Widget _datosPersonales(Color color) {
                 children: <Widget>[
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 24, top: 16),
                       child: TextFormField(
+                        controller: fecha_nac,
                         validator: (val) =>
-                            val.length > 11 ? null : 'Respuesta inválida',
+                            val.length < 11 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
                           labelText: 'Fecha de Nacimiento',
                           hintText: '0000/00/00',
@@ -178,10 +275,12 @@ Widget _datosPersonales(Color color) {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 16),
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 24, top: 16),
                       child: TextFormField(
+                        controller: edad,
                         validator: (val) =>
-                            val.length > 3 ? null : 'Respuesta inválida',
+                            val.length < 2 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
                           labelText: 'Edad',
                           hintText: 'Edad',
@@ -195,38 +294,41 @@ Widget _datosPersonales(Color color) {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
-                   child: TextFormField(
-                    validator: (val) =>
-                      val.length > 11 ? null : 'Respuesta inválida',  /*P E N D I E N T E  C A N T I D A D  D E  N S S*/ 
-                        decoration: InputDecoration(
-                          labelText: 'Número de Seguro Social',
-                          hintText: 'Deben ser 10 dígitos',
-                          icon: Icon(Icons.list),
-                          isDense: true,
-                        ),
+                child: TextFormField(
+                  controller: nss,
+                  validator: (val) =>
+                      val.length < 10 ? null : 'Respuesta inválida',
+                  /*P E N D I E N T E  C A N T I D A D  D E  N S S*/
+                  decoration: InputDecoration(
+                    labelText: 'Número de Seguro Social',
+                    hintText: 'Deben ser 10 dígitos',
+                    icon: Icon(Icons.list),
+                    isDense: true,
                   ),
+                ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24, top:0),
-                   child: TextFormField(
-                    validator: (val) =>
-                      val.length < 3 ? null : 'Respuesta inválida',  
-                        decoration: InputDecoration(
-                          labelText: 'Lugar de residencia',
-                          hintText: 'Lugar de residencia',
-                          icon: Icon(Icons.home),
-                          isDense: true,
-                        ),
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, bottom: 24, top: 0),
+                child: TextFormField(
+                  controller: lugar_residencia,
+                  validator: (val) =>
+                      val.length < 3 ? null : 'Respuesta inválida',
+                  decoration: InputDecoration(
+                    labelText: 'Lugar de residencia',
+                    hintText: 'Lugar de residencia',
+                    icon: Icon(Icons.home),
+                    isDense: true,
                   ),
+                ),
               ),
             ],
           ),
         ),
       ),
-     )
-    );
+    ));
   }
-
+/*
 //TARJETA NUMERO UNO ANTECEDENTES HEREDOFAMILIARES
 Widget _heredofamiliares(Color color) {
   final form = GlobalKey<FormState>();
@@ -1733,4 +1835,5 @@ Widget _contactos(Color color) {
       ),
      )
     );
-  }
+  }*/
+}

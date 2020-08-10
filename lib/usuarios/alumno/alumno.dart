@@ -311,7 +311,9 @@ class Alumno extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HistoriaClinica()));
+                              builder: (context) => HistoriaClinica(
+                                 matricula: matricula,
+                              )));
                     },
                   ),
                   _buildDivider(),
