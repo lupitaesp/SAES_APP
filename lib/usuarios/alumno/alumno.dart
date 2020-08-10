@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:saes/principal/principal.dart';
 import 'package:saes/usuarios/alumno/perfilAlumno.dart';
 import 'package:saes/usuarios/alumno/web.dart';
-import 'package:saes/usuarios/historia/historia_clinica.dart';
+import 'package:saes/usuarios/historia/historiaClinica.dart';
 import 'package:saes/usuarios/rounded.dart';
 import 'package:http/http.dart' as http;
 
@@ -51,9 +51,7 @@ class Alumno extends StatelessWidget {
   final Color primary = Colors.white;
   final Color active = Colors.green[700];
 
-  void _http() async {
-    final response = await http.post("http://192.168.0.106/SAES_APP/login.php");
-  }
+  
 
   @override
   Widget build(BuildContext context) {

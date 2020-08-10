@@ -286,7 +286,7 @@ class Doctora extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => Perfil()));*/
                     },
                   ),
-                  _buildDivider(),
+                 /* _buildDivider(),
                   ListTile(
                     leading: Icon(Icons.info_outline, color: active),
                     title: Text('Contactanos',
@@ -295,7 +295,7 @@ class Doctora extends StatelessWidget {
                       /* Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Perfil()));*/
                     },
-                  ),
+                  ),*/
                   _buildDivider(),
                   ListTile(
                     leading: Icon(Icons.close, color: active),

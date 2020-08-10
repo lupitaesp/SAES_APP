@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 class Registro extends StatefulWidget {
   @override
   HomaPageState createState() => new HomaPageState();
@@ -133,6 +132,10 @@ class HomaPageState extends State<Registro> {
     ));
   }
 
+  /* usuario() {
+    _usuarioConroller.text = "Alumno";
+  }*/
+
   //Metodo para imagen
   pickImagefromGallery() {
     ImagePicker.pickImage(source: ImageSource.gallery).then((imgFile) {
@@ -144,6 +147,7 @@ class HomaPageState extends State<Registro> {
       //Funciona para la obtencion de imagen ya sea galeria o camera
       //Navigator.of(context).pop();
       _fotoConroller.text = "Campo lleno";
+      _usuarioConroller.text = "Alumno";
       return imagen;
     });
   }
@@ -653,15 +657,16 @@ class HomaPageState extends State<Registro> {
                       padding: const EdgeInsets.all(4.0),
                       child: Row(
                         children: <Widget>[
-                          Expanded(
+                           /*Expanded(
                             child: Container(
                               margin: EdgeInsets.only(right: 20.0, left: 20.0),
                               child: TextFormField(
                                 controller: _usuarioConroller,
                                 keyboardType: TextInputType.text,
-                                validator: (valor) => valor.length < 3
-                                    ? 'Ingresa el tipo de usuario'
-                                    : null,
+                                validator: (val) =>
+                                    !val.contains('Alumno')
+                                        ? 'D'
+                                        : null,
                                 decoration: InputDecoration(
                                   icon: Icon(Icons.verified_user,
                                       color: Colors.green),
@@ -686,7 +691,7 @@ class HomaPageState extends State<Registro> {
                                 ),
                               ),
                             ),
-                          )
+                          )*/
                         ],
                       ),
                     ),
