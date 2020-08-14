@@ -5,7 +5,7 @@ import 'package:saes/ingresar/registro.dart';
 
 class BDConnections {
   //Direccion IPv4 de la computadora (Se encuentra con el comando "ipconfig")
-  static const SERVER = "http://192.168.0.106/SAES_APP/sqloperations.php";
+  static const SERVER = "http://192.168.43.106/SAES_APP/sqloperations.php";
   static const _SELECT_TABLE_COMMAND = "SELECT_TABLE";
   static const _INSERT_DATA_COMMAND = "INSERT_DATA";
   static const _HISTORIA_DATA_COMMAND = "INSERT_HISTORIAL";

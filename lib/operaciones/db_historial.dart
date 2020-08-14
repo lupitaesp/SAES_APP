@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'Registrar.dart';
-import 'package:saes/ingresar/registro.dart';
+
 
 class BDConnections2 {
   //Direccion IPv4 de la computadora (Se encuentra con el comando "ipconfig")
-  static const SERVER = "http://192.168.0.106/SAES_APP/historia.php";
+  static const SERVER = "http://192.168.43.106/SAES_APP/historia.php";
   static const _HISTORIA_DATA_COMMAND = "INSERT_HISTORIAL";
   //Get Data from
   /* static Future<List<Registrar>> selectData() async {
@@ -118,7 +116,7 @@ class BDConnections2 {
     String metodo_de_planificacion,
     String cual_metodo,
    // String papanicolau,
-    String tiempo_de_hacerlo,
+   // String tiempo_de_hacerlo,
 
     String descripcion_tratamiento,
 
@@ -212,7 +210,7 @@ class BDConnections2 {
      map['metodo_de_planificacion'] = metodo_de_planificacion;
      map['cual_metodo'] = cual_metodo;
     // map['papanicolau'] = papanicolau;
-     map['tiempo_de_hacerlo'] = tiempo_de_hacerlo;
+    // map['tiempo_de_hacerlo'] = tiempo_de_hacerlo;
 
      map['descripcion_tratamiento'] = descripcion_tratamiento;
 

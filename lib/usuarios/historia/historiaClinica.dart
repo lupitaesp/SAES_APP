@@ -33,7 +33,7 @@ class _FormularioState extends State<HistoriaClinica> {
   /*ANTECEDENTES HEREDOFAMILIARES*/
   TextEditingController e_cardicas; // L I S T O
   TextEditingController hipertension; // L I S T O
-  TextEditingController convulsiones; // L I S T O
+  //TextEditingController convulsiones; // L I S T O
   TextEditingController cancer; // L I S T O
   TextEditingController e_mentales; // L I S T O
   TextEditingController diabetes; // L I S T O
@@ -108,8 +108,8 @@ class _FormularioState extends State<HistoriaClinica> {
   TextEditingController legrado; // L I S T O
   TextEditingController metodo_de_planificacion; // L I S T O
   TextEditingController cual_metodo; // L I S T O
-  TextEditingController papanicolao; // L I S T O
-  TextEditingController tiempo_de_hacerlo; // L I S T O
+  //TextEditingController papanicolao; // L I S T O
+  //TextEditingController tiempo_de_hacerlo; // L I S T O
 
   /*TRATAMIENTO*/
   TextEditingController descripcion_tratamiento; // L I S T O
@@ -136,7 +136,7 @@ class _FormularioState extends State<HistoriaClinica> {
     /*ANTECEDENTES HEREDOFAMILIARES*/
     e_cardicas = TextEditingController();
     hipertension = TextEditingController();
-    convulsiones = TextEditingController();
+    //convulsiones = TextEditingController();
     cancer = TextEditingController();
     e_mentales = TextEditingController();
     diabetes = TextEditingController();
@@ -211,8 +211,8 @@ class _FormularioState extends State<HistoriaClinica> {
     legrado = TextEditingController();
     metodo_de_planificacion = TextEditingController();
     cual_metodo = TextEditingController();
-    papanicolao = TextEditingController();
-    tiempo_de_hacerlo = TextEditingController();
+    //papanicolao = TextEditingController();
+    //tiempo_de_hacerlo = TextEditingController();
 
     /*TRATAMIENTO*/
     descripcion_tratamiento = TextEditingController();
@@ -293,8 +293,6 @@ class _FormularioState extends State<HistoriaClinica> {
       enf_cardiacas.text.isEmpty ||
       enf_renales.text.isEmpty ||
 
-
-
       descripcion_tratamiento.text.isEmpty ||
 
       nombre1.text.isEmpty ||
@@ -318,7 +316,7 @@ class _FormularioState extends State<HistoriaClinica> {
       lugar_residencia.text,
       e_cardicas.text,
       hipertension.text,
-      convulsiones.text,
+      //convulsiones.text,
       cancer.text,
       e_mentales.text,
       diabetes.text,
@@ -360,7 +358,7 @@ class _FormularioState extends State<HistoriaClinica> {
       hepatitis.text,
       tifoidea.text,
       fiebre_reumatica.text,
-      //convulciones.text,
+      convulciones.text,
       parasitos.text,
       diabetis_mellitus.text,
       hipertension_arterial.text,
@@ -380,7 +378,7 @@ class _FormularioState extends State<HistoriaClinica> {
       metodo_de_planificacion.text,
       cual_metodo.text,
       // papanicolao.text,
-      tiempo_de_hacerlo.text,
+      //tiempo_de_hacerlo.text,
       descripcion_tratamiento.text,
       nombre1.text,
       parentesco1.text,
@@ -399,7 +397,7 @@ class _FormularioState extends State<HistoriaClinica> {
 
         e_cardicas.text = "";
         hipertension.text = "";
-        convulsiones.text = "";
+        //convulsiones.text = "";
         cancer.text = "";
         e_mentales.text = "";
         diabetes.text = "";
@@ -452,7 +450,7 @@ class _FormularioState extends State<HistoriaClinica> {
         diabetis_mellitus.text = "";
         hipertension_arterial.text = "";
         anemia.text = "";
-        //enf_cardiacas.text = "";
+        enf_cardiacas.text = "";
         enf_renales.text = "";
 
         edad_de_primer_periodo.text = "";
@@ -467,8 +465,8 @@ class _FormularioState extends State<HistoriaClinica> {
         legrado.text = "";
         metodo_de_planificacion.text = "";
         cual_metodo.text = "";
-        papanicolao.text = "";
-        tiempo_de_hacerlo.text = "";
+        //papanicolao.text = "";
+        //tiempo_de_hacerlo.text = "";
 
         descripcion_tratamiento.text = "";
 
@@ -494,7 +492,7 @@ class _FormularioState extends State<HistoriaClinica> {
 
     e_cardicas.text = "";
     hipertension.text = "";
-    convulsiones.text = "";
+    //convulsiones.text = "";
     cancer.text = "";
     e_mentales.text = "";
     diabetes.text = "";
@@ -562,8 +560,8 @@ class _FormularioState extends State<HistoriaClinica> {
     legrado.text = "";
     metodo_de_planificacion.text = "";
     cual_metodo.text = "";
-    papanicolao.text = "";
-    tiempo_de_hacerlo.text = "";
+    //papanicolao.text = "";
+    //tiempo_de_hacerlo.text = "";
 
     descripcion_tratamiento.text = "";
 
@@ -815,22 +813,6 @@ class _FormularioState extends State<HistoriaClinica> {
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
-                        controller: convulsiones,
-                        validator: (val) =>
-                            val.length > 3 ? null : 'Respuesta inválida',
-                        decoration: InputDecoration(
-                          labelText: 'Convulsiones',
-                          hintText: 'Convulsiones',
-                          icon: Icon(Icons.label_important),
-                          isDense: true,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                      child: TextFormField(
                         controller: cancer,
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
@@ -843,10 +825,6 @@ class _FormularioState extends State<HistoriaClinica> {
                       ),
                     ),
                   ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -863,6 +841,11 @@ class _FormularioState extends State<HistoriaClinica> {
                       ),
                     ),
                   ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -879,11 +862,7 @@ class _FormularioState extends State<HistoriaClinica> {
                       ),
                     ),
                   ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
+                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
@@ -899,6 +878,11 @@ class _FormularioState extends State<HistoriaClinica> {
                       ),
                     ),
                   ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                 
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -961,10 +945,8 @@ class _FormularioState extends State<HistoriaClinica> {
                   ),
                 ),
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
+             
+                    Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: practicas_deporte,
@@ -978,9 +960,8 @@ class _FormularioState extends State<HistoriaClinica> {
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
+                
+                    Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: cual_deporte,
@@ -994,9 +975,7 @@ class _FormularioState extends State<HistoriaClinica> {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+               
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
@@ -1061,10 +1040,7 @@ class _FormularioState extends State<HistoriaClinica> {
                   ),
                 ),
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
+             Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: bebidas_alcoholicas,
@@ -1078,9 +1054,7 @@ class _FormularioState extends State<HistoriaClinica> {
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
+                Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: edad_inicio_a,
@@ -1094,9 +1068,7 @@ class _FormularioState extends State<HistoriaClinica> {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+             
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
@@ -1111,10 +1083,7 @@ class _FormularioState extends State<HistoriaClinica> {
                   ),
                 ),
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
+              Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: drogas,
@@ -1128,9 +1097,7 @@ class _FormularioState extends State<HistoriaClinica> {
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
+                   Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: TextFormField(
                         controller: edad_inicio_d,
@@ -1144,9 +1111,7 @@ class _FormularioState extends State<HistoriaClinica> {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+              
               Padding(
                 padding:
                     EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 24),
@@ -1700,8 +1665,8 @@ class _FormularioState extends State<HistoriaClinica> {
                         validator: (val) =>
                             val.length > 3 ? null : 'Respuesta inválida',
                         decoration: InputDecoration(
-                          labelText: 'Convulsiones',
-                          hintText: 'Convulsiones',
+                          labelText: 'Convulciones',
+                          hintText: 'Convulciones',
                           icon: Icon(Icons.label_important),
                           isDense: true,
                         ),
@@ -2058,7 +2023,7 @@ class _FormularioState extends State<HistoriaClinica> {
                   ),
                 ),
               ),
-              Row(
+              /*Row(
                 children: <Widget>[
                   Expanded(
                     child: Padding(
@@ -2095,7 +2060,7 @@ class _FormularioState extends State<HistoriaClinica> {
                     ),
                   ),
                 ],
-              ),
+              ),*/
             ],
           ),
         ),
@@ -2177,7 +2142,7 @@ class _FormularioState extends State<HistoriaClinica> {
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
-                    labelText: 'Nombre',
+                    labelText: 'Nombre Completo',
                     hintText: 'Ingrese nombre completo',
                     icon: Icon(Icons.person_add),
                     isDense: true,
@@ -2243,7 +2208,7 @@ class _FormularioState extends State<HistoriaClinica> {
                   validator: (val) =>
                       val.length < 3 ? null : 'Respuesta inválida',
                   decoration: InputDecoration(
-                    labelText: 'Nombre',
+                    labelText: 'Nombre Completo',
                     hintText: 'Ingrese nombre completo',
                     icon: Icon(Icons.person_add),
                     isDense: true,

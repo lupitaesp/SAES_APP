@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
 class Historia{
-  /*INFORMACION PERONAL*/
+  //INFORMACION PERONAL
     String fecha_nac;
     String edad;
     String nss;
     String lugar_residencia;
 
-  /*ANTECEDENTES HEREDOFAMILIARES*/
+  //ANTECEDENTES HEREDOFAMILIARES
     String e_cardicas;
     String hipertension;
-    String convulsiones;
+    //String convulsiones;
     String cancer;
     String e_mentales;
     String diabetes;
     String e_alergicas;
     String tuberculosis;
 
-  /*PERSONALES NO PATOLOGICOS*/
+  //PERSONALES NO PATOLOGICOS
     String vacunas_recientes;
     String practicas_deporte;
     String cual_deporte;
@@ -32,29 +32,29 @@ class Historia{
     String edad_inicio_d;
     String cuantas_veces_d;
 
-  /*ANTECEDENTES QUIRURGICOS*/
+  //ANTECEDENTES QUIRURGICOS
     String cirujia;
     String fecha_cirujia;
     String tipo_cirujia;
     String institucion;
 
-  /*ANTECEDENTES ALERGICOS*/
+  //ANTECEDENTES ALERGICOS
     String alergias;
     String medicamentos;
 
-  /*ANTECEDENTES TRAUMATICOS*/
+  //ANTECEDENTES TRAUMATICOS
     String accidente;
     String secuelas_accidente;
     String fracturas;
     String complicaciones;
     String cual_complicacion;
 
-  /*ANTECEDENTES TRANSFUNCIONALES*/
+  //ANTECEDENTES TRANSFUNCIONALES
     String transfuncion_sanguinea;
     String fecha_transfucion;
     String motivo;
 
-  /*ENFERMEDADES*/
+  //ENFERMEDADES
     String varicela;
     String tosferina;
     String sarampion;
@@ -64,7 +64,7 @@ class Historia{
     String hepatitis;
     String tifoidea;
     String fiebre_reumatica;
-    //String convulciones;
+    String convulciones;
     String parasitos;
     String diabetis_mellitus;
     String hipertension_arterial;
@@ -72,7 +72,7 @@ class Historia{
     String enf_cardiacas;
     String enf_renales;
 
-  /*ANTECEDENTES GINECOBSTETRICOS*/
+  //ANTECEDENTES GINECOBSTETRICOS
     String edad_de_primer_periodo;
     String periodo_regular;
     String dias_de_duracion;
@@ -86,12 +86,12 @@ class Historia{
     String metodo_de_planificacion;
     String cual_metodo;
     //String papanicolao; 
-    String tiempo_de_hacerlo;
+    //String tiempo_de_hacerlo;
 
-  /*TRATAMIENTO*/
+  //TRATAMIENTO
     String descripcion_tratamiento;
 
-  /*CONTACTOS*/
+  //CONTACTOS
     String nombre1;
     String parentesco1;
     String direccion1;
@@ -105,23 +105,23 @@ class Historia{
 
     Historia(
       {
-        /*INFORMACION PERONAL*/
+        //INFORMACION PERONAL
           this.fecha_nac,
           this.edad,
           this.nss,
           this.lugar_residencia,
 
-        /*ANTECEDENTES HEREDOFAMILIARES*/
+        //ANTECEDENTES HEREDOFAMILIARES
           this.e_cardicas,
           this.hipertension,
-          this.convulsiones,
+          //this.convulsiones,
           this.cancer,
           this.e_mentales,
           this.diabetes,
           this.e_alergicas,
           this.tuberculosis,
 
-        /*PERSONALES NO PATOLOGICOS*/
+        //PERSONALES NO PATOLOGICOS
           this.vacunas_recientes,
           this.practicas_deporte,
           this.cual_deporte,
@@ -136,29 +136,29 @@ class Historia{
           this.edad_inicio_d,
           this.cuantas_veces_d,
 
-        /*ANTECEDENTES QUIRURGICOS*/
+        //ANTECEDENTES QUIRURGICOS
           this.cirujia,
           this.fecha_cirujia,
           this.tipo_cirujia,
           this.institucion,
 
-        /*ANTECEDENTES ALERGICOS*/
+        //ANTECEDENTES ALERGICOS
           this.alergias,
           this.medicamentos,
 
-        /*ANTECEDENTES TRAUMATICOS*/
+        //ANTECEDENTES TRAUMATICOS
           this.accidente,
           this.secuelas_accidente,
           this.fracturas,
           this.complicaciones,
           this.cual_complicacion,
 
-        /*ANTECEDENTES TRANSFUNCIONALES*/
+        //ANTECEDENTES TRANSFUNCIONALES
           this.transfuncion_sanguinea,
           this.fecha_transfucion,
           this.motivo,
 
-        /*ENFERMEDADES*/
+        //ENFERMEDADES
           this.varicela,
           this.tosferina,
           this.sarampion,
@@ -168,7 +168,7 @@ class Historia{
           this.hepatitis,
           this.tifoidea,
           this.fiebre_reumatica,
-         // this.convulciones,
+          this.convulciones,
           this.parasitos,
           this.diabetis_mellitus,
           this.hipertension_arterial,
@@ -176,7 +176,7 @@ class Historia{
           this.enf_cardiacas,
           this.enf_renales,
 
-        /*ANTECEDENTES GINECOBSTETRICOS*/
+        //ANTECEDENTES GINECOBSTETRICOS
           this.edad_de_primer_periodo,
           this.periodo_regular,
           this.dias_de_duracion,
@@ -190,12 +190,12 @@ class Historia{
           this.metodo_de_planificacion,
           this.cual_metodo,
           //this.papanicolao, 
-          this.tiempo_de_hacerlo,
+          //this.tiempo_de_hacerlo,
 
-        /*TRATAMIENTO*/
+        //TRATAMIENTO
           this.descripcion_tratamiento,
 
-        /*CONTACTOS*/
+        //CONTACTOS
           this.nombre1,
           this.parentesco1,
           this.direccion1,
@@ -210,23 +210,23 @@ class Historia{
   //Patrones de diseño, ventajas de regresar un objeto
   factory Historia.fromJson(Map<String, dynamic> json) {
     return Historia(
-        /*INFORMACION PERONAL*/
+        //INFORMACION PERONAL
         fecha_nac: json['fecha_nac'] as String,
         edad: json['edad'] as String,
         nss: json['nss'] as String,
         lugar_residencia: json['lugar_residencia'] as String,
 
-        /*ANTECEDENTES HEREDOFAMILIARES*/
+        //ANTECEDENTES HEREDOFAMILIARES
         e_cardicas: json['e_cardicas'] as String,
         hipertension: json['hipertension'] as String,
-        convulsiones: json['convulsiones'] as String,
+        //convulsiones: json['convulsiones'] as String,
         cancer: json['cancer'] as String,
         e_mentales: json['e_mentales'] as String,
         diabetes: json['diabetes'] as String,
         e_alergicas: json['e_alergicas'] as String,
         tuberculosis: json['tuberculosis'] as String,
 
-        /*PERSONALES NO PATOLOGICOS*/
+        //PERSONALES NO PATOLOGICOS
         vacunas_recientes: json['vacunas_recientes'] as String,
         practicas_deporte: json['practicas_deporte'] as String,
         cual_deporte: json['cual_deporte'] as String,
@@ -241,29 +241,29 @@ class Historia{
         edad_inicio_d: json['edad_inicio_d'] as String,
         cuantas_veces_d: json['cuantas_veces_d'] as String,
 
-        /*ANTECEDENTES QUIRURGICOS*/
+        //ANTECEDENTES QUIRURGICOS
         cirujia: json['cirujia'] as String,
         fecha_cirujia: json['fecha_cirujia'] as String,
         tipo_cirujia: json['tipo_cirujia'] as String,
         institucion: json['institucion'] as String,
 
-        /*ANTECEDENTES ALERGICOS*/
+       //ANTECEDENTES ALERGICOS
         alergias: json['alergias'] as String,
         medicamentos: json['medicamentos'] as String,
 
-        /*ANTECEDENTES TRAUMATICOS*/
+        //ANTECEDENTES TRAUMATICOS
         accidente: json['accidente'] as String,
         secuelas_accidente: json['secuelas_accidente'] as String,
         fracturas: json['fracturas'] as String,
         complicaciones: json['complicaciones'] as String,
         cual_complicacion: json['cual_complicacion'] as String,
 
-        /*ANTECEDENTES TRANSFUNCIONALES*/
+        //ANTECEDENTES TRANSFUNCIONALES
         transfuncion_sanguinea: json['transfuncion_sanguinea'] as String,
         fecha_transfucion: json['fecha_transfucion'] as String,
         motivo: json['motivo'] as String,
 
-        /*ENFERMEDADES*/
+        //ENFERMEDADES
         varicela: json['varicela'] as String,
         tosferina: json['tosferina'] as String,
         sarampion: json['sarampion'] as String,
@@ -273,7 +273,7 @@ class Historia{
         hepatitis: json['hepatitis'] as String,
         tifoidea: json['tifoidea'] as String,
         fiebre_reumatica: json['fiebre_reumatica'] as String,
-       // convulciones: json['convulciones'] as String,
+        convulciones: json['convulciones'] as String,
         parasitos: json['parasitos'] as String,
         diabetis_mellitus: json['diabetis_mellitus'] as String,
         hipertension_arterial: json['hipertension_arterial'] as String,
@@ -281,7 +281,7 @@ class Historia{
         enf_cardiacas: json['enf_cardiacas'] as String,
         enf_renales: json['enf_renales'] as String,
 
-        /*ANTECEDENTES GINECOBSTETRICOS*/
+        //ANTECEDENTES GINECOBSTETRICOS
         edad_de_primer_periodo: json['edad_de_primer_periodo'] as String,
         periodo_regular: json['periodo_regular'] as String,
         dias_de_duracion: json['dias_de_duracion'] as String,
@@ -295,12 +295,12 @@ class Historia{
         metodo_de_planificacion: json['metodo_de_planificacion'] as String,
         cual_metodo: json['cual_metodo'] as String,
         //papanicolao: json['papanicolao'] as String,
-        tiempo_de_hacerlo: json['tiempo_de_hacerlo'] as String,
+        //tiempo_de_hacerlo: json['tiempo_de_hacerlo'] as String,
 
-        /*TRATAMIENTO*/
+        //TRATAMIENTO
         descripcion_tratamiento: json['descripcion_tratamiento'] as String,
 
-        /*CONTACTOS*/
+        //CONTACTOS
         nombre1: json['nombre1'] as String,
         parentesco1: json['parentesco1'] as String,
         direccion1: json['direccion1'] as String,
@@ -313,4 +313,3 @@ class Historia{
     );
   }
 }
-    
