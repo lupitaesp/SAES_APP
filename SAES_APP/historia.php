@@ -25,7 +25,6 @@
         $lugar_residencia=$_POST['lugar_residencia'];
         $e_cardicas = $_POST['e_cardicas'];
         $hipertension = $_POST['hipertension'];
-        $convulsiones = $_POST['convulsiones'];
         $cancer = $_POST['cancer'];
         $e_mentales = $_POST['e_mentales'];
         $diabetes = $_POST['diabetes'];
@@ -67,6 +66,7 @@
          $hepatitis = $_POST['hepatitis'];
          $tifoidea = $_POST['tifoidea'];
          $fiebre_reumatica = $_POST['fiebre_reumatica'];
+         $convulciones = $_POST['convulciones'];
          $parasitos = $_POST['parasitos'];
          $diabetis_mellitus = $_POST['diabetis_mellitus'];
          $hipertension_arterial = $_POST['hipertension_arterial'];
@@ -86,9 +86,9 @@
          $metodo_de_planificacion = $_POST['metodo_de_planificacion'];
          $cual_metodo = $_POST['cual_metodo'];
         // $papanicolao = $_POST['papanicolao'];
-         $tiempo_de_hacerlo = $_POST['tiempo_de_hacerlo'];
+        // $tiempo_de_hacerlo = $_POST['tiempo_de_hacerlo'];
          $descripcion_tratamiento = $_POST['descripcion_tratamiento'];
-        $nombre1 = $_POST['nombre1'];
+         $nombre1 = $_POST['nombre1'];
          $parentesco1 = $_POST['parentesco1'];
          $direccion1 = $_POST['direccion1'];
          $telefono1 = $_POST['telefono1'];
@@ -96,27 +96,27 @@
          $parentesco2 = $_POST['parentesco2'];
          $direccion2 = $_POST['direccion2'];
          $telefono2 = $_POST['telefono2'];
-         $sql = "INSERT INTO $table (matricula,fecha_nac,edad,nss,lugar_residencia,e_cardicas,hipertension, convulsiones, cancer, e_mentales, diabetes, e_alergicas, tuberculosis,
+         $sql = "INSERT INTO $table (matricula,fecha_nac,edad,nss,lugar_residencia,e_cardicas,hipertension, cancer, e_mentales, diabetes, e_alergicas, tuberculosis,
           vacunas_recientes,practicas_deporte, cual_deporte, cuantas_veces_deporte, fumas, edad_inicio_f, cigarros_a_la_semana, bebidas_alcoholicas, edad_inicio_a, cantidad_por_semana, drogas, edad_inicio_d, cuantas_veces_d,
           cirujia,fecha_cirujia,tipo_cirujia, institucion, 
           alergias,medicamentos,
           accidente,secuelas_accidente, fracturas, complicaciones, cual_complicacion,
           transfuncion_sanguinea,fecha_transfucion, motivo,
           varicela, tosferina,sarampion, rubeola, sinusitis
-          ,paperas, hepatitis, tifoidea, fiebre_reumatica, parasitos, diabetis_mellitus,
+          ,paperas, hepatitis, tifoidea, fiebre_reumatica, convulciones, parasitos, diabetis_mellitus,
            hipertension_arterial, anemia, enf_cardiacas, enf_renales,
           edad_de_primer_periodo,periodo_regular, dias_de_duracion, cada_cuantos_dias, embarazos, cuantas_veces_emb
-          , parto, cesarea, aborto, legrado, metodo_de_planificacion, cual_metodo, tiempo_de_hacerlo,
+          , parto, cesarea, aborto, legrado, metodo_de_planificacion, cual_metodo,
           descripcion_tratamiento,
           nombre1, parentesco1, direccion1, telefono1, nombre2, parentesco2, direccion2, telefono2)
-          VALUES('$matricula','$fecha_nac','$edad','$nss','$lugar_residencia','$e_cardicas','$hipertension','$convulsiones','$cancer', '$e_mentales','$diabetes','$e_alergicas','$tuberculosis'
+          VALUES('$matricula','$fecha_nac','$edad','$nss','$lugar_residencia','$e_cardicas','$hipertension','$cancer', '$e_mentales','$diabetes','$e_alergicas','$tuberculosis'
         ,'$vacunas_recientes','$practicas_deporte','$cual_deporte','$cuantas_veces_deporte','$fumas','$edad_inicio_f','$cigarros_a_la_semana','$bebidas_alcoholicas','$edad_inicio_a','$cantidad_por_semana','$drogas',
         '$edad_inicio_d','$cuantas_veces_d','$cirujia','$fecha_cirujia','$tipo_cirujia','$institucion',
         '$alergias','$medicamentos','$accidente','$secuelas_accidente','$fracturas','$complicaciones','$cual_complicacion',
         '$transfuncion_sanguinea','$fecha_transfucion','$motivo','$varicela','$tosferina','$sarampion','$rubeola',
-        '$sinusitis','$paperas','$hepatitis','$tifoidea','$fiebre_reumatica','$parasitos','$diabetis_mellitus'
+        '$sinusitis','$paperas','$hepatitis','$tifoidea','$fiebre_reumatica','$convulciones','$parasitos','$diabetis_mellitus'
         ,'$hipertension','$anemia','$enf_cardiacas','$enf_renales','$edad_de_primer_periodo','$periodo_regular','$dias_de_duracion','$cada_cuantos_dias',
-        '$embarazos','$cuantas_veces_emb','$parto','$cesarea','$aborto','$legrado','$metodo_de_planificacion','$cual_metodo','$tiempo_de_hacerlo',
+        '$embarazos','$cuantas_veces_emb','$parto','$cesarea','$aborto','$legrado','$metodo_de_planificacion','$cual_metodo',
         '$descripcion_tratamiento',
         '$nombre1','$parentesco1','$direccion1','$telefono1','$nombre2','$parentesco2','$direccion2','$telefono2')";
         $result = $conn->query($sql);

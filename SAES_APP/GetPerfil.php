@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM persona where usuario='Alumno'";
+$sql = "SELECT *,p.matricula FROM persona p, historial h WHERE p.matricula = h.matricula and usuario='Alumno'";
 $result = $conn->query($sql);
 $response = array();
 
