@@ -68,17 +68,17 @@ class HistoriaLlena extends StatelessWidget {
             children: <Widget>[
               AppBar(
                 backgroundColor: Colors.indigo,
-                leading: Icon(Icons.verified_user),
+                leading: Icon(Icons.person_outline),
                 elevation: 0,
-                title: Text('Datos personales'),
+                title: Text('${historia.nombre}'+" "+'${historia.ape_pat}'+" "+'${historia.ape_mat}'),
                 centerTitle: true,
               ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: ListTile(
-                      title: Text('Fecha Nacimiento'),
-                      subtitle: Text('${historia.fecha_nac}'),
+                      title: Text('Matricula'),
+                      subtitle: Text('${historia.matricula}'),
                       leading: Icon(Icons.important_devices),
                     ),
                   ),
@@ -86,20 +86,53 @@ class HistoriaLlena extends StatelessWidget {
                     child: ListTile(
                       title: Text('Edad'),
                       subtitle: Text('${historia.edad}'),
-                      leading: Icon(Icons.person),
+                      leading: Icon(Icons.assignment_ind),
                     ),
                   ),
                 ],
               ),
               ListTile(
-                title: Text('Número de Seguro Social'),
-                subtitle: Text('${historia.nss}'),
-                leading: Icon(Icons.list),
+                title: Text('E-mail'),
+                subtitle: Text('${historia.email}'),
+                leading: Icon(Icons.email),
+              ),
+              ListTile(
+                      title: Text('Carrera'),
+                      subtitle: Text('${historia.carrera}'),
+                      leading: Icon(Icons.view_headline),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ListTile(
+                      title: Text('Grupo'),
+                      subtitle: Text('${historia.grupo}'),
+                      leading: Icon(Icons.group_add),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                    title: Text('Teléfono'),
+                    subtitle: Text('${historia.telefono}'),
+                    leading: Icon(Icons.phone),
+                    ),
+                  ),
+                ],
+              ),
+              ListTile(
+                title: Text('Fecha de Nacimiento'),
+                subtitle: Text('${historia.fecha_nac}'),
+                leading: Icon(Icons.insert_invitation),
               ),
               ListTile(
                 title: Text('Lugar de residencia'),
                 subtitle: Text('${historia.lugar_residencia}'),
                 leading: Icon(Icons.home),
+              ),
+              ListTile(
+                title: Text('Número de Seguro Social'),
+                subtitle: Text('${historia.nss}'),
+                leading: Icon(Icons.list),
               ),
             ],
           ),

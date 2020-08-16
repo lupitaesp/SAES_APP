@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:saes/principal/principal.dart';
 import 'package:saes/usuarios/alumno/perfilAlumno.dart';
 import 'package:saes/usuarios/alumno/web.dart';
+import 'package:saes/usuarios/alumno/webC.dart';
+import 'package:saes/usuarios/alumno/webC2.dart';
+import 'package:saes/usuarios/alumno/webC3.dart';
 import 'package:saes/usuarios/historia/historiaClinica.dart';
 import 'package:saes/usuarios/rounded.dart';
 import 'package:http/http.dart' as http;
@@ -73,20 +76,20 @@ class Alumno extends StatelessWidget {
         children: <Widget>[
           _buildFeaturedNews(),
           _buildHeading("Noticias importantes"),
-          _buildListItem1(Colors.transparent),
-          _buildListItem2(Colors.transparent),
-          _buildListItem3(Colors.transparent),
+          _buildListItem1(context),
+          _buildListItem2(context),
+          _buildListItem3(context),
           //_buildListItem(Colors.transparent),
         ],
       ),
     );
   }
 
-  Widget _buildListItem1(Color color) {
+  Widget _buildListItem1(BuildContext context ){
     return InkWell(
       onTap: () {
-        print("eyy");
-      },
+  Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => WebC()));      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
         child: Row(
@@ -100,7 +103,7 @@ class Alumno extends StatelessWidget {
                 image: DecorationImage(
                     image: NetworkImage(
                         'http://www.clinicasmontecarmelo.com/wp-content/uploads/2016/03/elegir-el-cepillo-de-dientes.jpg')),
-                color: color,
+                color: Colors.transparent,
               ),
             ),
             Expanded(
@@ -124,10 +127,11 @@ class Alumno extends StatelessWidget {
     );
   }
 
-  Widget _buildListItem2(Color color) {
+  Widget _buildListItem2(BuildContext context) {
     return InkWell(
       onTap: () {
-        print("eyy");
+      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => WebC2())); 
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
@@ -142,7 +146,7 @@ class Alumno extends StatelessWidget {
                 image: DecorationImage(
                     image: NetworkImage(
                         'http://www.que.es/archivos/201306/5391236w-640x640x80.jpg')),
-                color: color,
+                color: Colors.transparent,
               ),
             ),
             Expanded(
@@ -166,10 +170,11 @@ class Alumno extends StatelessWidget {
     );
   }
 
-  Widget _buildListItem3(Color color) {
+  Widget _buildListItem3(BuildContext context) {
     return InkWell(
       onTap: () {
-        print("eyy");
+         Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => WebC3())); 
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
@@ -184,7 +189,7 @@ class Alumno extends StatelessWidget {
                 image: DecorationImage(
                     image: NetworkImage(
                         'https://th.bing.com/th/id/OIP.2R9khSWJsPP81a2XJZdjZAHaE8?pid=Api&rs=1')),
-                color: color,
+                color: Colors.transparent,
               ),
             ),
             Expanded(
