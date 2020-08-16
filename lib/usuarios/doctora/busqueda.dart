@@ -1,8 +1,10 @@
-import 'package:saes/operaciones/Registrar.dart';
 import 'package:saes/operaciones/convertidor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:saes/usuarios/doctora/historia_llena.dart';
+import 'package:saes/usuarios/historia/datosHistoria.dart';
 
 class Busqueda extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _myHomePageState extends State<Busqueda> {
   bool _isSearching = false;
   TextEditingController searchController = TextEditingController();
 
-  Future<List<Registrar>> fetchStudent() async {
+  Future<List<Historia>> fetchStudent() async {
     String url = "http://192.168.0.106/SAES_APP/GetPerfil.php";
     try {
       final response = await http.get(url);
@@ -23,23 +25,23 @@ class _myHomePageState extends State<Busqueda> {
       //  return studentFromJson(response.body);
       if (200 == response.statusCode) {
         //Mapear la lista
-        List<Registrar> list = parseResponse(response.body);
+        List<Historia> list = parseResponse(response.body);
         return list;
       } else {
-        return List<Registrar>();
+        return List<Historia>();
       }
     } catch (e) {
       print("Error getting datafrom SQL Server");
       print(e.toString());
-      return List<Registrar>();
+      return List<Historia>();
     }
   }
 
   //ParseResponse Method
-  static List<Registrar> parseResponse(String responseBody) {
+  static List<Historia> parseResponse(String responseBody) {
     final parseData = json.decode(responseBody).cast<Map<String, dynamic>>();
     return parseData
-        .map<Registrar>((json) => Registrar.fromJson(json))
+        .map<Historia>((json) => Historia.fromJson(json))
         .toList();
   }
 
@@ -101,7 +103,7 @@ class _myHomePageState extends State<Busqueda> {
                   itemCount: snapshot.data.length,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                    Registrar perfil = snapshot.data[index];
+                    Historia perfil = snapshot.data[index];
                     return snapshot.data[index].matricula
                             .contains(searchController.text)
                         ? ListTile(
@@ -129,8 +131,8 @@ class _myHomePageState extends State<Busqueda> {
                               ),
                             ),
                             onTap: () {
-                              //  Navigator.push(context,
-                              // new MaterialPageRoute(builder: (context)=> DetailPage(snapshot.data[index])));
+                               Navigator.push(context,
+                               new MaterialPageRoute(builder: (context)=> HistoriaLlena(snapshot.data[index])));
                             },
                           )
                         : Container();
