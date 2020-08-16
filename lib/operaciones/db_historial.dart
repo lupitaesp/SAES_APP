@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class BDConnections2 {
   //Direccion IPv4 de la computadora (Se encuentra con el comando "ipconfig")
-  static const SERVER = "http://192.168.43.106/SAES_APP/historia.php";
+  static const SERVER = "http://192.168.0.106/SAES_APP/historia.php";
   static const _HISTORIA_DATA_COMMAND = "INSERT_HISTORIAL";
   //Get Data from
   /* static Future<List<Registrar>> selectData() async {
@@ -47,7 +47,7 @@ class BDConnections2 {
     
     String e_cardicas,
     String hipertension,
-    String convulsiones,
+    //String convulsiones,
     String cancer,
     String e_mentales,
     String diabetes,
@@ -95,7 +95,7 @@ class BDConnections2 {
     String hepatitis,
     String tifoidea,
     String fiebre_reumatica,
-   // String convulciones,
+    String convulciones,
     String parasitos,
     String diabetis_mellitus,
     String hipertension_arterial,
@@ -141,7 +141,7 @@ class BDConnections2 {
 
       map['e_cardicas'] = e_cardicas;
       map['hipertension'] = hipertension;
-      map['convulsiones'] = convulsiones;
+     // map['convulsiones'] = convulsiones;
       map['cancer'] = cancer;
       map['e_mentales'] =  e_mentales;
       map['diabetes'] = diabetes;
@@ -189,7 +189,7 @@ class BDConnections2 {
      map['hepatitis'] = hepatitis;
      map['tifoidea'] = tifoidea;
      map['fiebre_reumatica'] = fiebre_reumatica;
-     //map['convulciones'] = convulciones;
+     map['convulciones'] = convulciones;
      map['parasitos'] = parasitos;
      map['diabetis_mellitus'] = diabetis_mellitus;
      map['hipertension_arterial'] = hipertension_arterial;
