@@ -97,6 +97,7 @@ telefono1          char(10)              not null,
 nombre2            varchar(70)           not null,
 parentesco2        varchar(20)           not null,
 direccion2         varchar(50)           not null,
-telefono2          char(10)              not null
+telefono2          char(10)              not null,
+foreign key(matricula) references persona(matricula));
 
 show tables;
