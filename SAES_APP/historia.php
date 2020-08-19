@@ -1,16 +1,18 @@
 <?php
     //CONECTAR CON EL SERVIDOR 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "integradora_app";
-    $table = "historial"; 
+    $user='m96ys5gz3t32wggt';
+    $password='aqbaxonic6fsb0ww';
+    $servername='qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+    $port=3306;
+    $database='xbn8rx8v91ae9ejx';
+
+    $conn = mysqli_connect($servername,$user,$password,$database,$port) or die ("No se ha podido conectar");
+
+    $table="historial";
  
     //This command came from the app, you will see it soon 
     $action = $_POST["action"];
-     
-    // Create Connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+
     // Check Connection
     if($conn->connect_error){
         die("Connection Failed: " . $conn->connect_error);
@@ -124,11 +126,4 @@
         $conn->close();
         return;
     }
-  
-
-
-
-
-
-
 ?>
